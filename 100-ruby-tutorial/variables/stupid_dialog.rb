@@ -2,7 +2,16 @@ puts "What's your name?"
 
 name = gets.chomp.strip
 
-puts "Hi #{name}! Nice to meet you. Also hanging out at LaunchSchool, eh? :)"
+def greeting(name)
+  "Hi #{name}! Nice to meet you. Also hanging out at LaunchSchool, eh? :)"
+end
+
+def scream(str)
+  str = str.upcase + "!!!"
+  puts str
+end
+
+scream(greeting(name))
 
 puts "And how old are you?"
 
