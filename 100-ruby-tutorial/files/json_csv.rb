@@ -12,7 +12,11 @@ results = json["artists"]["items"]
 
 if results.empty?
   puts "Sorry, didn't find any artists that match '#{artist}'."
-else
+  exit
+end
+
+begin
+  # Write results to CSV file.
   CSV.open("results.csv","wb") do |csv|
     csv << ["artist", "followers", "genres"]
     results.each do |result|
@@ -22,8 +26,11 @@ else
       csv << [name, followers, genres]
     end
   end
-  puts "Results written to results.csv:"
+  # Read results from that CSV file
+  puts "Content of results.csv:"
   CSV.foreach("results.csv", headers: true, header_converters: :symbol) do |row|
     puts "* #{row[:artist]} (#{row[:followers]} followers) #{row[:genres]}"
   end
+rescue Exception => e
+  puts e.message
 end
