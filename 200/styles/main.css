@@ -67,35 +67,44 @@ body {
 
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 100%;
-  line-height: 27px;
+  line-height: 1.4;
   color: #595959;
+}
+
+section, aside {
+  margin: 0;
+  padding: 40px;
+  height: 100%;
 }
 
 section {
   display: inline-block;
   vertical-align: top;
   width: 800px;
-  margin: 20px 40px;
 }
 
 aside {
   display: inline-block;
   vertical-align: top;
   width: 360px;
-  height: 100%;
-  margin: 0;
   background: #50576a;
-  padding: 60px 40px;
+}
+
+nav {
+  margin: 40px 0;
 }
 
 /* ELEMENTS */
 
+p {
+  margin: 10px 0;
+}
+
 h1, h2, h3 {
   color: ‎#414141;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 400;
-  margin-top: 20px;
-  margin-bottom: 40px;
+  margin: 50px 0;
 }
 h1 {
   color: orange;
@@ -125,7 +134,20 @@ div.toc {
 
 a.toc {
   color: #f9f9f9;
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* Styling */
+
+em {
+  font-style: italic;
+}
+
+sub {
+    vertical-align: sub;
+    font-size: smaller;
 }
 
 /* SPECIFICS */
@@ -135,7 +157,7 @@ a.toc {
   font-size: 36px;
   font-weight: 600;
   text-align: center;
-  margin-bottom: 40px;
+  margin: 40px 0;
 }
 
 #intro {
@@ -147,6 +169,10 @@ a.toc {
 .code {
   font-family: "Source Code Pro", Inconsolata, "Lucida Console", Terminal, "Courier New", Courier;
   background: #eaeaed;
+}
+
+.light {
+  color: #999;
 }
 
 .highlight {
