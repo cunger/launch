@@ -8,7 +8,7 @@ puts "Welcome to the calculator!"
 
 number1 = prompt("first number")
 number2 = prompt("second number")
-operation = prompt("operation","(+, -, *, /)")
+operation = prompt("operation", "(+, -, *, /)")
 
 result = case operation
          when "+"
