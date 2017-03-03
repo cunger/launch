@@ -7,7 +7,7 @@ until enough
   lines = nil
 
   loop do
-    puts "That was fun!" unless firstTime
+    puts "That was fun!" unless first_time
     puts "How many output lines do you want? Enter a number >= 3 or 'q' to quit:"
     answer = gets.chomp
 
