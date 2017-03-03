@@ -1,0 +1,25 @@
+
+# 1
+
+Given two integers i1 and i2, return i1 + i2.
+
+# 2
+
+Input:  an array of strings
+Output: string
+
+FOR each s in the input array:
+  append s to string
+
+RETURN string
+
+# 3
+
+Input: an array of integers
+
+SET output = empty array
+FOR integer i ranging from 0 to length of the input array:
+  if i is odd:
+    get i-th element from the input array and put it into output
+
+RETURN output
