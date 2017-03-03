@@ -2,8 +2,8 @@
 
 iterations = 5
 
-for i in 1..iterations
-  puts "Iteration number #{i}. #{iterations-i} to go!"
+(1..iterations).each do |i|
+  puts "Iteration number #{i}. #{iterations - i} to go!"
 end
 
 ## Saying 'Hello!' 5 times
@@ -20,10 +20,7 @@ end
 ## Printing 5 random numbers
 
 numbers = []
-
-while numbers.size < 5
-  numbers << rand(100)
-end
+numbers << rand(100) while numbers.size < 5
 
 puts numbers
 
@@ -50,10 +47,7 @@ end
 ## Printing more numbers
 
 numbers = [7, 9, 13, 25, 18]
-
-until numbers.empty?
-  puts numbers.shift
-end
+puts numbers.shift until numbers.empty?
 
 ## Greet your friends
 

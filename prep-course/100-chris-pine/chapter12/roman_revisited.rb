@@ -1,5 +1,5 @@
 
-$translation =
+@translation =
     { 'M'  => 1000,
       'CM' =>  900,
       'D'  =>  500,
@@ -15,17 +15,15 @@ $translation =
       'I'  =>    1 }
 
 def roman_to_integer(roman)
-
-  str = roman.upcase
   num = 0
-
+  str = roman.upcase
   until str.empty?
-    num1 = $translation[str[0..1]]
-    num2 = $translation[str[0]]
-    if not num1.nil?
+    num1 = @translation[str[0..1]]
+    num2 = @translation[str[0]]
+    if !num1.nil?
       num += num1
       str  = str[2..-1]
-    elsif not num2.nil?
+    elsif !num2.nil?
       num += num2
       str  = str[1..-1]
     else

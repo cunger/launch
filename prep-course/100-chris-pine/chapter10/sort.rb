@@ -1,20 +1,19 @@
 
 def sort(arr)
-  sort_rec(arr, [], Proc.new { |x| x })
+  sort_rec(arr, [], proc { |x| x })
 end
 
 def dictionary_sort(arr)
-  sort_rec(arr, [], Proc.new { |x| x.downcase })
+  sort_rec(arr, [], proc { |x| x.downcase })
 end
 
 def sort_rec(unsorted_array, sorted_array, preprocessing)
   # If there's nothing more to sort, stop
-  if unsorted_array.empty?
-    return sorted_array
-  end
+  return sorted_array if unsorted_array.empty?
+
   # Find smallest elements in unsorted_array
   smallest = unsorted_array[0..0]
-  unsorted_array[1..unsorted_array.size-1].each do |a|
+  unsorted_array[1..unsorted_array.size - 1].each do |a|
     if preprocessing.call(a) < preprocessing.call(smallest[0])
       smallest = [a]
     elsif preprocessing.call(a) == preprocessing.call(smallest[0])
@@ -57,8 +56,8 @@ end
 
 # Small test
 
-int_arr = [ 2, 6, 4, 3, 2, 6, 10, 45, 4, 0 ]
-str_arr = [ "world", "hello", "blah", "blubb", "Blah", "blubb" ]
+int_arr = [2, 6, 4, 3, 2, 6, 10, 45, 4, 0]
+str_arr = ["world", "hello", "blah", "blubb", "Blah", "blubb"]
 
 puts sort(int_arr) == int_arr.sort
 puts sort(str_arr) == str_arr.sort

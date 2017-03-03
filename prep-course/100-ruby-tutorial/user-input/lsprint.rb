@@ -1,5 +1,5 @@
 
-firstTime = true
+first_time = true
 enough = false
 
 until enough
@@ -22,5 +22,5 @@ until enough
   end
 
   lines.times { puts "Launch!" }
-  firstTime = false
+  first_time = false
 end

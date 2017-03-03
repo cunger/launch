@@ -1,4 +1,4 @@
-arr = [1,2,3,4]
+arr = [1, 2, 3, 4]
 
 arr.each do |a|
   puts "--#{a}--"
@@ -7,6 +7,3 @@ arr.each do |a|
 end
 
 puts "Wow, Ruby, that's interesting!"
-
-arr.each { |a| a += 1 }
-puts arr # => [1,2] (of course!)

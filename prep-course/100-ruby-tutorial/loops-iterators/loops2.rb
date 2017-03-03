@@ -13,7 +13,7 @@ end
 loop do
   number = rand(100)
   puts number
-  break if number.between?(0,10)
+  break if number.between?(0, 10)
 end
 
 # Note: #between? is inclusive, i.e. 0.between?(0,10) => true

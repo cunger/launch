@@ -4,7 +4,7 @@
 arr1 = [1, 2, 3, 4, 5]
 
 puts arr1.include? 0
-puts arr1.any? { |a| a == 0 }
+puts arr1.any? { |a| a.zero? } # alternative: arr.any?(&:zero?)
 
 ## Exercise 2
 

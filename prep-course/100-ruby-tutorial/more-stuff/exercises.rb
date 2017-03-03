@@ -22,7 +22,7 @@ arr = (1..10).to_a
 
 arr.each { |a| puts a if a >= 5 }
 
-new_arr = arr.select { |a| a.odd? }
+new_arr = arr.select(&:odd?) # == arr.select { |a| a.odd? }
 
 puts "arr = #{arr}"
 puts "new_arr = #{new_arr}"
@@ -40,20 +40,20 @@ puts "arr = #{arr}"
 arr.uniq!
 
 
-h = {a:1, b:2, c:3, d:4}
+h = { a:1, b:2, c:3, d:4 }
 puts h[:b]
 h[:e] = 5
 puts h
-h.delete_if { |_,v| v < 3.5 }
+h.delete_if { |_, v| v < 3.5 }
 puts h
 
 
 contact_data = [["joe@email.com", "123 Main st.", "555-123-4567"],
                 ["sally@email.com", "404 Not Found Dr.", "123-234-3454"]]
 
-contacts = {"Joe Smith" => {}, "Sally Johnson" => {}}
+contacts = { "Joe Smith" => {}, "Sally Johnson" => {} }
 
-contacts.each do |name,data|
+contacts.each do |name, _|
   contact_data.each do |arr|
     email   = arr[0]
     address = arr[1]
@@ -78,6 +78,6 @@ arr.delete_if { |a| a.start_with?("s") || a.start_with?("w") }
 p arr
 
 arr = ['snow', 'winter', 'ice', 'slippery', 'salted roads', 'white trees']
-arr.map! { |a| a.split }
+arr.map!(&:split) # == arr.map! { |a| a.split }
 arr.flatten!
 p arr

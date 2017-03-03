@@ -9,9 +9,7 @@ puts "Leap years between #{start_year} and #{end_year}:"
 
 leap_years = []
 (start_year..end_year).each do |year|
-  if year%4 == 0 && (year%100 != 0 or year%400 == 0)
-    leap_years << year
-  end
+  leap_years << year if (year % 4).zero? && (!(year % 100).zero? || (year % 400).zero?)
 end
 
 puts leap_years

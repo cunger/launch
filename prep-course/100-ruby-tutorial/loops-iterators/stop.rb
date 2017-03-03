@@ -1,8 +1,6 @@
 
 loop do
   input = gets.chomp.strip
-  if input == 'STOP'
-    break
-  end
+  break if input == 'STOP'
   puts 'Lalalalalala!'
 end

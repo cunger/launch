@@ -3,8 +3,8 @@
 
 family = {  uncles:   ["bob", "joe", "steve"],
             sisters:  ["jane", "jill", "beth"],
-            brothers: ["frank","rob","david"],
-            aunts:    ["mary","sally","susan"] }
+            brothers: ["frank", "rob", "david"],
+            aunts:    ["mary", "sally", "susan"] }
 
 puts family.select { |k,_| [:sisters,:brothers].include? k }
            .values
@@ -19,7 +19,7 @@ dynamic_hash = { v1: "one", v2: "two" }
 puts static_hash.merge({ v3: "three" }) != static_hash
 
 puts dynamic_hash.merge!({ v3: "three" }) == dynamic_hash
-puts dynamic_hash == dynamic_hash.merge!({ v4: "four" })
+puts dynamic_hash == dynamic_hash.merge!(v4: "four")
 
 ## Exercise 3
 
@@ -44,9 +44,9 @@ end
 
 require 'set'
 
-words =  ['demo', 'none', 'tied', 'evil', 'dome', 'mode', 'live',
-          'fowl', 'veil', 'wolf', 'diet', 'vile', 'edit', 'tide',
-          'flow', 'neon']
+words = ['demo', 'none', 'tied', 'evil', 'dome', 'mode', 'live',
+         'fowl', 'veil', 'wolf', 'diet', 'vile', 'edit', 'tide',
+         'flow', 'neon']
 
 # anagrams = Set.new
 # words.each do |word|

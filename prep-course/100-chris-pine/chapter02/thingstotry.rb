@@ -14,7 +14,7 @@ puts 'My age in seconds (rough): ' + my_age_in_seconds_rough.to_s
 
 # Trying DateTime
 
-BIRTHDAY = DateTime.new(1982,5,5,15)
+BIRTHDAY = DateTime.new(1982, 5, 5, 15)
 
 my_age_in_seconds = Proc.new do
   diff_in_days = DateTime.now - BIRTHDAY
@@ -33,4 +33,4 @@ authors_age_in_years = authors_age_in_seconds / 60 / 60 / 24 / 365
 # left-to-right bracketing, so == (((authors_age_in_seconds / 60) / 60) / 24) / 365
 
 puts "The author's age: " + authors_age_in_years.to_s
-puts "(So we're " + (authors_age_in_years - 34).abs.to_s + " years apart.)"
+puts "(So we're #{(authors_age_in_years - 34).abs} years apart.)"

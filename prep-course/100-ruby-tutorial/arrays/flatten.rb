@@ -1,6 +1,5 @@
 
 def flatten(obj)
-
   if obj.is_a? Array
     flat_arr = []
     obj.each do |element|
@@ -13,8 +12,7 @@ def flatten(obj)
     end
     return flat_arr
   end
-
-  return obj
+  obj
 end
 
 example = [1, 2, [3, 4, [5]], [[]], 6]

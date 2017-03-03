@@ -1,9 +1,8 @@
 
-def prompt(what_to_prompt, options="")
-  puts "What's the " + what_to_prompt + "? " + options
+def prompt(what_to_prompt, options = "")
+  puts "What's the #{what_to_prompt}? #{options}"
   gets.chomp
 end
-
 
 puts "Welcome to the calculator!"
 

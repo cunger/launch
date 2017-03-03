@@ -37,7 +37,6 @@ puts polarity(-10)
 puts polarity(10)
 puts polarity(0)
 
-
 def size(number)
   case
   when number > 0

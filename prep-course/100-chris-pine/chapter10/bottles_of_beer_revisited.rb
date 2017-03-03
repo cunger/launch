@@ -1,8 +1,7 @@
 require_relative 'english_number'
 
 def bottles(i)
-
-  if i == 0
+  if i.zero?
     "no more bottles of beer"
   else
     str = english_number(i)
@@ -21,7 +20,7 @@ else
   num = ARGV.first.to_i
   (1..num).reverse_each do |i|
     puts "#{bottles(i).capitalize} on the wall, #{bottles(i)}."
-    puts "Take one down and pass it around, #{bottles(i-1)} on the wall."
+    puts "Take one down and pass it around, #{bottles(i - 1)} on the wall."
     puts ""
   end
 end

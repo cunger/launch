@@ -2,10 +2,8 @@
 # Bigger, better favourite number
 
 fav = ""
-until fav.match(/[\d.]+/)
-  if not fav.empty?
-    puts "That's not a number..."
-  end
+until fav =~ /[\d.]+/
+  puts "That's not a number..." unless fav.empty?
   puts "Say, what's your favourite number?"
   fav = gets.chomp
 end

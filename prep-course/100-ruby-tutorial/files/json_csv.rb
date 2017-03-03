@@ -17,7 +17,7 @@ end
 
 begin
   # Write results to CSV file.
-  CSV.open("results.csv","wb") do |csv|
+  CSV.open("results.csv", "wb") do |csv|
     csv << ["artist", "followers", "genres"]
     results.each do |result|
       name      = result["name"]

@@ -8,7 +8,7 @@ puts "Now to you..."
 
 def get_int(prompt)
   str = ""
-  until str.match(/^\d+$/)
+  until str =~ /^\d+$/
     puts prompt
     str = gets.chomp.strip
   end
@@ -21,8 +21,8 @@ day   = get_int("Which day? (e.g. 24)")
 
 puts "Hmm, #{year}-#{month}-#{day}..."
 
-diff = now - Time.local(year,month,day)
-diff = diff/60/60/24/365
+diff = now - Time.local(year, month, day)
+diff = diff / 60 / 60 / 24 / 365
 
 puts "So you're #{diff} years old!"
 diff.to_i.times { puts "Hip hip hooray!" }

@@ -1,13 +1,13 @@
 
-$affirmative = [ "y", "yes", "sure", "yeah" ]
-$negative    = [ "n" "no", "nope" ]
+@affirmative = ["y", "yes", "sure", "yeah"]
+@negative    = ["n", "no", "nope"]
 
 def valid?(str)
-  ($affirmative + $negative).include? str
+  (@affirmative + @negative).include? str
 end
 
 def yes?(str)
-  $affirmative.include? str
+  @affirmative.include? str
 end
 
 answer = nil

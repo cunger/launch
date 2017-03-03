@@ -1,15 +1,14 @@
 
-$letters_basic =
+@letters_basic =
   { 1000 => 'M',
      500 => 'D',
      100 => 'C',
       50 => 'L',
       10 => 'X',
        5 => 'V',
-       1 => 'I',
-  }
+       1 => 'I' }
 
-$letters_full =
+@letters_full =
     { 1000 => 'M',
        900 => 'CM',
        500 => 'D',
@@ -22,18 +21,14 @@ $letters_full =
          9 => 'IX',
          5 => 'V',
          4 => 'IV',
-         1 => 'I',
-    }
+         1 => 'I' }
 
-def to_roman(hash,num)
-
+def to_roman(hash, num)
   str = ""
 
-  hash.each do |n,rom|
-
-    full = num/n
-    rest = num%n
-
+  hash.each do |n, rom|
+    full = num / n
+    rest = num % n
     if full > 0
       str += rom * full
       num -= full * n
@@ -44,11 +39,11 @@ def to_roman(hash,num)
 end
 
 def to_oldschool_roman(num)
-  to_roman($letters_basic,num)
+  to_roman(@letters_basic, num)
 end
 
 def to_modern_roman(num)
-  to_roman($letters_full,num)
+  to_roman(@letters_full, num)
 end
 
 

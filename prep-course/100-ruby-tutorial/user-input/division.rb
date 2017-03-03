@@ -2,7 +2,7 @@ def valid_number?(number_string)
   number_string.to_i.to_s == number_string
 end
 
-def getNumber(name, zero_allowed=true)
+def get_number(name, zero_allowed = true)
 
   loop do
     puts "Please enter the #{name}:"

@@ -1,6 +1,6 @@
 
 def countdown(number)
-  if number == 0
+  if number.zero?
     puts "LAUNCH!"
   else
     puts number
