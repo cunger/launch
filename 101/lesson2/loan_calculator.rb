@@ -5,15 +5,18 @@
 # the loan duration
 
 # Output:
-# monthly interest rate
 # loan duration in months
 
 def ask(message)
+  print message
+  gets.chomp.strip
+end
+
+def get_float(message)
   loop do
-    print message
-    input = gets.chomp.strip
-    num = Float(input) rescue nil
-    break num unless num.nil?
+    input = ask message
+    float = Float(input) rescue nil
+    break float unless float.nil?
     puts "Hmm... I don't understand. Please make sure your input is numerical."
   end
 end
@@ -25,9 +28,9 @@ puts "==== Loan calculator ===="
 loop do
   puts ""
 
-  loan_amount = ask "Loan amount: "
-  loan_duration = ask "Loan duration (in months): "
-  apr = ask "Annual Percentage Rate (in percent): "
+  loan_amount = get_float "Loan amount: "
+  loan_duration = get_float "Loan duration (in months): "
+  apr = get_float "Annual Percentage Rate (in percent): "
   apr /= 100
 
   monthly_interest_rate = apr / 12
@@ -35,8 +38,7 @@ loop do
 
   puts "--> Monthly payment: #{format('%.2f', monthly_payment)}"
 
-  puts "\nDo you want to calculate another loan? (y/n)"
-  answer = gets.chomp.strip
+  answer = ask "\nDo you want to calculate another loan? (y/n) "
   break if answer == "n"
 end
 
