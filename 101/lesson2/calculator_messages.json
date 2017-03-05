@@ -1,0 +1,46 @@
+{
+  "intro": {
+    "en": "Calculator!",
+    "de": "Taschenrechner!"
+    },
+  "first_number": {
+    "en": "What's the first number?",
+    "de": "Was ist die erste Zahl?"
+    },
+  "second_number": {
+    "en": "What's the second number?",
+    "de": "Was ist die zweite Zahl?"
+    },
+  "number_error": {
+    "en": "Hmm... That doesn't look like a valid number.",
+    "de": "Hmm... Das sieht nicht nach einer Zahl aus."
+    },
+  "operation": {
+    "en": "What operation would you like to perform? \n   + (addition) \n   - (subtraction) \n   * (multiplication) \n   / (division)",
+    "de": "Welche Operation möchtest du ausführen? \n   + (Addition) \n   - (Subtraktion) \n   * (Multiplikation) \n   / (Division)"
+    },
+  "operation_error": {
+    "en": "Please choose +, -, *, or /.",
+    "de": "Bitte gib eine gültige Operation ein: +, -, *, oder /."
+    },
+  "again": {
+    "en": "Do you want to perform another calculation? y/n",
+    "de": "Willst du noch mal rechnen? j/n"
+    },
+  "again_error": {
+    "en": "Please say 'y' or 'n'.",
+    "de": "Bitte gib 'j' oder 'n' ein."
+  },
+  "countsasyes": {
+    "en": "y",
+    "de": "j"
+    },
+  "countsasno": {
+    "en": "n",
+    "de": "n"
+    },
+  "outro": {
+    "en": "Bye, see you next time!",
+    "de": "Tschüss, bis zum nächsten mal!"
+    }
+}

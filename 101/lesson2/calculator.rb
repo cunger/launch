@@ -1,3 +1,5 @@
+require 'json'
+
 def prompt(message)
   puts "=> #{message}"
 end
@@ -5,7 +7,7 @@ end
 def get_answer(message, error_message, &validation)
   loop do
     prompt message
-    answer = gets.chomp.strip
+    answer = STDIN.gets.chomp.strip
     if validation.call(answer)
       return answer
     else
@@ -14,40 +16,36 @@ def get_answer(message, error_message, &validation)
   end
 end
 
-number_validation   = proc { |str| str =~ /^\d+$/ }
-operator_validation = proc { |str| %w(+ - * /).include? str }
-answer_validation   = proc { |str| %w(y n).include? str.downcase }
+if ARGV.size == 1 && %w(en de).include?(ARGV[0])
+  language = ARGV[0]
+else
+  puts "Usage: ruby calculator.rb <language>"
+  puts "Currently supported languages: en, de"
+  exit
+end
 
-prompt "Welcome to the calculator!"
+messages = JSON.parse(File.read("calculator_messages.json"))
+
+number_validation   = proc { |str| str =~ /^\d+(.\d+)?$/ }
+operator_validation = proc { |str| %w(+ - * /).include? str }
+answer_validation   = proc { |str| messages["countsasyes"][language] == str.downcase || messages["countsasno"][language] == str.downcase }
+
+prompt messages["intro"][language]
 
 loop do
   # Get numbers and operator from user.
-  number1 = get_answer("What's the first number?",
-                       "Hmm... That doesn't look like a valid number.",
-                       &number_validation)
-  number2 = get_answer("What's the second number?",
-                       "Hmm... That doesn't look like a valid number.",
-                       &number_validation)
-
-  operation_prompt = <<-STR
-    What operation would you like to perform?
-    + (addition)
-    - (subtraction)
-    * (multiplication)
-    / (division)
-  STR
-  operation = get_answer(operation_prompt,
-                         "Please choose +, -, *, or /.",
-                         &operator_validation)
+  number1   = get_answer(messages["first_number"][language], messages["number_error"][language], &number_validation)
+  number2   = get_answer(messages["second_number"][language], messages["number_error"][language], &number_validation)
+  operation = get_answer(messages["operation"][language], messages["operation_error"][language], &operator_validation)
 
   # Perform calculation.
   result = case operation
            when "+"
-             number1.to_i + number2.to_i
+             number1.to_f + number2.to_f
            when "-"
-             number1.to_i - number2.to_i
+             number1.to_f - number2.to_f
            when "*"
-             number1.to_i * number2.to_i
+             number1.to_f * number2.to_f
            when "/"
              number1.to_f / number2.to_f
            end
@@ -56,10 +54,8 @@ loop do
   prompt "#{number1} #{operation} #{number2} = #{result}"
 
   # Ask user whether to perform another calculation.
-  another_one = get_answer("Do you want to perform another operation? y/n",
-                           "Please say 'y' or 'n'.",
-                           &answer_validation)
-  break if another_one != 'y'
+  another_one = get_answer(messages["again"][language], messages["again_error"][language], &answer_validation)
+  break if another_one != messages["countsasyes"][language]
 end
 
-prompt "Ciao!"
+prompt messages["outro"][language]
