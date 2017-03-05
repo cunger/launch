@@ -1,5 +1,19 @@
 require 'json'
 
+## Language support
+
+if ARGV.size == 1 && %w(en de).include?(ARGV[0])
+  LANGUAGE = ARGV[0]
+else
+  puts "Usage: ruby calculator.rb <language>"
+  puts "Currently supported languages: en, de"
+  exit
+end
+
+MESSAGES = JSON.parse(File.read("calculator_messages.json"))
+
+## Aux methods
+
 def prompt(message)
   puts "=> #{message}"
 end
@@ -16,27 +30,23 @@ def get_answer(message, error_message, &validation)
   end
 end
 
-if ARGV.size == 1 && %w(en de).include?(ARGV[0])
-  language = ARGV[0]
-else
-  puts "Usage: ruby calculator.rb <language>"
-  puts "Currently supported languages: en, de"
-  exit
+def msg(key)
+  MESSAGES[key][LANGUAGE]
 end
-
-messages = JSON.parse(File.read("calculator_messages.json"))
 
 number_validation   = proc { |str| str =~ /^\d+(.\d+)?$/ }
 operator_validation = proc { |str| %w(+ - * /).include? str }
-answer_validation   = proc { |str| messages["countsasyes"][language] == str.downcase || messages["countsasno"][language] == str.downcase }
+answer_validation   = proc { |str| msg("countsasyes") == str.downcase || msg("countsasno") == str.downcase }
 
-prompt messages["intro"][language]
+## Running the calculator
+
+prompt msg("intro")
 
 loop do
   # Get numbers and operator from user.
-  number1   = get_answer(messages["first_number"][language], messages["number_error"][language], &number_validation)
-  number2   = get_answer(messages["second_number"][language], messages["number_error"][language], &number_validation)
-  operation = get_answer(messages["operation"][language], messages["operation_error"][language], &operator_validation)
+  number1   = get_answer(msg("first_number"), msg("number_error"), &number_validation)
+  number2   = get_answer(msg("second_number"), msg("number_error"), &number_validation)
+  operation = get_answer(msg("operation"), msg("operation_error"), &operator_validation)
 
   # Perform calculation.
   result = case operation
@@ -54,8 +64,8 @@ loop do
   prompt "#{number1} #{operation} #{number2} = #{result}"
 
   # Ask user whether to perform another calculation.
-  another_one = get_answer(messages["again"][language], messages["again_error"][language], &answer_validation)
-  break if another_one != messages["countsasyes"][language]
+  another_one = get_answer(msg("again"), msg("again_error"), &answer_validation)
+  break if another_one != msg("countsasyes")
 end
 
-prompt messages["outro"][language]
+prompt msg("outro")
