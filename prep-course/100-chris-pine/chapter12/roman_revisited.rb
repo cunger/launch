@@ -1,5 +1,5 @@
 
-@translation =
+TRANSLATION =
     { 'M'  => 1000,
       'CM' =>  900,
       'D'  =>  500,
@@ -18,8 +18,8 @@ def roman_to_integer(roman)
   num = 0
   str = roman.upcase
   until str.empty?
-    num1 = @translation[str[0..1]]
-    num2 = @translation[str[0]]
+    num1 = TRANSLATION[str[0..1]]
+    num2 = TRANSLATION[str[0]]
     if !num1.nil?
       num += num1
       str  = str[2..-1]

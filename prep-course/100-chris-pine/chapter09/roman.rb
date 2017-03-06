@@ -1,5 +1,5 @@
 
-@letters_basic =
+LETTERS_BASIC =
   { 1000 => 'M',
      500 => 'D',
      100 => 'C',
@@ -8,7 +8,7 @@
        5 => 'V',
        1 => 'I' }
 
-@letters_full =
+LETTERS_FULL =
     { 1000 => 'M',
        900 => 'CM',
        500 => 'D',
@@ -39,11 +39,11 @@ def to_roman(hash, num)
 end
 
 def to_oldschool_roman(num)
-  to_roman(@letters_basic, num)
+  to_roman(LETTERS_BASIC, num)
 end
 
 def to_modern_roman(num)
-  to_roman(@letters_full, num)
+  to_roman(LETTERS_FULL, num)
 end
 
 
