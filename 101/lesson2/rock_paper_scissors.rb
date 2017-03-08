@@ -1,5 +1,17 @@
 
-valid_choices = %w(paper rock scissors lizard spock)
+VALID_CHOICES = %w(paper rock scissors lizard spock)
+
+def map_to_valid_choice(str)
+  return str if VALID_CHOICES.include? str
+
+  VALID_CHOICES.each do |word|
+    is_prefix = word.start_with? str
+    is_unique = VALID_CHOICES.none? { |w| w != word && w.start_with?(str) }
+    return word if is_prefix && is_unique
+  end
+
+  nil
+end
 
 def beats(one_choice, other_choice)
   [
@@ -16,13 +28,23 @@ def beats(one_choice, other_choice)
   ].include? [one_choice, other_choice]
 end
 
+user_points = 0
+computer_points = 0
+
+puts "----------- Rock, paper, scissors, lizard, spock ----------"
+puts "Let's play! The first one who wins five times is the champ."
+
 loop do
-  computer_choice = valid_choices.sample
+  puts ""
+
+  computer_choice = VALID_CHOICES.sample
 
   user_choice = loop do
-    print "Make a choice (#{valid_choices.join(', ')}): "
-    input = gets.chomp.strip
-    break input if valid_choices.include? input
+    print "Make a choice (#{VALID_CHOICES.join(', ')}): "
+    input  = gets.chomp.strip
+    choice = map_to_valid_choice input
+    break choice if choice
+    puts "Sorry, don't know what you mean..."
   end
 
   puts "You chose #{user_choice} and I chose #{computer_choice}."
@@ -33,11 +55,20 @@ loop do
   end
 
   if beats(user_choice, computer_choice)
-    puts "D'oh! You win."
+    user_points += 1
+    puts "D'oh! You get a point."
   else
-    puts "Ha! I win."
+    computer_points += 1
+    puts "Ha! I get a point."
   end
 
-  print "Wanna play again? (y/n) "
-  break if gets.chomp == "n"
+  puts "(You now have #{user_points}, and I have #{computer_points}.)"
+
+  if user_points == 5
+    puts "\nTadah! You're the champ!"
+    break
+  elsif computer_points == 5
+    puts "\nTadah! I'm the champ!"
+    break
+  end
 end
