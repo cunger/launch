@@ -113,7 +113,7 @@ Style/Next:
 
 Style/NumericLiterals:
   Description: Add underscores to large numeric literals to improve their readability.
-  Enabled: true
+  Enabled: false
 
 Style/NumericPredicate:
   Description: >-

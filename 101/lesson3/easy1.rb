@@ -28,11 +28,11 @@ puts famous_words
 
 ## Question 7
 
+zero = 0
+
 def succ(num)
   num + 1
 end
-
-zero = 0
 
 def natural_number(int)
   number = "zero"
