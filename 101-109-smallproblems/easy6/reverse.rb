@@ -50,7 +50,7 @@ result = reverse!(list)
 p list == []
 p list.object_id == result.object_id
 
-p reverse([1,2,3,4]) == [4,3,2,1]
+p reverse([1, 2, 3, 4]) == [4, 3, 2, 1]
 p reverse(%w(a b c d e)) == %w(e d c b a)
 p reverse(['abc']) == ['abc']
 p reverse([]) == []
