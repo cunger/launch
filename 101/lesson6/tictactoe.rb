@@ -61,6 +61,15 @@ def board_full?(board)
   empty_squares(board).empty?
 end
 
+def turn!(who, board)
+  case who
+  when :player
+    player_turn!(board)
+  when :computer
+    computer_turn!(board)
+  end
+end
+
 def player_turn!(board)
   loop do
     puts "Choose a square (#{join(empty_squares(board))}): "
@@ -75,8 +84,27 @@ def player_turn!(board)
 end
 
 def computer_turn!(board)
-  random_square = empty_squares(board).sample
-  board[random_square] = COMPUTER_MARKER
+  one_missing = []
+  two_missing = []
+  threatened  = []
+  WINNING_CONFIGURATIONS.each do |squares|
+    computer = squares.select { |square| board[square] == COMPUTER_MARKER }
+    player   = squares.select { |square| board[square] == PLAYER_MARKER }
+    empty    = squares.select { |square| board[square] == EMPTY_MARKER }
+    if computer.size == 2 && empty.size == 1
+      one_missing << empty.first
+    elsif computer.size == 1 && empty.size == 2
+      two_missing << empty.sample
+    elsif player.size == 2 && empty.size == 1
+      threatened << empty.first
+    end
+  end
+  five = board[5] == EMPTY_MARKER ? [5] : []
+
+  priority_squares = one_missing + threatened + five + two_missing
+
+  square = priority_squares.fetch(0, empty_squares(board).sample)
+  board[square] = COMPUTER_MARKER
 end
 
 def winner?(marker, board)
@@ -102,56 +130,62 @@ end
 
 ## GAME ON!
 
-player_won = 0
-computer_won = 0
+def game_on(first = :player)
 
-# Game loop
-loop do
-  board = init_board
+  player_won = 0
+  computer_won = 0
 
-  # Turn loop
+  # Game loop
   loop do
-    display_board(board)
+    board = init_board
+    current = first
 
-    player_turn!(board)
-
-    if winner?(PLAYER_MARKER, board)
+    # Turn loop
+    loop do
       display_board(board)
-      player_won += 1
-      puts "Congratulations, you won!"
+
+      turn!(current, board)
+
+      if winner?(PLAYER_MARKER, board)
+        display_board(board)
+        player_won += 1
+        puts "Congratulations, you won!"
+        break
+      end
+
+      if winner?(COMPUTER_MARKER, board)
+        display_board(board)
+        computer_won += 1
+        puts "I won!"
+        break
+      end
+
+      if board_full?(board)
+        display_board(board)
+        puts "Narf, it's a tie."
+        break
+      end
+
+      current = current == :player ? :computer : :player
+    end
+
+    # 5 wins anyone?
+    if player_won == 5
+      puts "You won 5 times. You get a beer! Cheers!"
+      break
+    end
+    if computer_won == 5
+      puts "Game over! I've won 5 times. I get a beer! Cheers!"
       break
     end
 
-    computer_turn!(board)
-
-    if winner?(COMPUTER_MARKER, board)
-      display_board(board)
-      computer_won += 1
-      puts "I won!"
-      break
-    end
-
-    if board_full?(board)
-      display_board(board)
-      puts "It's a tie!"
-      break
-    end
+    # Play again?
+    another_one = ask_play_again(player_won, computer_won)
+    break if !another_one
   end
 
-  # 5 wins anyone?
-  if player_won == 5
-    puts "You won 5 times. You get a beer! Cheers!"
-    break
-  end
-  if computer_won == 5
-    puts "Game over! I've won 5 times. I get a beer! Cheers!"
-    break
-  end
-
-  # Play again?
-  another_one = ask_play_again(player_won, computer_won)
-  break if !another_one
+  puts ""
+  puts "Thanks for playing!"
 end
 
-puts ""
-puts "Thanks for playing!"
+game_on
