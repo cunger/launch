@@ -62,13 +62,13 @@ def show_hand(hand, hidden = false)
   hidden ? "#{hand[0]} ?" : hand.join(' ')
 end
 
-def show(dealer_hand, player_hand, hidden = true)
-  dval = show_value(dealer_hand, hidden)
-  pval = show_value(player_hand)
-  system 'clear'
+def show_state(dealer_hand, player_hand, hidden = true)
+  dealer_value = show_value(dealer_hand, hidden)
+  player_value = show_value(player_hand)
+  system('clear') || system('cls')
   puts '-----------------------------------'
-  puts "Dealer (#{dval}): #{show_hand(dealer_hand, hidden)}"
-  puts "You    (#{pval}): #{show_hand(player_hand)}"
+  puts "Dealer (#{dealer_value}): #{show_hand(dealer_hand, hidden)}"
+  puts "You    (#{player_value}): #{show_hand(player_hand)}"
   puts '-----------------------------------'
   puts ''
 end
@@ -77,7 +77,7 @@ def players_turn(deck, dealer_hand, player_hand)
   loop do
     break if want_to_stay?
     deal(deck, player_hand)
-    show(dealer_hand, player_hand)
+    show_state(dealer_hand, player_hand)
     break if busted?(player_hand)
   end
   value(player_hand)
@@ -89,7 +89,7 @@ def dealers_turn(deck, dealer_hand, player_hand)
       puts 'Dealer decides to hit.'
       sleep 1
       deal(deck, dealer_hand)
-      show(dealer_hand, player_hand, false)
+      show_state(dealer_hand, player_hand, false)
       break if busted?(dealer_hand)
     else
       puts 'Dealer decides to stay.'
@@ -123,13 +123,13 @@ def game_on
     deal(deck, dealer_hand)
   end
 
-  show(dealer_hand, player_hand)
+  show_state(dealer_hand, player_hand)
 
   # Player's turn
 
   player_score = players_turn(deck, dealer_hand, player_hand)
 
-  show(dealer_hand, player_hand, false)
+  show_state(dealer_hand, player_hand, false)
 
   if player_score > MAX
     puts 'BUSTED!'
@@ -148,10 +148,11 @@ def game_on
   end
 
   # Game over!
+
   announce_winner(dealer_hand, player_hand)
 end
 
-## Let's play!
+## Game on!
 
 loop do
   game_on
