@@ -20,7 +20,7 @@ class MyCar
   end
 
   def info
-    "Your #{color} #{model} (#{year}) is going #{speed} mph."
+    "Your #{color} #{model} from #{year} is going #{speed} mph."
   end
 
   def speed_up(num)
