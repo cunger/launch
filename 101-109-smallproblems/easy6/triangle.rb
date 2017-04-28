@@ -2,13 +2,13 @@
 def triangle(num, corner_v = :down, corner_h = :right, filler = '*', blank = ' ')
 
   num.times do |i|
-    i += 1
 
     case corner_v
     when :up
       amount_blank  = i
       amount_filler = num - i
     when :down
+      i += 1
       amount_filler = i
       amount_blank  = num - i
     end
