@@ -52,12 +52,14 @@ class MyCar
     self.fuel += gallons
   end
 
-  # MPG
+  # Gas mileage
 
   def print_mpg(miles, gallons)
     puts "#{format('%.1f', miles.fdiv(gallons))} miles per gallon"
   end
 end
+
+# Examples
 
 landrover = MyCar.new('LandRover', 2000, 'black')
 puts landrover
@@ -77,7 +79,5 @@ puts landrover.info
 
 landrover.spray_paint('shiny white')
 puts landrover.info
-
-# Gas mileage
 
 landrover.print_mpg(312, 16)
