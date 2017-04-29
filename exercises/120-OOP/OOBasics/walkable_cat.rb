@@ -1,10 +1,3 @@
-## 1
-
-puts "Hello".class
-puts 5.class # Integer in Ruby <= 2.4.0, Fixnum in Ruby <= 2.4.0
-puts [1, 2, 3].class
-
-## 2-10
 
 module Walkable
   def walk

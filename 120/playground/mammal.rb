@@ -8,6 +8,11 @@ module Dive
 end
 
 class Mammal
+  LATIN = "Mammalia"
+
+  def self.latin
+    LATIN
+  end
 end
 
 class Cetacean < Mammal
@@ -15,9 +20,12 @@ class Cetacean < Mammal
 end
 
 class Dolphin < Cetacean
+  @@population_size = 0
+
   def initialize(name)
     @name = name
     puts "A new dolphin was born. Welcome, #{@name}!"
+    @@population_size += 1
   end
 
   def name
@@ -30,6 +38,14 @@ class Dolphin < Cetacean
 
   def speak
     puts "So long and thanks for all the fish!"
+  end
+
+  def self.population_size
+    @@population_size
+  end
+
+  def to_s
+    "Dolphin '#{name}'"
   end
 end
 
@@ -55,6 +71,7 @@ class Human < Mammal
 end
 
 shakira = Dolphin.new "Shakira"
+panda = Dolphin.new "Panda"
 me = Human.new "Christina"
 
 shakira.dive_to(300)
@@ -66,10 +83,14 @@ shakira.speak
 puts me.name + " sings: "
 me.sing
 
-shakira.name = "Panda"
+shakira.name = "Shake"
 
 puts shakira.name
+puts shakira.to_s
 
 p Cetacean.ancestors
 p Dolphin.ancestors
 p Human.ancestors
+
+p Mammal.latin
+p Dolphin.population_size
