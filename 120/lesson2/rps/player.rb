@@ -1,21 +1,21 @@
 require_relative 'move'
 
 class Player
-  attr_reader :name, :move
+  attr_accessor :name, :score
 
   def initialize
-    self.name = pick_name
-    self.move = Move.new
+    @name  = pick_name
+    @score = 0
   end
 
-  private
-
-  attr_writer :name, :move
+  def announce_victory
+    puts "#{name} wins."
+  end
 end
 
 class Computer < Player
   def choose
-    move.random
+    Move.random
   end
 
   def pick_name
@@ -25,7 +25,7 @@ end
 
 class Human < Player
   def choose
-    move.prompt
+    Move.prompt
   end
 
   def pick_name
@@ -37,5 +37,9 @@ class Human < Player
       puts "If you don't want to tell me your name, just type something..."
     end
     str
+  end
+
+  def announce_victory
+    puts "You win."
   end
 end

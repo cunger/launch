@@ -1,51 +1,67 @@
 class Move
-  OPTIONS = [:rock, :paper, :scissors, :lizard, :spock]
-
-  attr_reader :choice
-
-  def random
-    @choice = OPTIONS.sample
+  def to_s
+    self.class.to_s.downcase
   end
 
-  def prompt
-    pick = nil
+  def self.random
+    options.sample
+  end
+
+  def self.prompt
+    choices = options
     loop do
-      puts "\nPlease choose your move (#{OPTIONS.join(', ')}):"
-      pick = parse gets.chomp
-      break unless pick.nil?
+      puts "\nPlease choose your move (#{choices.join(', ')}):"
+      choice = parse gets.chomp, choices
+      return choice if choice
       puts "Sorry, didn't get that..."
     end
-    @choice = pick
   end
 
-  def beats?(other)
-    [
-      [:scissors, :paper],
-      [:paper, :rock],
-      [:rock, :lizard],
-      [:lizard, :spock],
-      [:spock, :scissors],
-      [:scissors, :lizard],
-      [:lizard, :paper],
-      [:paper, :spock],
-      [:spock, :rock],
-      [:rock, :scissors]
-    ].include? [choice, other.choice]
-  end
+  class << self
+    private
 
-  def to_s
-    choice.to_s
-  end
-
-  private
-
-  def parse(str)
-    str = str.downcase
-    OPTIONS.each do |option|
-      is_prefix = option.to_s.start_with? str
-      is_unique = OPTIONS.none? { |o| o != option && o.to_s.start_with?(str) }
-      return option if is_prefix && is_unique
+    def options
+      [Rock.new, Paper.new, Scissors.new, Lizard.new, Spock.new]
     end
-    nil
+
+    def parse(str, choices)
+      str = str.downcase
+      choices.each do |choice|
+        is_substr = choice.to_s.start_with? str
+        is_unique = choices.none? { |c| c != choice && c.to_s.start_with?(str) }
+        return choice if is_substr && is_unique
+      end
+      nil
+    end
+  end
+end
+
+class Rock < Move
+  def beats?(move)
+    [Lizard, Spock].include? move.class
+  end
+end
+
+class Paper < Move
+  def beats?(move)
+    [Rock, Spock].include? move.class
+  end
+end
+
+class Scissors < Move
+  def beats?(move)
+    [Paper, Lizard].include? move.class
+  end
+end
+
+class Lizard < Move
+  def beats?(move)
+    [Spock, Paper].include? move.class
+  end
+end
+
+class Spock < Move
+  def beats?(move)
+    [Scissors, Rock].include? move.class
   end
 end
