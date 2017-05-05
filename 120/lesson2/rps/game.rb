@@ -1,57 +1,63 @@
-require_relative 'player'
 require_relative 'round'
+require_relative 'player'
+require_relative 'strategy'
 
-class RPSGame
+class Game
+  MOVES = [Rock.new, Paper.new, Scissors.new, Lizard.new, Spock.new]
   WINNING_SCORE = 3
 
-  attr_reader :human, :computer, :rounds
+  attr_reader :human, :computer, :rounds, :winner
 
   def initialize
     @human = Human.new
-    @computer = Computer.new
+    @computer = Computer.new(Strategy::Random)
   end
 
-  def reset
+  def set_to_start
     @rounds = []
     human.score = 0
     computer.score = 0
-    clear_screen
+    @winner = nil
   end
 
   def play
     loop do
-      reset
-      intro
+      set_to_start
+      clear_screen
+      display_intro
 
-      winner = nil
       until winner
-        announce_round
-
-        round = Round.new self
-        round.play
-        rounds << round
-
-        display_scores
-
-        winner = human    if human.score    == WINNING_SCORE
-        winner = computer if computer.score == WINNING_SCORE
+        play_round
+        @winner = human    if human.score    == WINNING_SCORE
+        @winner = computer if computer.score == WINNING_SCORE
       end
-      puts "\n----------------------------"
-      winner.announce_victory
 
+      display_outro
       break unless play_again?
     end
-
-    outro
   end
 
   private
+
+  def play_round
+    announce_round
+
+    round = Round.new self
+    round.play
+    round.freeze
+
+    display_scores
+
+    rounds << round
+    human.remember round
+    computer.remember round
+  end
 
   def clear_screen
     system 'clear' or system 'cls'
   end
 
-  def intro
+  def display_intro
     msg1 = "Rock Paper Scissors Lizard Spock"
     msg2 = "#{human.name} vs #{computer.name}"
     msg3 = "First to #{WINNING_SCORE} wins!"
@@ -75,6 +81,11 @@ class RPSGame
     puts "#{computer.name}: #{computer.score}"
   end
 
+  def display_outro
+    puts "\n----------------------------"
+    winner.announce_victory
+  end
+
   def play_again?
     puts ""
     loop do
@@ -83,9 +94,5 @@ class RPSGame
       return true  if %(yes y).include? answer
       return false if %(no n).include? answer
     end
-  end
-
-  def outro
-    puts "\nThanks for playing."
   end
 end

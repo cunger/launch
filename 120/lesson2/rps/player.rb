@@ -1,11 +1,17 @@
 require_relative 'move'
 
 class Player
-  attr_accessor :name, :score
+  attr_reader   :name
+  attr_accessor :score
 
   def initialize
-    @name  = pick_name
-    @score = 0
+    pick_name
+    @score  = 0
+    @memory = []
+  end
+
+  def remember(round)
+    @memory << round
   end
 
   def announce_victory
@@ -14,29 +20,39 @@ class Player
 end
 
 class Computer < Player
-  def choose
-    Move.random
+  def initialize(strategy)
+    @strategy = strategy
+    super()
   end
 
   def pick_name
-    ['R2D2', 'C3PO', 'Hal', 'Number 5', 'Data'].sample
+    @name = ['R2D2', 'C3PO', 'Hal', 'Number 5', 'Data'].sample
+  end
+
+  def choose(options)
+    @strategy.compute_from(options, @memory)
   end
 end
 
 class Human < Player
-  def choose
-    Move.prompt
-  end
-
   def pick_name
-    str = ''
     loop do
       print "Your name: "
-      str = gets.chomp.strip
-      break unless str.empty?
+      @name = gets.chomp.strip
+      break unless @name.empty?
       puts "If you don't want to tell me your name, just type something..."
     end
-    str
+  end
+
+  def choose(options)
+    choice = nil
+    loop do
+      puts "\nPlease choose your move (#{options.join(', ')}):"
+      choice = Move.parse(gets.chomp, options)
+      break if choice
+      puts "Sorry, didn't get that..."
+    end
+    choice
   end
 
   def announce_victory

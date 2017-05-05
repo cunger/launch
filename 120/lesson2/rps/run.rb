@@ -1,3 +1,3 @@
-require_relative 'rps_game'
+require_relative 'game'
 
-RPSGame.new.play
+Game.new.play

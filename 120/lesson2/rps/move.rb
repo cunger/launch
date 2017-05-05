@@ -3,36 +3,14 @@ class Move
     self.class.to_s.downcase
   end
 
-  def self.random
-    options.sample
-  end
-
-  def self.prompt
-    choices = options
-    loop do
-      puts "\nPlease choose your move (#{choices.join(', ')}):"
-      choice = parse gets.chomp, choices
-      return choice if choice
-      puts "Sorry, didn't get that..."
+  def self.parse(str, choices)
+    str = str.downcase
+    choices.each do |choice|
+      is_substr = choice.to_s.start_with? str
+      is_unique = choices.none? { |c| c != choice && c.to_s.start_with?(str) }
+      return choice if is_substr && is_unique
     end
-  end
-
-  class << self
-    private
-
-    def options
-      [Rock.new, Paper.new, Scissors.new, Lizard.new, Spock.new]
-    end
-
-    def parse(str, choices)
-      str = str.downcase
-      choices.each do |choice|
-        is_substr = choice.to_s.start_with? str
-        is_unique = choices.none? { |c| c != choice && c.to_s.start_with?(str) }
-        return choice if is_substr && is_unique
-      end
-      nil
-    end
+    nil
   end
 end
 

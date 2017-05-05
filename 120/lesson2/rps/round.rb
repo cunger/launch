@@ -1,5 +1,3 @@
-require 'pry'
-
 class Round
   private
 
@@ -12,8 +10,8 @@ class Round
   end
 
   def play
-    @human_move = game.human.choose
-    @computer_move = game.computer.choose
+    @human_move = game.human.choose Game::MOVES
+    @computer_move = game.computer.choose Game::MOVES
     display_choices
 
     @winner = determine_winner
