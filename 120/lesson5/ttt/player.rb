@@ -1,39 +1,45 @@
 require_relative 'screen_utils'
 
-class Player
-  def move(board)
-    square = pick_square(board)
-    board.mark_at!(square, marker)
-  end
-end
-
-class Human < Player
-  include ScreenUtils
-
-  MARKER = 'X'
-
-  def marker
-    MARKER
-  end
-
-  def pick_square(board)
-    puts "Your choice (#{board.valid_choices.join(', ')}): "
-    loop do
-      choice = get_input.to_i
-      return choice if board.valid_choices.include? choice
-      puts "Please mke a valid choice."
+module TTT
+  class Player
+    def move(board)
+      square = pick_square(board)
+      board[square] = marker
     end
   end
-end
 
-class Computer < Player
-  MARKER = 'O'
+  class Human < Player
+    include ScreenUtils
 
-  def marker
-    MARKER
+    MARKER = 'X'
+
+    def marker; MARKER end
+
+    def pick_square(board)
+      options = board.valid_choices
+      puts "Make a move (#{options.join(', ')}): "
+      loop do
+        choice = get_input.to_i
+        return choice if options.include? choice
+        puts "Please make a valid choice."
+      end
+    end
   end
 
-  def pick_square(board)
-    board.valid_choices.sample
+  class Computer < Player
+    MARKER = 'O'
+
+    def marker; MARKER end
+
+    def pick_square(board)
+      view = board.view(MARKER)
+      
+      priority = view.winning_positions\
+               + view.threatened_positions\
+               + view.promising_positions\
+               + (board[5].empty? ? [5] : [])
+
+      priority.fetch(0, board.valid_choices.sample)
+    end
   end
 end

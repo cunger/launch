@@ -1,3 +1,3 @@
 require_relative 'game'
 
-Game.new.play
+TTT::Game.new.play

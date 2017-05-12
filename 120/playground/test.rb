@@ -22,3 +22,17 @@ p kitty.to_s
 puts '------'
 p kitty.some_method
 puts '------'
+
+array = [1, 2, 3] + [4, 5, 6]
+
+# => [1, 2, 3, 4, 5, 6]
+
+array = [1, 2, 3]\
+      + [4, 5, 6]
+
+# => [1, 2, 3, 4, 5, 6]
+
+array = [1, 2, 3]
+      + [4, 5, 6]
+
+# => undefined method `+@' for [4, 5, 6]:Array
