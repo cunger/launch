@@ -33,7 +33,7 @@ module TTT
 
     def pick_square(board)
       view = board.view(MARKER)
-      
+
       priority = view.winning_positions\
                + view.threatened_positions\
                + view.promising_positions\

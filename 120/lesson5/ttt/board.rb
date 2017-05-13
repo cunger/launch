@@ -64,7 +64,7 @@ module TTT
   end
 
   class View
-    WINNING_CONFIGURATIONS = [
+    CONFIGURATIONS = [
       [1, 2, 3], [4, 5, 6], [7, 8, 9], # rows
       [1, 4, 7], [2, 5, 8], [3, 6, 9], # columns
       [1, 5, 9], [3, 5, 7]             # diagonals
@@ -84,27 +84,38 @@ module TTT
     end
 
     def winner?
-      WINNING_CONFIGURATIONS.any? { |config|
-        config.all? { |index| @board[index].marker == @marker }
-      }
+      CONFIGURATIONS.any? do |config|
+        config.all? do |index|
+          @board[index].marker == @marker
+        end
+      end
     end
 
     private
 
     def calculate
-      WINNING_CONFIGURATIONS.each do |config|
-        filled = config.select { |index| @board[index] == @marker }
-        other  = config.select { |index| @board[index] != @marker }
-        empty  = config.select { |index| @board[index].empty? }
-        case
-        when filled.size == 2 && empty.size == 1
-          @winning_positions << empty.first
-        when filled.size == 1 && empty.size == 2
-          @promising_positions << empty.first
-        when other.size == 2 && empty.size == 1
-          @threatened_positions << empty.first
+      CONFIGURATIONS.each do |config|
+        empty_squares = config.select { |index| @board[index].empty? }
+
+        next if empty_squares.empty?
+
+        empty_square = empty_squares.first
+        if number_other(config) == 2
+          @threatened_positions << empty_square
+        elsif number_owned(config) == 2
+          @winning_positions    << empty_square
+        elsif number_owned(config) == 1 && empty_squares.size == 2
+          @promising_positions  << empty_square
         end
       end
+    end
+
+    def number_owned(config)
+      config.count { |i| @board[i].marker == @marker }
+    end
+
+    def number_other(config)
+      config.count { |i| @board[i].marker != @marker && !@board[i].empty? }
     end
   end
 end
