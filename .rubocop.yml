@@ -54,6 +54,15 @@ Style/EmptyLineBetweenDefs:
   Enabled: true
   AllowAdjacentOneLineDefs: true
 
+Style/EmptyLinesAroundClassBody:
+  Enabled: true 
+
+Style/EmptyLinesAroundModuleBody:
+  Enabled: false
+
+Style/EmptyCaseCondition:
+  Enabled: false
+
 Style/EmptyLiteral:
   Description: Prefer literals to Array.new/Hash.new/String.new.
   Enabled: false
