@@ -51,15 +51,23 @@ Similarly, `String#*` calls `to_int` on its argument and therefore is fine being
 
 Now it makes perfect sense why `Array(arg)` first tries `to_ary`: *Let's see whether this is already something like an array.* And only if that is not defined or returns `nil`, it calls `to_a`: *Ok, if it's not an array, let's make it one!*
 
-What about hashes? Hash(arg) calls to_hash, and returns the empty hash for [] and nil. Period. No calling to_h.
+What about hashes? `Hash(arg)` calls `to_hash`, and returns the empty hash for `[]` and `nil`. Period. No calling `to_h`.
+
+```ruby
 Hash([[1, 2]])   => TypeError: can't convert Array into Hash
 [[1, 2]].to_hash => TypeError: can't convert Array into Hash
 [[1, 2]].to_h    => {1=>2}
-Turns out this conversion method is younger than the rest, because the whole issue is less obvious for hashes than it is for strings or arrays. It evoked more discussion and maybe it’s better to not ask further questions at this point.
-Finally, Kernel also defines numerical conversions, like Float(arg) and Integer(arg), which convert numerical values directly into floats and integers, and for everything else fall back on to_f and to_i. Also, Integer is more refined than to_i when it comes to converting string representations of integers into numerical values.
-Both are more picky than their to_f and to_i counterparts in expecting the given argument to be an object that can actually reasonably interpreted as Float or Integer.
+```
+
+Turns out this conversion method is younger than the rest, because the whole issue is less obvious for hashes than it is for strings or arrays, so it evoked more discussion.
+
+Finally, `Kernel` also defines numerical conversions, like `Float(arg)` and `Integer(arg)`, which convert numerical values directly into floats and integers, and for everything else fall back on `to_f` and `to_i`. Also, `Integer` is more refined than `to_i` when it comes to converting string representations of integers into numerical values. In particular, both are more picky than their `to_f` and `to_i` counterparts in expecting the given argument to be an object that can actually reasonably interpreted as `Float` or `Integer`.
+
+```ruby
 nil.to_f   => 0.0
 Float(nil) => TypeError: can't convert nil into Float
 Float("1138") => 1138.0
 Float("THX")  => ArgumentError: invalid value for Float()
+```
+
 This makes them pretty useful for [numeric validation](https://pdxwolfy.wordpress.com/2016/04/12/numeric-validation-in-ruby/).

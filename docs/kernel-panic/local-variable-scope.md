@@ -1,6 +1,6 @@
 # Local variable scope
 
-1. *Methods create their own scope.* In the sense of starting with an empty slate upon entering. As a result, local variables defined outside the method are not accessible within it. Likewise, what happens in a method, stays in the method; so local variables defined within a method are not accessible from outside. (Unless someone tells the outside.)
+**Methods create their own scope.** In the sense of starting with an empty slate upon entering. As a result, local variables defined outside the method are not accessible within it. Likewise, what happens in a method, stays in the method; so local variables defined within a method are not accessible from outside. (Unless someone tells the outside.)
 
 Here's where local_variables is really handy, although its primary use case is certainly something much cooler:
 
@@ -26,7 +26,7 @@ end
 p binding.local_variable_get(:string)   # => "Fnord"
 ```
 
-2. *Blocks create a new scope, extending the scope of their container.* So local variables outside the block are accessible within it, but not vice versa.
+**Blocks create a new scope, extending the scope of their container.** So local variables outside the block are accessible within it, but not vice versa.
 This comes with two important facts. (Examples are stolen and adapted from [Darko Gjorgjievski](https://www.sitepoint.com/understanding-scope-in-ruby/).)
 
 First, a block creates a new scope every time it is entered. Therefore, the following:
@@ -60,7 +60,7 @@ x = :outside
 p foo.call # => :inside
 ```
 
-3. *A local variable will be put into scope whenever it is assigned a value.* Which means: whenever the interpreter sees an assignment, even if this assignment is never executed. Whenever an assignment is parsed, space is allocated to the variable, so it starts existing. Classic example:
+**A local variable will be put into scope whenever it is assigned a value.** Which means: whenever the interpreter sees an assignment, even if this assignment is never executed. Whenever an assignment is parsed, space is allocated to the variable, so it starts existing. Classic example:
 
 ```ruby
 known = 1

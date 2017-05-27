@@ -14,15 +14,22 @@ Give me a Y!
 Building on `each`, `Enumerable` implements several handy extensions of it, among them the following two:
 
 - `each_with_index` calls a block with two arguments: the current element and the index of that element. Like each, it returns the collection.
-    ```ruby
+
+```ruby
 collection.each_with_index { |element, index| ... }
 => collection
 ```
+
 - `each_with_object` additionally expects an object, and calls a block with two arguments: the current element and that object (which is passed to and returned from each iteration of the block). It returns the initial object.
-    ```ruby
+
+```ruby
 collection.each_with_object(initial_memo) { |element, memo| ... }
 => initial_memo
+```
+
 Give me an R! Give me a U! Give me a B! Give me a Y! RUBY!
+
+```ruby
 ["r", "u", "b", "y"].each_with_object("") { |c, str| str << c }
 => "ruby"
 ["r", "u", "b", "y"].each_with_object("") { |c, str| p (str + c) }

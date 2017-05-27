@@ -1,4 +1,4 @@
-# Printing and putting
+# Putting and printing
 
 What `puts` and `print` have in common: They both call `.to_s`, hand the result to `stdout`, and return `nil`. And they both allow for arbitrarily many arguments. The two main differences:
 - `puts` also adds a newline (which `print` doesn't)
