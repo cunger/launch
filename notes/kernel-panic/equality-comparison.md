@@ -70,3 +70,18 @@ The style guide says:
 > Avoid explicit use of the case equality operator `===`. As its name implies it is meant to be used implicitly by case expressions and outside of them it yields some pretty confusing code.
 
 # Comparison
+
+At the heart of all comparison is the _spaceship operator_ `<=>`.
+
+* The module `Comparable` uses it to implement the comparison methods `<`, `>`, `<=`, `>=`.
+* The module `Enumerable` uses it to implement sorting and `min`,`max`.
+
+In order to make objects of a custom class comparable or sortable:
+- mixin the relevant module
+- implement `<=>` such that `a <=> b` returns
+    - `-1` if `a < b`
+    - `0` if `a == b`
+    - `1` if `a > b`
+    - `nil` if `a` and `b` are not comparable
+
+The default implementation of `<=>` in `Object` returns `0` if the two objects are equal (`==`), and `nil` otherwise.
