@@ -2,22 +2,17 @@ require_relative 'cards'
 require_relative 'player'
 
 module TwentyOne
-
   class Game
     attr_reader :player, :dealer
 
     def initialize
       @player = Human.new
       @dealer = Dealer.new
-      @rounds = []
     end
 
     def play
       loop do
-        round = Round.new(@player, @dealer)
-        round.play
-        round.freeze
-        @rounds << round
+        Round.new(@player, @dealer).play
         break unless @player.play_again?
       end
     end
@@ -27,7 +22,6 @@ module TwentyOne
     def initialize(player, dealer)
       @player = player
       @dealer = dealer
-      @deck = Deck.new
       @hide_dealer = true
     end
 
@@ -41,16 +35,17 @@ module TwentyOne
 
       turn(@dealer, @player.value) unless @player.busted?
 
+      show_state
       announce_result
     end
 
     private
 
     def setup
-      @player.init_hand
-      @dealer.init_hand
+      @player.empty_hand
+      @dealer.empty_hand
 
-      @deck.shuffle!
+      @deck = Deck.new
 
       @deck.deal!(@player, :faceup)
       @deck.deal!(@dealer, :faceup)
@@ -72,21 +67,19 @@ module TwentyOne
       clear_screen
       dealer_value = @hide_dealer ? '??' : format('%2d', @dealer.value)
       player_value = format('%2d', @player.value)
-      puts '-----------------------------------'
+      puts '----------------------------------------------'
       puts "Dealer (#{dealer_value}): #{@dealer.hand}"
       puts "You    (#{player_value}): #{@player.hand}"
-      puts '-----------------------------------'
+      puts '----------------------------------------------'
       puts ''
     end
 
     def announce_result
       case
       when @player.busted?
-        puts 'You busted!'
-        puts 'I win.'
+        puts 'You busted! I win.'
       when @dealer.busted?
-        puts 'I busted!'
-        puts 'You win.'
+        puts 'I busted! You win.'
       else
         case @player.value <=> @dealer.value
         when -1 then puts 'I win.'

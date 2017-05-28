@@ -2,7 +2,7 @@ require_relative 'screen_utils'
 
 module TTT
   class Player
-    def move(board)
+    def make_a_move!(board)
       square = pick_square(board)
       board[square] = marker
     end

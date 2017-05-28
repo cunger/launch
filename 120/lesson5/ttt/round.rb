@@ -45,7 +45,7 @@ module TTT
     end
 
     def make_move(player)
-      player.move @board
+      player.make_a_move! @board
       @winner = player if @board.view(player.marker).winner?
     end
 

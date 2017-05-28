@@ -29,26 +29,21 @@ module TwentyOne
 
   class Deck
     def initialize
-      @cards = []
-      SUITS.each do |suit|
-        RANKS.each do |rank|
-          @cards << Card.new(rank, suit)
-        end
-      end
-    end
-
-    def shuffle!
+      @cards = all_cards
       @cards.shuffle!
     end
 
     def deal!(player, orientation=:faceup)
-      if @cards.empty?
-        initialize
-        shuffle!
-      end
+      initialize if @cards.empty?
       card = @cards.pop
       card.orientation = orientation
       player << card
+    end
+
+    private
+
+    def all_cards
+      SUITS.map { |suit| RANKS.map { |rank| Card.new(rank, suit) } }.flatten
     end
   end
 

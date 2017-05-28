@@ -1,13 +1,12 @@
 module TwentyOne
-
   class Player
     attr_reader :hand, :value
 
     def initialize
-      init_hand
+      empty_hand
     end
 
-    def init_hand
+    def empty_hand
       @hand  = Hand.new
       @value = hand.value
     end
