@@ -1,6 +1,6 @@
 # Class and instance variable scope
 
-Variables can be scoped on two different levels:
+Class and instance variables capture _state_. Unlike local variables, they are accessible across method calls. More specifically, they can be scoped on two different levels:
 * _class level_ (meaning they are available in all class methods)
 * _object level_ (meaning they are available in all instance methods)
 
