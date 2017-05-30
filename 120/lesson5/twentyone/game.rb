@@ -75,10 +75,9 @@ module TwentyOne
     end
 
     def announce_result
-      case
-      when @player.busted?
+      if @player.busted?
         puts 'You busted! I win.'
-      when @dealer.busted?
+      elsif @dealer.busted?
         puts 'I busted! You win.'
       else
         case @player.value <=> @dealer.value

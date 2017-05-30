@@ -1,6 +1,6 @@
 module ScreenUtils
   def clear_screen
-    system 'clear' or system 'cls'
+    system 'clear' || system 'cls'
   end
 
   def get_input
