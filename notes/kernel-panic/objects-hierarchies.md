@@ -2,6 +2,8 @@
 
 It's all objects. Also _classes_ and _modules_ are objects, namely instances of `Class` and `Module` (which themselves are objects).
 
+> If you can reference it with a variable, it's an object.
+
 Ruby has single inheritance, i.e. a class can have only one superclass. The superclass of `Class` is `Module`.
 ```
 > Class.ancestors
@@ -51,7 +53,9 @@ Note that `self` and `super` are keywords (not methods).
 
 ### super
 
-`super` jumps to the next higher element of the method-lookup path. (That is, if you include a module in a class, `super` will jump to that module before jumping to the superclass.)
+> When you call `super` from within a method, it will search the inheritance hierarchy for a method by the same name and then invoke it.
+
+In doing so, `super` always jumps to the next higher element of the method-lookup path. That is, if you include a module in a class, `super` will jump to that module before jumping to the superclass.
 * `super` forwards all arguments passed to the method calling it to the method in `super`
 * `super()` forwards no arguments
 * `super(arg1, arg2)` forwards only the specified arguments

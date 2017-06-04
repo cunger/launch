@@ -49,3 +49,11 @@ end
 obj.name = "Guybrush" # => "Guybrush"
 obj.name=("Guybrush") # => "Guybrush"
 ```
+
+Private setters are an exception to the rule that private methods can never be called with an explicit receiver, even if that receiver is `self`. In fact, they require `self` in order to distinguish them from local variable assignments.
+```ruby
+def some_method
+  self.var = value
+  localvar = value
+end  
+```
