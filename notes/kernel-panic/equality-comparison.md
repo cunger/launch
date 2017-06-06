@@ -10,11 +10,11 @@
 - `===`
 - `eql?`
 
-They all start as _object equality_: two objects are equal if they are the same object, i.e. have the same object id. Descendant classes then override those methods to provide class-specific behaviour.
+They all start as _object identity_: two objects are equal if they are the same object, i.e. have the same object id. Descendant classes then override those methods to provide class-specific behaviour.
 
 ## Object equality
 
-`equal?` is never overridden, but kept to determine _object equality_.
+`equal?` is never overridden, but kept to determine _object identity_.
 ```ruby
 1.equal? 1.0 # => false
 ```

@@ -1,5 +1,5 @@
 
-## OOP
+# OOP
 
 It's all about **objects**, their state and behavior. **State** is captured by instance variables and usually differs from object to object. **Behavior** is captured by methods and is usually the same across objects of the same kind.
 
@@ -29,7 +29,7 @@ Encapsulation has at least two advantages:
 
 Grouping things into different classes of objects provides a natural concept of inheritance, that allows for re-using functionality, while being able to override more general functionality for more specific cases.
 
-Inheritance is a way to inherit behavior from another class or module. All methods defined a class or module higher in the inheritance hierarchy is accessible in the current object. Inheritance thus allows for re-using methods and thereby avoiding duplicate code.
+Inheritance is a way to inherit behavior from another class or module. All instance methods defined in a class or module from which a class `C` inherits will become instance methods of all instances of `C`. Thus the current object has access to all instance methods defined somewhere in the inheritance hierarchy. Inheritance thus allows for re-using methods and thereby avoiding duplicate code.
 
 ```ruby
 class Animal
@@ -50,11 +50,11 @@ Dolphin.new.move
 => nil
 ```
 
-A class can be direct subclass of exactly one other class.
+Inheritance also enables **polymorphism**, i.e. allows objects to be of different kinds (and accordingly adopt different behaviors).
 
-## The problem with single inheritance
+## Single inheritance
 
-Single inheritance is a problem when a class is supposed to inherit behavior from two or more classes which are not (and should not be) in a subclass relation.
+A class can be direct subclass of exactly one other class. Single inheritance is a problem when a class is supposed to inherit behavior from two or more classes which are not (and should not be) in a subclass relation.
 
 For example, we could have two classes `SwimmingObject` and `FlyingObject` for objects that swim and fly, respectively. A class `Duck` should inherit from both classes, as ducks can both swim and fly. However, subclassing allows for only one direct superclass, thus we can have either `class Duck < SwimmingObject` or `class Duck < FlyingObject`.
 
