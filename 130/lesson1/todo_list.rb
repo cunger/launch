@@ -76,7 +76,7 @@ class TodoList
   def find_by_title(str)
     # select { |todo| todo.title == str }.first
     each do |todo|
-      return todo if todo.title == str
+      return todo if todo.title =~ /#{str}/i
     end
     nil
   end
@@ -90,22 +90,18 @@ class TodoList
   end
 
   def mark_all_done
-    each { |todo| todo.done! }
+    each &:done!
+    # each { |todo| todo.done! }
   end
 
   def mark_all_todo
-    each { |todo| todo.todo! }
+    each &:todo!
+    # each { |todo| todo.todo! }
   end
 
   def mark_done(str)
     todo = find_by_title(str)
     todo.done! if todo
-    # each do |todo|
-    #   if todo.title == str
-    #     todo.done!
-    #     break
-    #   end
-    # end
   end
 
   def to_s

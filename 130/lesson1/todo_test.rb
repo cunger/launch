@@ -89,5 +89,10 @@ list << todo3
 # to_s
 puts list.to_s
 
-p list.find_by_title('Go to gym')
+p list.find_by_title('go to gym')
 p list.find_by_title('Climb mountain')
+
+list.mark_all_done
+puts list
+list.mark_all_todo
+puts list
