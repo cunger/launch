@@ -1,6 +1,6 @@
 # Enumerable: each
 
-`Enumerable` provides methods for classes implementing collections, such as `Array`, `Hash`, `Set`, and `Range`. In order for `Enumerable` to be able to traverse through such a collection, the class must implement `each`, a method that yields successive members of the collection. In the simplest case it calls a block with one argument and binds the current member to that argument. When done, it returns the collection.
+`Enumerable` provides a range of collection-related behavior. In order for a class (usually a class implementing collections, such as `Array`, `Hash`, `Set`, and `Range`) to include and use it, `Enumerable` needs to be able to traverse through the collection - more specifically, the class must implement `each`, a method that yields successive members of the collection. In the simplest case it calls a block with one argument and binds the current member to that argument. When done, it returns the collection.
 
 ```ruby
 ["r", "u", "b", "y"].each { |c| puts "Give me a #{c.upcase}!" }

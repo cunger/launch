@@ -26,6 +26,8 @@ end
 p binding.local_variable_get(:string)   # => "Fnord"
 ```
 
+The same holds not only for `def`, but also for `class` and `module`.
+
 **Blocks create a new scope, extending the scope of their container.** So local variables outside the block are accessible within it, but not vice versa.
 This comes with two important facts. (Examples are stolen and adapted from [Darko Gjorgjievski](https://www.sitepoint.com/understanding-scope-in-ruby/).)
 
