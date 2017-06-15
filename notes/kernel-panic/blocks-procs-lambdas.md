@@ -42,8 +42,27 @@ _Lambdas_ differ from other _procs_ in two major respects:
 
 * Arity rules: _lambdas_ behave like methods, while _procs_ and blocks are lenient (see below).
 * Behavior upon `return`:
-    * _Lambdas_ return from their own context: They simply return from their block and hand control back to the calling method.
-    * Other _procs_ return from their calling context: They behave like being part of the calling method, i.e. return from their block as well as the calling method.
+    * _Lambdas_ return from their own context: They simply return from their block and hand control back to the calling context - independent of the context in which they were defined. That is, the following two cases both print output to the screen:
+    ```ruby
+def test
+  my_lambda = lambda { return }
+  my_lambda.call
+  puts "This will be output to screen."
+end
+
+test
+```
+    ```ruby
+l = lambda { return }
+
+def test(some_lambda)
+  some_lambda.call
+  puts "This will be output to screen."
+end
+
+test(l)
+    ```
+    * Other _procs_ return from their calling context. They, for example, behave like being part of the calling method, i.e. return from their block as well as the calling method. If the context in which they were define was the top-level of the program, this will result in a `LocalJumpError`, as it is not possible to return from the top-level.
 
 ## Blocks
 
@@ -58,6 +77,8 @@ Each Ruby method can optionally take a block as argument, which can be either im
 Blocks can be captured in _proc_ objects with either `proc { ... }` or `lambda { ... }`.
 
 ## The & operator
+
+The `&` operator tries to convert an object to a block. If that object is not a _proc_, it first calls `to_proc` on it.
 
 ```ruby
 def execute(&block) # `&` takes the block that is part of the method invocation,
@@ -74,17 +95,23 @@ execute(&p)         # `&` hands `p` to the method as the block it can take,
                     # Without `&`, `p` would be passed as a normal method argument.
 ```
 
-`to_proc` is defined in `Proc` and `Symbol`, and can be defined by any class as a class or instance method. The one in symbol allows you to say `&:capitalize` and get back a _proc_ that captures the `capitalize` method. Note that, like above, the `&` in `array.map &:capitalize` tells `map` that `:capitalize.to_proc` takes the place of the block that can be part of the method invocation (as in `array.map { |item| item.capitalize }`).
+`to_proc` is defined in
+* `Proc`
+* `Symbol`: It allows you to say `&:capitalize` and get back a _proc_ that captures the `capitalize` method. Note that, like above, the `&` in `array.map &:capitalize` tells `map` that `:capitalize.to_proc` takes the place of the block that can be part of the method invocation (as in `array.map { |item| item.capitalize }`).
 
-`Symbol#to_proc` basically works like this:
+    `Symbol#to_proc` basically works like this:
 
-```ruby
-class Symbol
-  def to_proc
-    proc { |obj, args| obj.send(self, *args) }
-  end
-end
-```
+    ```ruby
+    class Symbol
+      def to_proc
+        proc { |obj, args| obj.send(self, *args) }
+      end
+    end
+    ```
+* `Method`:
+
+It can also be defined by any class as a class or instance method.
+
 
 ## Methods vs blocks and procs
 
