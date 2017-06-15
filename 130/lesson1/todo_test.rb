@@ -1,5 +1,5 @@
 require_relative 'todo'
-require_relative 'todo_list'
+require_relative 'todolist'
 
 # given
 todo1 = Todo.new("Buy milk")

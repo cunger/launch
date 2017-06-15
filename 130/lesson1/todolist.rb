@@ -34,9 +34,10 @@ class TodoList
     @todos.last
   end
 
-  def item_at(index)
-    @todos[index]
+  def [](index)
+    @todos.fetch(index)
   end
+  alias_method :item_at, :[]
 
   def mark_done_at(index)
     @todos.fetch(index).done!
@@ -102,6 +103,10 @@ class TodoList
   def mark_done(str)
     todo = find_by_title(str)
     todo.done! if todo
+  end
+
+  def to_a
+    @todos
   end
 
   def to_s
