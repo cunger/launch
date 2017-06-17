@@ -18,7 +18,7 @@ class TextAnalyzerTest < Minitest::Test
 
   def test_paragraphs
     assert_output(/\d+ paragraphs/) do
-      @analyzer.process('example1.txt') do |text|
+      @analyzer.process('ipsum.txt') do |text|
         puts "#{text.lines("\n\n").size} paragraphs"
       end
     end
@@ -26,7 +26,7 @@ class TextAnalyzerTest < Minitest::Test
 
   def test_lines
     assert_output(/\d+ lines/) do
-      @analyzer.process('example1.txt') do |text|
+      @analyzer.process('ipsum.txt') do |text|
         puts "#{text.lines.size} lines"
       end
     end
@@ -34,7 +34,7 @@ class TextAnalyzerTest < Minitest::Test
 
   def test_words
     assert_output(/\d+ words/) do
-      @analyzer.process('example1.txt') do |text|
+      @analyzer.process('ipsum.txt') do |text|
         puts "#{text.split(/\s+/).size} words"
       end
     end
