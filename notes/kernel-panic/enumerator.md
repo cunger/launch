@@ -1,4 +1,6 @@
-# Enumerator
+# Iterators and sequences
+
+An _iterator method_ is a method that takes a block and calls its for each element in some collection, passing the element into the block as a parameter.
 
 ## Internal iteration
 
@@ -14,8 +16,8 @@ An `Enumerator` object can be built from most of the `Enumerable` methods by not
 
 ```ruby
 array = [1, 2, 3]
-array.each # same as: array.enum_for(:each)
-array.map  # same as: array.enum_for(:map)
+array.each # same as: array.enum_for(:each), or: Enumerator.new(array, :each)
+array.map  # same as: array.enum_for(:map), or: Enumerator.new(array, :map)
 ```
 
 When implementing an iteration method like those, it's good practice to include this option as follows:  

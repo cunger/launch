@@ -51,7 +51,8 @@ def test
 end
 
 test
-```
+    ```
+
     ```ruby
 l = lambda { return }
 
@@ -62,7 +63,7 @@ end
 
 test(l)
     ```
-    * Other _procs_ return from their calling context. They, for example, behave like being part of the calling method, i.e. return from their block as well as the calling method. If the context in which they were define was the top-level of the program, this will result in a `LocalJumpError`, as it is not possible to return from the top-level.
+    * Other _procs_ behave like being part of the method that defined (not called) them, by returning not only from their block but also from that method. If the context in which they were define was the top-level of the program, this will result in a `LocalJumpError`, as it is not possible to return from the top-level.
 
 ## Blocks
 
@@ -73,6 +74,17 @@ Blocks are syntactic constructs:
 More specifically, they are part of the method invocation syntax. They contain everything necessary to create a _proc_ object, but they are not objects themselves. Thus they cannot be assigned to variables, they cannot be returned by methods, and the like.
 
 Each Ruby method can optionally take a block as argument, which can be either implicit or explicit in the argument signature. Methods cannot take more than one block, because they are not method arguments, they are part of the method invocation syntax.
+
+```ruby
+def method_implicit
+  yield if block_given?
+end
+
+def method_explicit(&block)
+  raise ArgumentError, 'expected a block' unless block
+  block.call
+end
+```
 
 Blocks can be captured in _proc_ objects with either `proc { ... }` or `lambda { ... }`.
 
