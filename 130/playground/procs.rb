@@ -1,12 +1,4 @@
 
-class Symbol
-  def to_proc
-    proc { |obj, args| obj.send(self, *args) }
-  end
-end
-
-# * * * * * * * * * * * * * * * *
-
 # class Class
 #   def to_proc
 #     proc { |args| new(*args) }
@@ -70,3 +62,9 @@ p.call
 
 var = 2
 p.call
+
+# * * * * * * * * * * * * * * * *
+
+def call_on_each(*args)
+  args.each { |arg| yield arg }
+end
