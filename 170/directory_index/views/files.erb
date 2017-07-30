@@ -1,0 +1,12 @@
+<!doctype html>
+<html>
+  <body>
+    <h3>Files in /public</h3>
+    <ul>
+      <% @files.each do |name, link| %>
+      <li><%= %Q(<a href="#{link}"> #{name} </a>) %></li>
+      <% end %>
+    </ul>
+    <%= %Q(<a href="/?order=#{@order == 'asc' ? 'desc' : 'asc'}">Reverse order</a>) %>
+  </body>
+</html>
