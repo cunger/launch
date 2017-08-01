@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>The Adventures of Sherlock Holmes</title>
+    <title><%= @book.title %></title>
 
     <link rel="stylesheet" href="/stylesheets/pure-min.css">
     <link rel="stylesheet" href="/stylesheets/fonts.css">
@@ -23,9 +23,9 @@
               <a class="pure-menu-heading" href="/">Table of Contents</a>
 
               <ul class="pure-menu-list">
-                <% @toc.each_with_index do |chapter, index| %>
+                <% @book.chapters.each do |chapter| %>
                 <li class="pure-menu-item">
-                  <a href="/chapters/<%= index + 1 %>" class="pure-menu-link"><%= chapter %></a>
+                  <a href="/chapters/<%= chapter.number %>" class="pure-menu-link"><%= chapter.title %></a>
                 </li>
               <% end %>
               </ul>
@@ -34,8 +34,8 @@
 
       <div id="main">
         <div class="header">
-          <h1><%= @title %></h1>
-          <h2>by <%= @author %></h2>
+          <h1><%= @book.title %></h1>
+          <h2>by <%= @book.author %></h2>
         </div>
 
         <div class="content">
