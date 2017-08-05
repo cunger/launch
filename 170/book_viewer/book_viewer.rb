@@ -5,6 +5,8 @@ require 'tilt/erubis'
 require_relative 'book'
 
 before do
+  content_type :html
+  
   @book = example_book
 end
 
