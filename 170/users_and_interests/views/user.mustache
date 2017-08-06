@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+
+  <body>
+    <p>Name: {{user.name}}</p>
+    <p>Email: {{user.email}}</p>
+    <p>Interests:
+      <ul>
+      {{#user.interests}}
+        <li>{{.}}</li>
+      {{/user.interests}}
+      </ul>
+    </p>
+    <p>
+    {{#others}}
+    <a href="{{path}}">{{name}}</a> 
+    {{/others}}
+    </p>
+  </body>
+</html>
