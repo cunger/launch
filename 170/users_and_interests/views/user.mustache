@@ -1,22 +1,29 @@
 <!doctype html>
+
 <html>
   <head>
     <meta charset="utf-8">
   </head>
 
   <body>
-    <p>Name: {{user.name}}</p>
-    <p>Email: {{user.email}}</p>
-    <p>Interests:
-      <ul>
+    <h2>{{user.name}}</h2>
+
+    <h3>Email</h3>
+    <p>{{user.email}}</p>
+
+    <h3>Interests</h3>
+    <p><ul>
       {{#user.interests}}
         <li>{{.}}</li>
       {{/user.interests}}
-      </ul>
-    </p>
+    </ul></p>
+
+    <hr>
+
     <p>
+    <a href="users">All users</a> 
     {{#others}}
-    <a href="{{path}}">{{name}}</a> 
+    <a href="{{path}}">{{name}}</a>
     {{/others}}
     </p>
   </body>

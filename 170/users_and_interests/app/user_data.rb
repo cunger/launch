@@ -19,6 +19,14 @@ class UserData
     @users - [user]
   end
 
+  def number_of_users
+    @users.size
+  end
+
+  def number_of_interests
+    @users.reduce(0) { |n, user| n += user.interests.size }
+  end
+
   private
 
   def load_data

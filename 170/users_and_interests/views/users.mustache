@@ -5,10 +5,14 @@
   </head>
 
   <body>
-    <ul>
+    <h2>Users</h2>
+
+    <p>There are {{number_of_users}} users with a total of {{number_of_interests}} interests.</p>
+
+    <p><ul>
     {{#users}}
       <li><a href="/{{path}}">{{name}}</a></li>
     {{/users}}
-    </ul>
+    </ul></p>
   </body>
 </html>
