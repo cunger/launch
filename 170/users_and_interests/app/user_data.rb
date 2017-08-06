@@ -19,6 +19,11 @@ class UserData
     @users - [user]
   end
 
+  def find(path)
+    matches = @users.select { |user| user.path == path }
+    matches ? matches.first : nil
+  end
+
   def number_of_users
     @users.size
   end

@@ -20,9 +20,10 @@ get '/users' do
                               number_of_interests: users.number_of_interests }
 end
 
-users.each do |user|
-  get '/' + user.path do
-    template = File.read 'views/user.mustache'
-    Mustache.render template, { user: user, others: users.list_without(user) }
-  end
+get '/:user' do
+  user = users.find params[:user]
+  return File.read 'views/404.html' unless user
+
+  template = File.read 'views/user.mustache'
+  Mustache.render template, { user: user, others: users.list_without(user) }
 end
