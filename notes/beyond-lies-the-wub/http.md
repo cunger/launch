@@ -1,24 +1,30 @@
 
 # HTTP
 
-The _Hypertext Transfer Protocol_ (HTTP) is a text-based application-level protocol. It regulates the communication between a _server_ (an application) and a _client_ (e.g. a browser). HTTP communication is based on a request/response cycle: The client sends a request and the server responds to that request.
-
-Requests and responses consist of a header and a (possibly empty) body.
+The _Hypertext Transfer Protocol_ (HTTP) is a text-based application-level protocol. It regulates the communication between a _server_ (an application) and a _client_ (e.g. a browser). HTTP communication is based on a request/response cycle: The client sends a request, and the server responds to that request.
 
 ## Requests
 
-* method (e.g. GET, POST)
-* path
-* protocol
-* headers
-* body
+Requests consist of:
+* a request method (e.g. GET, POST)
+* a path
+* a protocol (e.g. HTTP/1.1)
+* headers (key-value pairs of form `key: value`, meta data containing supplemental information about the client that sends the request or the resource it requests)
+* a body
 
-### Methods
+In HTTP/1.1, required are the request method, the path, as well as the `Host` header.
 
-* **GET** requests are used for retrieving data, e.g. asking for the representation of a specified resource. They are restricted with respect to length and allowed data type (ASCII characters).  
+### Request methods
+
+The method specifies the kind of request that is sent.
+
+* **GET** requests are used for retrieving data, e.g. asking for the representation of a specified resource. They are restricted with respect to length and data type (ASCII character set).  
 * **POST** requests are used for submitting data to the server (as part of the request body), and for initializing an action on the server, such as updating an existing resource or creating a new one. They are not restricted with respect to length and data type.
-
 * **HEAD** only asks for the header of a response, e.g. for checking the response status code without actually transferring the resource, in order to check whether the resource exists or has been modified or moved. This can be relevant for caching purposes.  
+
+A request is _safe_ if it does not request any action besides the retrieval of data. E.g. GET, HEAD. Not POST, PUT, DELETE.
+
+A request is _idempotent_ if the result is the same no matter how often it is executed (aside from errors or expiration effects). E.g. GET, HEAD, DELETE. Not POST.
 
 ### Examples
 
@@ -30,20 +36,46 @@ User-Agent: ...
 -------------------
 ```
 
+In case of a POST request sending data to the server, this data is sent as the request body:
 ```
 POST /user HTTP/1.1
 -------------------
 Host: example.com
 User-Agent: ...
 -------------------
-first_name = alice & action = update
+first_name=alice&action=update
 ```
 
 ## Responses
 
 The server responds to the request, either by transferring the requested resource or information, or by indicating the result of an initialized action or the kind of problem that occurred.
 
-Usually a browser issues several requests when pointed to a URL, requesting resources required to display an HTML page (images, stylesheets, scripts, etc) and following redirects. 
+* a protocol (e.g. HTTP/1.1)
+* a status code
+* headers (key-value pairs of form `key: value`, meta data containing information useful for the client, e.g. about the data being sent or the server)
+* a body containing the raw response data (e.g. an HTML document or binary data of an image)
+
+Required is the status, all other parts are optional.
+
+Usually a browser issues several requests when pointed to a URL, e.g. requesting resources required to display an HTML page (images, stylesheets, scripts, etc) and following redirects.
+
+### Example
+
+```
+HTTP/1.x 200 OK
+---------------
+Last-Modified: ...
+---------------
+<html>
+...
+</html>
+```
+
+`HTTP/1.x 303 See other
+---------------
+Location: ...
+---------------
+```
 
 ### Status codes
 
@@ -79,43 +111,92 @@ Redirects provide the new URL as HTTP header `Location`.
 * `501` Not implemented (e.g. if a particular HTTP method is not supported)
 * `505` HTTP version not supported
 
+## URLs
+
+> A Uniform Resource Identifier (URI) is a compact string of characters for identifying an abstract or physical resource.
+> -- https://www.ietf.org/rfc/rfc2396.txt
+
+```
+url = scheme "://" host [ ":" port ] [ path [ "#" anchor ] [ "?" query ]]
+```
+
+The `scheme` specifies a protocol, telling how the resource can be accessed, e.g. `http`, `https`, `ftp`, `mailto`, `git`.  
+
+The `host` is either a hostname (e.g. `example.com`) or an IP address.
+
+**Example:**
+```
+https://example.com:3000/character?first_name=elaine&last_name=marley
+```
+
+Default `port`s:
+* `80` for HTTP
+* `443` for HTTPS
+
+The allowed characters in a URL are a subset of the ASCII character set. ASCII characters not in this set (_unsafe_, e.g. `%`) as well as reserved characters (`;`, `/`, `?`, `:`, `@`, `&`, `=`, `+`, `$`, `,`) need to be encoded as `%xx` where `xx` are two hexadecimal digits representing the ASCII code of the character (e.g. `%20` for space).
 
 ## HTTP communication
 
-1. Client
+1. The **client**
 * extracts the host name from the URL
-* gets IP address for that host name (DNS)
-* gets port number (either specified in URL or default one)
-2. Client opens a TCP/IP connection to IP with port
-3. Client sends an HTTP request to the server
-4. Server
+* gets the IP address for that host name (using DNS)
+* gets the port number (either specified in URL or default one)
+2. The **client** opens a TCP/IP connection to the IP address with the port
+3. The **client** sends an HTTP request to the **server**
+4. The **server**
 * processes the request
-* accesses required resources
-* composes and sends HTTP response
-* logs transaction
-5. Client receives the response and displays the data/resource accordingly
-6. Client or server closes the connection
+* accesses the required resources
+* composes and sends an HTTP response
+* usually also logs the transaction
+5. The **client** receives the response and processes and displays the data accordingly
+6. The client or server closes the connection
 
 HTTP also allows for a chain of HTTP intermediaries between client and server (proxies, caches, etc).
 
+## cURL
+
+```
+curl http://localhost:3000
+```
+
+```
+curl -X GET "http://localhost:3000/books" -v -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:32.0) Gecko/20100101 Firefox/32.0"
+```
+
+`-A` for User-Agent
+`-H` for headers
+
+```
+curl -X POST "http://localhost:3000/login" -d "username=guybrush" -d "password=APirateIWasMeantToBe" -v
+```
+
+`-d` results in the data being POST-ed as an `application/x-www-form-urlencoded` string.
+
 ## Statelessness
 
-HTTP is a state-less protocol in the sense that HTTP sessions last for one request: the clients sends a request, and the server sends a response. Client and server keep different states:
-* Client: application state
-* Server: resource state
-And they neither know about nor have direct control over the other's state.
+HTTP is a state-less protocol in the sense that HTTP sessions last for one request: the clients sends a request, and the server sends a response. Each request/response is independent (and unaware) of previous or future ones. The server does not keep information between request/response cycles. This is one of the foundations of a distributed and resilient web.
 
-In order to create a stateful experience, servers usually generate and store session data, passing a session identifier between client and server as a cookie.
+In order to create a stateful experience, applications usually generate and store session data. The session lives on the server side. A session identifier is then passed between server and client with each request/response; either as parameters in the URL, or as a cookie.
 
 ### HTTP State Management Mechanism (aka Cookies)
 
-Best current way to enable persistent sessions (and especially identify users).
-
-* Session cookies: temporary and deleted when the client application (e.g. browser) is closed
-* Persistent cookies: stored on disk  
-Session cookies are those that have the `Discard` parameter set or don't have an `Expires`/`Max-Age` parameter that indicates an extended life time.
+The best current way to enable persistent sessions (and especially identify users) are _cookies_.
 
 Cookies are pieces of state, more specifically _client-side_ state, as the client is responsible for storing cookie information.
-The state is described in name/value pairs `name=value`, separated by `;`. It is sent with the response to the client, which stores it, and sends it to the server with each request it makes:
-* HTTP response header: `set-cookie: ...`
-* HTTP request header: `cookie: ...`
+The state is described in name/value pairs `name=value`, separated by `;`. It is sent with the response to the client, which stores it, and sends it back to the server with each request it makes:
+* HTTP response header sent by the server: `set-cookie: ...`
+* HTTP request header sent by the client: `cookie: ...`
+
+Cookies can, for example, contain session identifiers, encrypted, so that only the server can access that information.
+
+_Session cookies_ is temporary data that is deleted when the client application (e.g. browser) is closed. They have a set `Discard` parameter or don't have an `Expires`/`Max-Age` parameter that indicates an extended life time. _Persistent cookies_, on the other hand side, are stored on the disk and can thus persist across browser sessions.   
+
+### AJAX
+
+_Asynchronous JavaScript and XML_ (AJAX) is used for displaying dynamic content, in particular issuing requests and processing responses without full page refreshes. When triggering a request, the response is handled by a callback (usually a client-side JS function), which then, e.g., updates the HTML page (by directly changing the DOM tree).    
+
+# HTTPS
+
+Secure HTTP = HTTP + TLS
+
+HTTPS encrypts each request and response using TLS (Transport Layer Security) (formerly via SSL) before sending them over the network. TLS uses symmetric cryptography, the keys being generated for each connection. Server and client negotiate the encryption algorithm and keys before transmitting any data, using public-key cryptography. Usually also at least the server is authenticated using public-key cryptography.
