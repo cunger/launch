@@ -94,7 +94,7 @@ Location: ...
 
 Redirects provide the new URL as HTTP header `Location`.
 
-`Found`/`See other` is mainly for responses to POST requests, to direct the user to a resource (the newly created one or the one the state of which was changed). It thus expects the client to send a GET request to the new URL. This is the expected behavior for `303` in HTTP/1.1 and was the expected behavior for `302` in HTTP/1.0. Sinatra's `redirect` method thus sends a `303` if HTTP/1.1 and !GET, otherwise a `302`.
+`Found`/`See other` is mainly for responses to POST requests, to direct the user to a resource (the newly created one or the one the state of which was changed). It thus expects the client to send a GET request to the new URL. This is the expected behavior for `303` in HTTP/1.1 and was the expected behavior for `302` in HTTP/1.0. Sinatra's `redirect` method thus sends a `303` if HTTP/1.1 and !GET, otherwise a `302` (plus setting the `Location` header to the provided path and `halt`ing the request).
 
 #### 400s: Client error (problem with request)
 
@@ -175,9 +175,3 @@ curl -X POST "http://localhost:3000/login" -d "username=guybrush" -d "password=A
 ## AJAX
 
 _Asynchronous JavaScript and XML_ (AJAX) is used for displaying dynamic content, in particular issuing requests and processing responses without full page refreshes. When triggering a request, the response is handled by a callback (usually a client-side JS function), which then, e.g., updates the HTML page (by directly changing the DOM tree).    
-
-# HTTPS
-
-Secure HTTP = HTTP + TLS
-
-HTTPS encrypts each request and response using TLS (Transport Layer Security) (formerly via SSL) before sending them over the network. TLS uses symmetric cryptography, the keys being generated for each connection. Server and client negotiate the encryption algorithm and keys before transmitting any data, using public-key cryptography. Usually also at least the server is authenticated using public-key cryptography.

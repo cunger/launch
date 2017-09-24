@@ -1,3 +1,13 @@
+# Web application security
+
+## HTTPS
+
+Any request and response is plain text, thus vulnerable to being intercepted when sent across a network.
+
+**Secure HTTP (HTTPS) = HTTP + TLS**
+
+HTTPS encrypts each request and response using TLS (Transport Layer Security) (formerly using SSL) before sending them over the network. TLS uses symmetric cryptography, the keys being generated for each connection. Server and client negotiate the encryption algorithm and keys before transmitting any data, using public-key cryptography. Usually also at least the server is authenticated using public-key cryptography.
+
 
 ## Same-origin policy and CORS
 

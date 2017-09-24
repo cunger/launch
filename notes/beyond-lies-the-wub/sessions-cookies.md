@@ -2,20 +2,19 @@
 
 HTTP is a state-less protocol in the sense that HTTP sessions last for one request: the clients sends a request, and the server sends a response. Each request/response is independent (and unaware) of previous or future ones. The server does not keep information between request/response cycles. This is one of the foundations of a distributed and resilient web.
 
-In order to create a stateful experience, applications usually generate and store session data. The session lives on the server side. A session identifier is then passed between server and client with each request/response; either as parameters in the URL, or as a cookie.
+In order to create a stateful experience, applications usually persist state across distinct HTTP requests by means of sessions - basically places to store data during one request that can be read during later requests. There are different ways to store session data: in cookies (in this case all session information is passed between client and server with each request and response), or on the server in memory/cache or a database (in this case only a session identifier is passed between server and client by means of a cookie).
 
 # HTTP State Management Mechanism (aka Cookies)
 
-The most common way to persist state across distinct HTTP requests are _cookies_.
-
-Cookies are pieces of state, more specifically _client-side_ state, as the client is responsible for storing the information.
-The state is described in name/value pairs `name=value`, separated by `;`. Plain text, max 4KB. It is sent with the response to the client, which stores it, and sends it back to the server with each request it makes:
+Cookies are key-value pairs (`name=value`, separated by `;`) that are stored on the on the client side. Plain text, max 4KB. They are sent with the response to the client, which stores it, and sends it back to the server with each request it makes:
 * HTTP response header sent by the server: `Set-Cookie: ...`
 * HTTP request header sent by the client: `Cookie: ...`
 
-Cookies can, for example, contain session identifiers, which allows the server to relate different requests to each other. Pre-defined properties include an expiration date ( in `Wdy, DD-Mon-YYYY HH:MM:SS GMT` format) and a scope:
-* _Session cookies_ is temporary data that is deleted when the client application (e.g. browser) is closed. They have a set `Discard` parameter or don't have an `Expires`/`Max-Age` parameter that indicates an extended life time. _Persistent cookies_, on the other hand side, are stored on the disk and can thus persist across browser sessions.
-* _Scoped cookies:_ A `Path` and `Domain` attribute can be specified to limit the scope of the cookie to a specific domain, sub-domain, or path.
+Cookies can contain session information or a session identifier, which allows the server to relate different requests to each other.
+
+Pre-defined properties include an expiration date ( in `Wdy, DD-Mon-YYYY HH:MM:SS GMT` format) and a scope:
+* _Session cookies_ is temporary data that is deleted when the client application (e.g. browser) is closed. They have a set `discard` parameter or don't have an `expires`/`max-age` parameter that indicates an extended life time. _Persistent cookies_, on the other hand side, are stored on the disk and can thus persist across browser sessions.
+* _Scoped cookies:_ A `path` and `domain` attribute can be specified to limit the scope of the cookie to a specific domain, sub-domain, or path.
 
 **Example:**
 

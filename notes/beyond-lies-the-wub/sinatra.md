@@ -1,9 +1,9 @@
 
 # Sinatra  
 
-Sinatra is a DSL for writing web applications in Ruby, building on Rack.
+Sinatra is a Rack-based framework for creating web applications in Ruby, providing a domain-specific language for that purpose.
 
-The backbone of a Sinatra application are _routes_, which tie specific URLs directly to relevant Ruby code blocks, returning the code block's output as response. Here is a minimal example:
+The backbone of a Sinatra application are _routes_, which tie specific URLs directly to relevant Ruby code blocks. The method (`get`, `post`, etc.) indicates the HTTP method, and the code block that is passed to the method determines what is sent as response (the return value of that block will be the response body). Here is a minimal example:
 
 ```ruby
 require 'sinatra'
@@ -57,3 +57,11 @@ end
 
 * `'/book/new'`
 * `'/book/:id'`
+
+If it exists, the `not_found` route is invoked to process those paths for which no route is found:
+
+```ruby
+not_found do
+  # 404
+end
+```
