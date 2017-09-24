@@ -172,26 +172,7 @@ curl -X POST "http://localhost:3000/login" -d "username=guybrush" -d "password=A
 
 `-d` results in the data being POST-ed as an `application/x-www-form-urlencoded` string.
 
-## Statelessness
-
-HTTP is a state-less protocol in the sense that HTTP sessions last for one request: the clients sends a request, and the server sends a response. Each request/response is independent (and unaware) of previous or future ones. The server does not keep information between request/response cycles. This is one of the foundations of a distributed and resilient web.
-
-In order to create a stateful experience, applications usually generate and store session data. The session lives on the server side. A session identifier is then passed between server and client with each request/response; either as parameters in the URL, or as a cookie.
-
-### HTTP State Management Mechanism (aka Cookies)
-
-The best current way to enable persistent sessions (and especially identify users) are _cookies_.
-
-Cookies are pieces of state, more specifically _client-side_ state, as the client is responsible for storing cookie information.
-The state is described in name/value pairs `name=value`, separated by `;`. It is sent with the response to the client, which stores it, and sends it back to the server with each request it makes:
-* HTTP response header sent by the server: `set-cookie: ...`
-* HTTP request header sent by the client: `cookie: ...`
-
-Cookies can, for example, contain session identifiers, encrypted, so that only the server can access that information.
-
-_Session cookies_ is temporary data that is deleted when the client application (e.g. browser) is closed. They have a set `Discard` parameter or don't have an `Expires`/`Max-Age` parameter that indicates an extended life time. _Persistent cookies_, on the other hand side, are stored on the disk and can thus persist across browser sessions.   
-
-### AJAX
+## AJAX
 
 _Asynchronous JavaScript and XML_ (AJAX) is used for displaying dynamic content, in particular issuing requests and processing responses without full page refreshes. When triggering a request, the response is handled by a callback (usually a client-side JS function), which then, e.g., updates the HTML page (by directly changing the DOM tree).    
 

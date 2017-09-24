@@ -39,7 +39,8 @@ In this way it is possible to access user-sensitive information such as cookies,
 
 **Countermeasures:**
 
-* Never insert untrusted data (in HTML, JS, CSS, or other). Always validate and/or sanitize user input, e.g. by HTML escaping it.  
+* Never insert untrusted data (in HTML, JS, CSS, or other). Always either validate and filter the user input, so that no malicious code is executed, or encode it, e.g. by HTML escaping it, so that the browser interprets it as data, not as code.  
 * Secure cookies: `Set-Cookie: blah=blubb; HttpOnly; secure`
   ** `HttpOnly` tells the browser that this cookie should only be accessed by the server (avoiding that it can be accessed by scripts).
-  ** `secure` makes sure that cookies are sent only through HTTPS cnnections.
+  ** `secure` makes sure that cookies are sent only through HTTPS connections.
+* Use the HTTP header `Content-Security-Policy`, which tells the browser to not load resources from untrusted sources, execute inline JavaScript, etc. (but still browser-specific).
