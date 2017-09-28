@@ -71,7 +71,8 @@ Last-Modified: ...
 </html>
 ```
 
-`HTTP/1.x 303 See other
+```
+HTTP/1.x 303 See other
 ---------------
 Location: ...
 ---------------
