@@ -1,4 +1,29 @@
 
+View templates are files that contain text from which HTML can be generated, usually including plain HTML as well as macros to generate HTML and to embed dynamic values. When a template is rendered, it is converted into HTML, e.g. in order to be sent to the client as a response.
+
+Sinatra requires Tilt, a generic interface for a lot of Ruby template engines, and thereby gives access to a wide range of template languages. In a very straightforward way:
+```ruby
+get '/' do
+  erb :index
+end
+
+get '/' do
+  haml :index
+end
+```  
+Template files are expected to be in the `views` directory (or, more specifically, in the directory specified for `settings.views`, the default of which is `settings.root + '/views'`).
+
+If there is a `layout.*` file in the `views` directory, the HTML generated when rendering a template will be included in that layout file at the place where `yield` is called (in ERB `<%= yield %>`, in HAML `= yield`). Alternatively, Sinatra's rendering method allows for specifying a different layout file or disabling any:
+```ruby
+get '/' do
+  haml :index, :layout => :specific_layout
+end
+
+get '/' do
+  haml :index, :layout => false
+end
+```
+
 Templates have access to the instance variables of the application as well as to the methods defined within the block passed to `helpers`.  
 
 # ERB

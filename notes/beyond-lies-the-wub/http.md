@@ -94,7 +94,9 @@ Location: ...
 
 Redirects provide the new URL as HTTP header `Location`.
 
-`Found`/`See other` is mainly for responses to POST requests, to direct the user to a resource (the newly created one or the one the state of which was changed). It thus expects the client to send a GET request to the new URL. This is the expected behavior for `303` in HTTP/1.1 and was the expected behavior for `302` in HTTP/1.0. Sinatra's `redirect` method thus sends a `303` if HTTP/1.1 and !GET, otherwise a `302` (plus setting the `Location` header to the provided path and `halt`ing the request).
+`Moved` is used when the location of a requested resource was changed.
+
+`See other` is mainly used for responses to POST requests, with the aim of directing the user to the resource that was created or updated by the request. In HTTP/1.1, the expected behavior is that the client sends a GET request to the new URL. (This was also the expected behavior for `302` in HTTP/1.0.)
 
 #### 400s: Client error (problem with request)
 
