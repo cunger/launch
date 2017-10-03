@@ -20,5 +20,6 @@ Ruby cheat sheets for my future self
 * [& and curry](and-and-curry.md)
 * [Enumerable and each](enumerable-each.md)
 * [Enumerator](enumerator.md)
+* [Exceptions](exceptions.md)
 * [Outro](outro.md)
 * [References](references.md)
