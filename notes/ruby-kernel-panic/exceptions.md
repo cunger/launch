@@ -50,7 +50,7 @@ fnord { do_something_in_case_not_all_went_well }
 ```
 * Do not `return` from an `ensure` block, as this will hide the exception. Generally, don't suppress exceptions.
 * When an exception occurs, make sure to either leave the object in a consistent state, or to roll it back to its original state.
-
+* All application and library exceptions should be descendants of `StandardError`.
 
 ## Default arguments
 

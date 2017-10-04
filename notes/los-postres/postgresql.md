@@ -15,6 +15,8 @@
 | `\c demo`     | connect to database `demo` |
 | `\dt`         | display all tables of the current database |
 | `\d books`    | show the schema of the table `books` |
+| `\?`          | list of console commands |
+| `\h`          | list of SQL help options |
 | `\q`          | quit  |
 
 ## Datatypes
