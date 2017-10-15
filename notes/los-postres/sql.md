@@ -161,12 +161,14 @@ Joins are clause in SQL statements that combine rows from two (or more) tables, 
 
 **LEFT (OUTER) JOIN** contains all records in the left table (with matching records from the right table if present, otherwise NULL)
 **RIGHT (OUTER) JOIN** contains all records in the right table (with matching records from the left table if present, otherwise NULL)
-**FULL OUTER JOIN**
+**FULL (OUTER) JOIN** combines the results of left and right join (so good for including both rows from T1 that don't have a match in T2 and rows in T2 that don't have a match in T1, without needing a full-blown cross join)
 
 **CROSS JOIN** corresponds to the Cartesian product: all records of the left table matched with each record in the right table.
 
 The cross join is what you get when you `SELECT * FROM table1, table2`.
 An inner join then is like `SELECT * FROM table1, table2 WHERE table1.table2_id = table2.id`.
+
+> CROSS JOIN is generally best suited to generating test data rather than production queries.
 
 ## Operators
 

@@ -1,4 +1,10 @@
 
+_Relational databases_ persist data in a set of _relations_ (tables).
+
+A _relationship_ is a connection between two entity instances (a row of data). The three types of relationships are _one-to-one_, _one-to-many_, and _many-to-many_. The cardinality of a relationship specifies the number of entities on each side of the relationship; its modality specifies whether it is required or not.
+
+A _conceptual schema_ is a high-level design of entities and relationships, whereas a _physical schema_ is a database-specific design focused on the implementation of the conceptual schema. 
+
 # Relational model
 
 The _relational model_ specifies a mathematically grounded way to store, organize, and manipulate data, that is the foundations of how relational databases work.
