@@ -153,26 +153,11 @@ DELETE FROM table_name
 
 The GROUP BY clause groups records into summary rows, returning one record for each group.
 
-### Joins
-
-Joins are clause in SQL statements that combine rows from two (or more) tables, based on a related column between them.
-
-**INNER JOIN** contains all records in the intersection of both tables
-
-**LEFT (OUTER) JOIN** contains all records in the left table (with matching records from the right table if present, otherwise NULL)
-**RIGHT (OUTER) JOIN** contains all records in the right table (with matching records from the left table if present, otherwise NULL)
-**FULL (OUTER) JOIN** combines the results of left and right join (so good for including both rows from T1 that don't have a match in T2 and rows in T2 that don't have a match in T1, without needing a full-blown cross join)
-
-**CROSS JOIN** corresponds to the Cartesian product: all records of the left table matched with each record in the right table.
-
-The cross join is what you get when you `SELECT * FROM table1, table2`.
-An inner join then is like `SELECT * FROM table1, table2 WHERE table1.table2_id = table2.id`.
-
-> CROSS JOIN is generally best suited to generating test data rather than production queries.
-
 ## Operators
 
-`=`, `<`, `<=`, `>`, `>=`, `LIKE`, `NOT LIKE`
+`=`, `<>`, `<`, `<=`, `>`, `>=`
+
+`LIKE`, `NOT LIKE`
 
 Wildcards:
 * `_` matches exactly one character
@@ -228,4 +213,38 @@ SELECT radius
   FROM circles
  WHERE something      -- fill in condition
    AND something_else -- here as well
+```
+
+## Aggregation
+
+`COUNT(*)` counts all rows
+`COUNT(column)` counts all rows in which `column` has a non-NULL value
+
+## Grouping
+
+`GROUP BY column` groups together all rows that have the same value in `column`
+
+Example:
+```sql
+-- select the number of employees in each department in the year 2013
+SELECT department, COUNT(*)
+  FROM employees
+ WHERE year = 2013
+ GROUP BY department;
+ ```
+
+`GROUP BY column1, column2` groups by `(column1, column2)`, e.g. `GROUP BY last_name, first_name`
+
+The rest of the columns can have different values within one group, so it makes sense to aggregate on them, but it doesn't make sense to put them in a SELECT clause (which of the values to return?).
+
+Groups can be filtered by means of `HAVING`.
+
+```sql
+SELECT last_name, first_name,
+       AVG(salary) AS average_salary,
+       COUNT(year) AS years_worked
+  FROM employees
+ GROUP BY last_name, first_name
+HAVING years_worked > 2
+ ORDER BY average_salary DESC;
 ```
