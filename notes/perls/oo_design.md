@@ -30,6 +30,30 @@ Test behavior (the public interface), not internal structure, so that refactorin
 
 Test first, whenever it makes sense. This helps writing reusable code, because tests are reuse.
 
+Do not test code that is not actively used, delete it. Ruthlessly eliminate unused code, regardless of whether you do it with joy or in pain. Unused code costs more to keep than to recover in case you do need it later. It adds testing and maintenance burdens but provides no value.
+
+Treat tests as documentation.
+
+_Testing roles and inheritance:_ Write a shared test for the common contract and include this test in every object.
+
+```ruby
+module InterfaceTest
+ def test_responds_to_method
+   # assert_responds_to(@object, :method)
+ end
+end
+
+class SomeClassTest
+ include InterfaceTest
+
+ def setup
+   @object = SomeClass.new
+end
+
+ # other tests
+end
+```
+
 ## Class-based to message-based
 
 The transition from class-based design to message-based design is a turning point in your design career. Changing the fundamental design question from "I know I need this class, what should it so?" to "I need to send this message, who should respond to it?" is the first step in that direction. You don't send messages because you have objects, you have objects because you send messages.
