@@ -3,29 +3,21 @@ _Relational databases_ persist data in a set of _relations_ (tables).
 
 A _relationship_ is a connection between two entity instances (a row of data). The three types of relationships are _one-to-one_, _one-to-many_, and _many-to-many_. The cardinality of a relationship specifies the number of entities on each side of the relationship; its modality specifies whether it is required or not.
 
-A _conceptual schema_ is a high-level design of entities and relationships, whereas a _physical schema_ is a database-specific design focused on the implementation of the conceptual schema. 
+A _conceptual schema_ is a high-level design of entities and relationships, whereas a _physical schema_ is a database-specific design focused on the implementation of the conceptual schema.
 
 # Relational model
 
 The _relational model_ specifies a mathematically grounded way to store, organize, and manipulate data, that is the foundations of how relational databases work.
 
+# Keys
+
+What are keys?
+
+Keys can be _natural_, i.e. one or several values in the row that happen to be unique, or more likely _surrogate_, i.e. created for the specific purpose of being a unique identifier, such as auto-incrementing integers or UUIDs.
+
 ## Primary keys
 
->  A primary key is a unique identifier for a single row in a database table.
-
-It can be _natural_, i.e. one or several values in the row that happen to be unique, or more likely _surrogate_, i.e. created for the specific purpose of being a unique identifier, such as auto-incrementing integers or UUIDs.
-
-```sql
--- In PostgreSQL, the following:
-CREATE TABLE colors (id serial, name text);
-
--- is interpreted as this:
-CREATE SEQUENCE colors_id_seq;
-CREATE TABLE colors (
-    id integer NOT NULL DEFAULT nextval('colors_id_seq'),
-    name text
-);
-```
+A primary key is a unique identifier for a single row in a database table.
 
 Each relational table must have exactly one _primary key_, which consists of one or more columns that
 * uniquely identify each row in the table
@@ -36,6 +28,23 @@ Each relational table must have exactly one _primary key_, which consists of one
 CREATE TABLE more_colors (id serial PRIMARY KEY, name text);
 CREATE TABLE more_colors (id serial NOT NULL UNIQUE, name text);
 -- But PRIMARY KEY communicates the intention better.
+```
+
+PostgreSQL provides sequences and the data type `serial` for auto-incrementing values, which can be used for primary keys:
+
+```sql
+-- In PostgreSQL, the following:
+CREATE TABLE colors (
+  id serial,
+  name text
+);
+
+-- is interpreted as this:
+CREATE SEQUENCE colors_id_seq;
+CREATE TABLE colors (
+    id integer NOT NULL DEFAULT nextval('colors_id_seq'),
+    name text
+);
 ```
 
 ## Foreign keys
@@ -81,6 +90,14 @@ The goal of _normalization_ is to design the schema in a way that it avoids or a
 
 ## Normal forms
 
-## Indexes
+## Optimization
+
+Also, counting is more efficient when done in the database than in the application, because for the latter case, all data to be counted needs to be transfered.
+
+### N+1 queries
+
+N+1 queries are the result of performing an additional query for each element in a collection.
+
+### Indexes
 
 Default index uses the primary key.

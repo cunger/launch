@@ -23,8 +23,26 @@
 | `\h`          | list of SQL help options |
 | `\q`          | quit  |
 
-## Datatypes
+## Loading data from CSV
 
+`psql` console:
+```
+\copy table               FROM 'table.csv' CSV HEADER DELIMITER ',';
+\copy table (name, color) FROM 'items.csv' CSV HEADER DELIMITER ',';
+```
+
+SQL:
+```sql
+COPY table               FROM 'absolute/path/to/table.csv' CSV HEADER DELIMITER ',';
+COPY table (name, color) FROM 'absolute/path/to/table.csv' CSV HEADER DELIMITER ',';
+```
+
+Note that `HEADER` just means the first line is going to be ignored;
+the headers are not used for matching with the table columns.
+So if the order of columns in the CSV differs from the order of columns
+in the table schema, the columns have to be specified in the `COPY` statement.
+
+## Datatypes
 
 [SQL datatypes](https://www.w3schools.com/sql/sql_datatypes.asp)
 [PostgreSQL datatypes](https://www.postgresql.org/docs/current/static/datatype.html)
@@ -41,5 +59,3 @@ Type casts:
 CAST ( expression AS type )
 expression::type
 ```
-
-## Options / Contraints
