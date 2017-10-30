@@ -31,28 +31,6 @@ Mathematical operations, e.g. `SELECT trunc(4 * pi() * radius ^ 2) FROM ...;`
 
 In PostgreSQL, `a BETWEEN x AND y` is equivalent to `a >= x AND a <= y`.
 
-## Strings
-
-Strings are enclosed by single quotes.
-```
-'some string'
-'A long and winding road'
-'That wasn''t a good idea'
-'"Indeed!"'
-```
-
-Double quotes can be used to escape identifiers that are reserved keywords in SQL, e.g. `"when"`.
-
-`||` for concatenating strings, e.g.
-* `SELECT 'The result is ' || result FROM ...`
-* `SELECT column1 || column2 || column3 FROM ...`
-
-`SELECT lower(column)`
-
-## Timestamps
-
-`'2017-8-20 17:00:00'`
-
 ## Comments
 
 ```sql
@@ -67,6 +45,12 @@ SELECT radius
 
 `COUNT(*)` counts all rows
 `COUNT(column)` counts all rows in which `column` has a non-NULL value
+
+`||` for concatenating strings, e.g.
+* `SELECT 'The result is ' || result FROM ...`
+* `SELECT column1 || column2 || column3 FROM ...`
+
+`SELECT lower(column)`
 
 ## Grouping
 

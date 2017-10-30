@@ -30,23 +30,6 @@ CREATE TABLE more_colors (id serial NOT NULL UNIQUE, name text);
 -- But PRIMARY KEY communicates the intention better.
 ```
 
-PostgreSQL provides sequences and the data type `serial` for auto-incrementing values, which can be used for primary keys:
-
-```sql
--- In PostgreSQL, the following:
-CREATE TABLE colors (
-  id serial,
-  name text
-);
-
--- is interpreted as this:
-CREATE SEQUENCE colors_id_seq;
-CREATE TABLE colors (
-    id integer NOT NULL DEFAULT nextval('colors_id_seq'),
-    name text
-);
-```
-
 ## Foreign keys
 
 A _foreign key (column)_ is a column that refers to the primary key of another table. Foreign key columns need to have the same datatype as the primary key column of the other table, but they don't need to be unique or non-NULL.
