@@ -55,7 +55,7 @@ Options for foreign keys:
 
 `FOREIGN KEY (c1) REFERENCES table (c2) ON UPDATE CASCADE` means that updates of values in `c2` are copied to the respective occurrences in `c1`.
 
-If no options are specified, the default is `ON UPDATE RESTRICT` and `ON DELETE RESTRICT`, i.e. updating and deleting values in `c2` is not allowed if they are referenced in `c1`. 
+If no options are specified, the default is `ON UPDATE RESTRICT` and `ON DELETE RESTRICT`, i.e. updating and deleting values in `c2` is not allowed if they are referenced in `c1`.
 
 If a table has a multi-column primary key, the foreign key would be accordingly multi-column, e.g. `FOREIGN KEY (person_first_name, person_last_name) REFERENCES person (first_name, last_name)`
 
@@ -71,7 +71,7 @@ CREATE TABLE table (
   age  integer CHECK (age BETWEEN 0 AND 100),  
 );
 
--- Table constraint:
+-- Table constraint
 
 CREATE TABLE table (
   name text,
@@ -98,4 +98,6 @@ ALTER TABLE table ALTER COLUMN column DROP NOT NULL;
 
 ### Modeling enums
 
-`CHECK (column IN ('value1', 'value2', ...))`
+```sql
+CHECK (column IN ('value1', 'value2', 'value3'))
+```
