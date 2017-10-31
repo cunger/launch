@@ -1,95 +1,101 @@
-## DDL
+# DDL
 
-CREATE TABLE
-ALTER TABLE $table
-    RENAME TO $name
-    ADD COLUMN $name [$options]
-    RENAME COLUMN $name TO $new_name
-    ALTER COLUMN $name $attribute
-    DROP COLUMN $name
-DROP TABLE $name
+## Creating tables
 
-
-```
+```sql
 CREATE TABLE table_name (
-    column1 <datatype> <constraints>,
-    column2 <datatype> <constraints>,
-    <constraints>
-    ...
+    PRIMARY KEY (column1),
+    column1 <datatype> <column_constraints>,  
+    column2 <datatype> <column_constraints>,
+    <table_constraints>
 );
-```
-
-Constraints are `NOT NULL`, `UNIQUE`, `PRIMARY KEY`, etc.
-Example for defining the primary key as stand-alone constraint:
-```
-PRIMARY KEY (column)
-PRIMARY KEY (column1, column2)
-```
-
-**Examples:**
-
-```sql
-CREATE TABLE reviews (
-  id serial PRIMARY KEY,
-  content text,
-  product_id integer REFERENCES product(id) NOT NULL
-);
-```
-
-```sql
-CREATE TABLE staff (
-    PRIMARY KEY (staff_id),
-    staff_id       INT(5)       NOT NULL,
-    first_name     VARCHAR(100) NOT NULL,
-    pens_in_drawer INT(2)       NOT NULL,
-                   CONSTRAINT pens_in_drawer_range
-                   CHECK(pens_in_drawer >= 1 AND pens_in_drawer < 100)
-);
-```
-
-Add a constraint to a table:
-
-```
-ALTER TABLE table_name
-ADD CONSTRAINT constraint_name CHECK (column_name >= 0);
-
-ALTER TABLE table
-ADD CONSTRAINT unique_column UNIQUE(column);
-```
-Or shorter (with auto-generated name):
-```
-ALTER TABLE table ADD CHECK (column >= 0);
-ALTER TABLE table ADD UNIQUE(column);
 ```
 
 Add a column:
-```
-ALTER TABLE table ADD COLUMN id serial PRIMARY KEY;
-```
-
-```
-ALTER TABLE table ALTER COLUMN column SET NOT NULL;
+```sql
+ALTER TABLE table ADD COLUMN column <datatype> <constraints>;
 ```
 
-```
-ALTER TABLE table_name ALTER COLUMN column SET DEFAULT 0;
-ALTER TABLE table_name ALTER COLUMN column SET NOT NULL;
-```
+Drop specific tables or all of them:
 
-Drop:
-
-```
-ALTER TABLE table DROP CONSTRAINT constraint_name;
-
-ALTER TABLE table ALTER COLUMN column DROP NOT NULL;
-
+```sql
 DROP TABLE table_name [ , other_table_name ];
+
 DROP DATABASE database_name;
 ```
 
-Schema can be used to restrict data injection in three ways:
-* datatype
-* modifiers like NOT NULL
-* constraints like uniqueness, checks for length and structure, etc.
+## Constraints
 
-## Enums
+The database schema can be used to restrict data injection in three ways:
+* datatype
+* modifiers (column constraints)
+* table constraints
+
+| Modifier | Constraint |
+|----------|------------|
+| `NOT NULL` | `CHECK (column IS NOT NULL)` |
+| `UNIQUE`   | `UNIQUE (column)` |
+|            | `UNIQUE (column1, column2, ...)` |  
+| `DEFAULT value` | - |
+| `PRIMARY KEY` | `PRIMARY KEY (column)` |
+|               | `PRIMARY KEY (column1, column2, ...)` |
+| `REFERENCES other_table (column)` | `FOREIGN KEY (column) REFERENCES other_table (column)` |
+| `CHECK condition` | `CHECK condition` |
+
+Constraints can be explicitly named by prefixing `CONSTRAINT constraint_name ...`.
+
+Options for foreign keys:
+* `ON UPDATE CASCADE`
+* `ON DELETE CASCADE`
+* `ON DELETE SET NULL`
+* `ON DELETE SET DEFAULT`
+* and others
+
+`FOREIGN KEY (c1) REFERENCES table (c2) ON DELETE CASCADE` means that if a value in the referenced column `c2` is deleted, all rows with that value in `c1` are deleted as well. Alternatively, the value in `c1` can be set to `NULL` or the column's default value.
+
+`FOREIGN KEY (c1) REFERENCES table (c2) ON UPDATE CASCADE` means that updates of values in `c2` are copied to the respective occurrences in `c1`.
+
+If no options are specified, the default is `ON UPDATE RESTRICT` and `ON DELETE RESTRICT`, i.e. updating and deleting values in `c2` is not allowed if they are referenced in `c1`. 
+
+If a table has a multi-column primary key, the foreign key would be accordingly multi-column, e.g. `FOREIGN KEY (person_first_name, person_last_name) REFERENCES person (first_name, last_name)`
+
+### Adding a constraint
+
+During table creation:
+
+```sql
+-- Column constraint as modifier
+
+CREATE TABLE table (
+  name text,
+  age  integer CHECK (age BETWEEN 0 AND 100),  
+);
+
+-- Table constraint:
+
+CREATE TABLE table (
+  name text,
+  age  integer,
+  year integer,
+  CHECK (2017 - age = year),  
+);
+```
+
+To an existing table:
+
+```sql
+ALTER TABLE table_name ALTER COLUMN column [ADD CONSTRAINT constraint_name] SET DEFAULT 0;
+ALTER TABLE table_name ALTER COLUMN column [ADD CONSTRAINT constraint_name] SET NOT NULL;
+```
+
+### Deleting constraints
+
+```sql
+ALTER TABLE table DROP CONSTRAINT constraint_name;
+
+ALTER TABLE table ALTER COLUMN column DROP NOT NULL;
+```
+
+### Modeling enums
+
+`CHECK (column IN ('value1', 'value2', ...))`

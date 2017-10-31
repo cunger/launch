@@ -42,6 +42,10 @@ the headers are not used for matching with the table columns.
 So if the order of columns in the CSV differs from the order of columns
 in the table schema, the columns have to be specified in the `COPY` statement.
 
+## Exporting a data dump
+
+...
+
 ## Data types
 
 Data types are used by databases to decide how much memory to allocate to the values, how to perform operations and calculations on them, and how to sort them.
@@ -51,7 +55,7 @@ Data types are used by databases to decide how much memory to allocate to the va
 
 ### Serial
 
-`serial` is a notational shortcut for creating unique identifier columns with auto-incrementing values, e.g. used for primary keys:
+`serial` is a notational shortcut for creating sequences, i.e. columns with auto-incrementing values:
 
 ```sql
 CREATE TABLE items (
@@ -61,9 +65,11 @@ CREATE TABLE items (
 -- is interpreted as:
 CREATE SEQUENCE items_id_seq;
 CREATE TABLE items (
-  id integer NOT NULL DEFAULT nextval('colors_id_seq')
+  id integer NOT NULL DEFAULT nextval('items_id_seq')
 );
 ```
+
+They're usually used to create unique identifier columns used as primary key.
 
 An alternative for unique identifiers are UUIDs:
 

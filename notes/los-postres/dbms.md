@@ -17,9 +17,9 @@ Keys can be _natural_, i.e. one or several values in the row that happen to be u
 
 ## Primary keys
 
-A primary key is a unique identifier for a single row in a database table.
+A primary key is a unique identifier for a single row in a database table, which consists of one or more columns.
 
-Each relational table must have exactly one _primary key_, which consists of one or more columns that
+Each relational table should have a _primary key_ (and cannot have more than one), that
 * uniquely identify each row in the table
 * do not contain blank or NULL values
 
@@ -30,29 +30,15 @@ CREATE TABLE more_colors (id serial NOT NULL UNIQUE, name text);
 -- But PRIMARY KEY communicates the intention better.
 ```
 
+When a primary key is created, an index is also created, that facilitates data selection and sorting based on the primary key column.
+
 ## Foreign keys
 
-A _foreign key (column)_ is a column that refers to the primary key of another table. Foreign key columns need to have the same datatype as the primary key column of the other table, but they don't need to be unique or non-NULL.
+A _foreign key (column)_ is a column that refers to the primary key of another table. Foreign key columns need to have the same datatype as the primary key column of the other table.
+Most DBMS allow for expressing _foreign key constraints_, in order to prevent that a table contains a foreign key value that doesn't exist as primary key.
 
-Most DBMS allow for expressing _foreign key constraints_, in order to prevent that a table contains a foreign key value that doesn't exist as primary key. Either when creating the table:
-
-```sql
-CREATE TABLE t1 (
-  ...
-  other_id integer NOT NULL
-                   REFERENCES others (id)
-                   ON DELETE CASCADE,
-  ...
-);
-```
-
-Or separately as a constraint:
-```sql
-ALTER TABLE table ADD CONSTRAINT table_others_id_fkey
-  FOREIGN KEY (other_id)
-  REFERENCES others (id)
-  ON DELETE CASCADE;
-```
+As opposed to primary keys, foreign keys don't need to be unique, can be non-NULL, and there can be arbitrarily many of them in one table.
+In addition, a column can be both a primary and a foreign key.
 
 ## Relations
 
