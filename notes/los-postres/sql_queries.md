@@ -3,7 +3,7 @@
 
 ## Operators
 
-`=`, `<>`, `<`, `<=`, `>`, `>=`
+_String matching:_
 
 `LIKE`, `NOT LIKE`
 
@@ -11,52 +11,40 @@ Wildcards:
 * `_` matches exactly one character
 * `%` matches zero or more characters
 
-If either side of the operator equals `NULL`, the result will be `NULL`. Because `NULL` refers to a missing or unknown value (so the result of the operation is also unknown).
-
-In the results of conditions, such as `column >= 0`, rows with `NULL` in `column` will not be included.
-Also, `NULL` values cannot be compared, so in results of statements with `ORDER BY` clauses rows with `NULL` values will appear first or last.
-
-In conditions always check for `NULL` with `IS NULL` or `IS NOT NULL`.
+_Boolean:_
 
 `AND`, `OR`
+
+_Set inclusion:_
 
 `IN`, `NOT IN`
 e.g.
 * `WHERE id IN (1, 2)`
 * `WHERE id IN (SELECT ...)`
 
-Mathematical operations, e.g. `SELECT trunc(4 * pi() * radius ^ 2) FROM ...;`
+_Comparison:_
 
-`BETWEEN`
+`=`, `<>`, `<`, `<=`, `>`, `>=`
+
+If either side of the operator equals `NULL`, the result will be `NULL`. This is because `NULL` refers to a missing or unknown value (so the result of the operation is also unknown).
+
+In the results of conditions, such as `column >= 0`, rows with `NULL` in `column` will not be included.
+Also, `NULL` values cannot be compared, so in results of statements with `ORDER BY` clauses rows with `NULL` values will appear first or last.
+
+In conditions always check for `NULL` with `IS NULL` or `IS NOT NULL`.
 
 In PostgreSQL, `a BETWEEN x AND y` is equivalent to `a >= x AND a <= y`.
-
-## Comments
-
-```sql
-/* query to retrieve the radius or a circle */
-SELECT radius
-  FROM circles
- WHERE something      -- fill in condition
-   AND something_else -- here as well
-```
 
 ## Aggregation
 
 `COUNT(*)` counts all rows
 `COUNT(column)` counts all rows in which `column` has a non-NULL value
 
-`||` for concatenating strings, e.g.
-* `SELECT 'The result is ' || result FROM ...`
-* `SELECT column1 || column2 || column3 FROM ...`
-
-`SELECT lower(column)`
-
 ## Grouping
 
-`GROUP BY column` groups together all rows that have the same value in `column`.
+`GROUP BY c` groups together all rows that have the same value in column `c`.
 
-Example:
+_Example:_
 ```sql
 -- select the number of employees in each department in the year 2013
 SELECT department, COUNT(*)
@@ -65,12 +53,13 @@ SELECT department, COUNT(*)
  GROUP BY department;
  ```
 
+Columns other than `c` can have different values within one group, so it makes sense to aggregate on them, but it doesn't make sense to put them in a SELECT clause without aggregation (which of the values to return?).
+
 `GROUP BY column1, column2` groups by `(column1, column2)`, e.g. `GROUP BY last_name, first_name`.
 
-The rest of the columns can have different values within one group, so it makes sense to aggregate on them, but it doesn't make sense to put them in a SELECT clause (which of the values to return?).
+In addition, groups can be filtered by means of `HAVING`.
 
-Groups can be filtered by means of `HAVING`.
-
+_Example:_
 ```sql
 SELECT last_name, first_name,
        AVG(salary) AS average_salary,
@@ -86,7 +75,8 @@ HAVING years_worked > 2
 Joins are clause in SQL statements that combine rows from two (or more) tables, based on a related column between them.
 
 _Inner join:_
-* **(INNER) JOIN** contains all records in the intersection of both tables
+
+* **(INNER) JOIN** contains all records in the intersection of both tables.
 
 ```sql
 SELECT *
@@ -97,9 +87,10 @@ SELECT *
 ```
 
 _Outer joins:_
-* **LEFT (OUTER) JOIN** contains all records in the left table (with matching records from the right table if present, otherwise NULL)
-* **RIGHT (OUTER) JOIN** contains all records in the right table (with matching records from the left table if present, otherwise NULL)
-* **FULL (OUTER) JOIN** combines the results of left and right join (so good for including both rows from T1 that don't have a match in T2 and rows in T2 that don't have a match in T1, without needing a full-blown cross join)
+
+* **LEFT (OUTER) JOIN** contains all records in the left table (with matching records from the right table if present, otherwise `NULL`).
+* **RIGHT (OUTER) JOIN** contains all records in the right table (with matching records from the left table if present, otherwise `NULL`).
+* **FULL (OUTER) JOIN** combines the results of left and right join (so good for including both rows from T1 that don't have a match in T2 and rows in T2 that don't have a match in T1, without needing a full-blown cross join).
 
 _Cross join:_
 
@@ -112,15 +103,18 @@ An inner join then is like `SELECT * FROM table1, table2 WHERE table1.table2_id 
 
 _Self joins:_
 
-Example: all pairs of students that share the same room
+A table can also be joined with itself.
 
+_Example:_
 ```sql
+-- all pairs of students that share the same room
 SELECT s1.name, s2.name
   FROM student AS s1
   JOIN student AS s2
     ON s1.room_number = s2.room_number
  WHERE s1.id <> s2.id ;
- ```
+```
+
 ## Subqueries
 
 ## Performance
@@ -152,4 +146,14 @@ auction=# EXPLAIN ANALYZE SELECT * FROM bids ORDER BY item_id;
  Index Scan using bids_item_id_bidder_id_idx on bids  (cost=0.15..70.80 rows=1510 width=26) (actual time=0.006..0.012 rows=26 loops=1)
  Planning time: 0.058 ms
  Execution time: 0.034 ms
+```
+
+## Comments
+
+```sql
+/* query to retrieve the radius or a circle */
+SELECT radius
+  FROM circles
+ WHERE something      -- fill in condition
+   AND something_else -- here as well
 ```

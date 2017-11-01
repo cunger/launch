@@ -1,6 +1,6 @@
 # DDL
 
-## Creating tables
+## Creating and dropping tables
 
 ```sql
 CREATE TABLE table_name (
@@ -11,12 +11,14 @@ CREATE TABLE table_name (
 );
 ```
 
-Add a column:
+_Addind and dropping a column:_
+
 ```sql
-ALTER TABLE table ADD COLUMN column <datatype> <constraints>;
+ALTER TABLE table ADD  COLUMN column <datatype> <constraints>;
+ALTER TABLE table DROP COLUMN column;
 ```
 
-Drop specific tables or all of them:
+_Dropping tables and databases:_
 
 ```sql
 DROP TABLE table_name [ , other_table_name ];
@@ -67,17 +69,18 @@ During table creation:
 -- Column constraint as modifier
 
 CREATE TABLE table (
-  name text,
-  age  integer CHECK (age BETWEEN 0 AND 100),  
+  name  text,
+  age   integer      CHECK (age BETWEEN 0 AND 100),
+  email varchar(100) CHECK (email LIKE '%@%')
 );
 
 -- Table constraint
 
 CREATE TABLE table (
-  name text,
-  age  integer,
-  year integer,
-  CHECK (2017 - age = year),  
+  name  text,
+  age   integer,
+  year  integer,
+  CHECK (age > 0 AND 2017 - age = year)  
 );
 ```
 
