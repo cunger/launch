@@ -99,8 +99,14 @@ ALTER TABLE table DROP CONSTRAINT constraint_name;
 ALTER TABLE table ALTER COLUMN column DROP NOT NULL;
 ```
 
-### Modeling enums
+### Enums
 
+Either as constraint:
 ```sql
 CHECK (column IN ('value1', 'value2', 'value3'))
+```
+
+Or by creating an own data type:
+```sql
+CREATE TYPE weekday AS ENUM('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday');
 ```

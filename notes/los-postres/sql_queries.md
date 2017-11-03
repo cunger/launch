@@ -148,6 +148,10 @@ auction=# EXPLAIN ANALYZE SELECT * FROM bids ORDER BY item_id;
  Execution time: 0.034 ms
 ```
 
+Also, counting is more efficient when done in the database than in the application, because for the latter case, all data to be counted needs to be transfered.
+
+Also, avoid N+1 queries i the application, i.e. queries that are the result of performing an additional query for each element in a collection.
+
 ## Comments
 
 ```sql
