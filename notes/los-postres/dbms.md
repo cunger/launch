@@ -5,7 +5,7 @@ The _relational model_ specifies a mathematically grounded way to store, organiz
 
 A _conceptual schema_ is a high-level design of entities (any recognizable objects in the real world) and their relationships, whereas a _physical schema_ is a database-specific design focused on the implementation of the conceptual schema.
 
-Usually, different kinds of entities are modeled through separate tables. A _relationship_ describes a connection between these entities (e.g. between customers and orders, and between orders and products), more physically by cross-referencing columns using primary- and foreign-key constraints. The cardinality of such a relationship specifies the number of objects on each side of the relationship, and modality indicates whether a relationship is optional or required.
+Usually, different kinds of entities are modeled through separate tables, and each row represents an entity instance. A _relationship_ describes a connection between these entities (e.g. between customers and orders, and between orders and products), more physically by cross-referencing columns using primary- and foreign-key constraints. The cardinality of such a relationship specifies the number of objects on each side of the relationship, and modality indicates whether a relationship is optional or required.
 
 * _One-to-one relationships_ are implemented by means of a unique foreign key.   
 
@@ -32,13 +32,13 @@ Each relational table can have only one primary key. When a primary key is creat
 ## Foreign keys
 
 A _foreign key_ is a column that refers to the primary key of another table, thereby acting as a cross-reference between tables.
-Foreign key columns obviously need to have the same data type as the primary key column of the other table, and in most DBMS the foreign key constraint also prevents foreign key values that don't exist as primary key value.
+Foreign key columns obviously need to have the same data type as the primary key column of the other table, and in most DBMS the foreign key constraint also prevents foreign key values that don't exist as primary key value (_referential integrity_).
 
 As opposed to primary keys, foreign keys don't need to be unique, can be `NULL`, and there can be arbitrarily many of them in one table.
 
 A column can be both a primary and a foreign key.
 
-## Normalization
+# Normalization
 
 The goal of _normalization_ is to design the schema in a way that it avoids or at least minimizes anomalies, mainly by distributing information across separate tables.
 

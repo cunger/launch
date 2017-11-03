@@ -132,7 +132,7 @@ An alternative for unique identifiers are UUIDs:
 
 * `real`, with variable precision and special values `Infinity`, `-Infinity`, `NaN`
 
-    Beware that floating point numbers (like `1/3`) are rounded and this leads to errors.
+    Beware that not all floating point numbers (like `pi()`) can be stored exactly, so the binary arithmetic performed on them can lead to errors.
     For example, `1.0 - 0.2 - 1.0 + 0.2` with `real`s likely will not end up to be `0` but something like `5.551115123125783E-17`.
     Therefore, floating point numbers should never be used to store information where exact values are needed (e.g. money).
 
