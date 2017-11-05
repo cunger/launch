@@ -39,11 +39,6 @@ _Equality with `NULL`_:
 Therefore, in conditions checking for `NULL`, always use `IS NULL` or `IS NOT NULL`.
 This includes arrays like `('value1', 'value2', ...)`: they cannot contain `NULL`.
 
-## Aggregation
-
-`COUNT(*)` counts all rows
-`COUNT(column)` counts all rows in which `column` has a non-NULL value
-
 ## Grouping
 
 `GROUP BY c` groups together all rows that have the same value in column `c`.
