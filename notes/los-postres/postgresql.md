@@ -166,13 +166,15 @@ If there is an explicit typecast to `char` or `varchar` and the string is longer
 
 ### Date and time
 
-* `date` as `'yyyy-MM-dd'`, e.g. `'2017-8-20'`
+* `date` as `'yyyy-MM-dd'`, e.g. `'2017-08-20'`
 * `time` as `'hh:mm:ss'`, e.g. `'17:00:00'`
-* `timestamp` as `'yyyy-MM-dd hh:mm:ss'`, e.g. `'2017-8-20 17:00:00'`
+* `timestamp` as `'yyyy-MM-dd hh:mm:ss'`, e.g. `'2017-08-20 17:00:00'`
 
-`time` and `timestamp` have variants that include timezone information.
+Incomplete timestamps will be filled up automatically, e.g. `'2017-08-20'` becomes `'2017-08-20 00:00:00'`, and `'2017-08-20 17:00'` becomes `'2017-08-20 17:00:00'`. Thus, a condition to include all timestamps in 2017 would be: `t BETWEEN '2017-01-01' AND '2018-01-01'`.
 
-`current_date` is a function to get the date of today.
+Dates, times, and timestamps can be compared using the numerical comparison operators (`<`, `=`, `BETWEEN`, etc.).
+
+`time` and `timestamp` have variants that include timezone information, e.g. `'2017-8-20 17:00:00+02'` with an 2-hour offset from UTC.
 
 ### Boolean
 

@@ -24,16 +24,20 @@ e.g.
 
 _Comparison:_
 
-`=`, `<>`, `<`, `<=`, `>`, `>=`
+`=`, `<>`, `<`, `<=`, `>`, `>=`, `BETWEEN ... AND ...`
 
-If either side of the operator equals `NULL`, the result will be `NULL`. This is because `NULL` refers to a missing or unknown value (so the result of the operation is also unknown).
+In PostgreSQL, `a BETWEEN x AND y` is equivalent to `a >= x AND a <= y`, i.e. works for numbers and date times and is inclusive.
 
-In the results of conditions, such as `column >= 0`, rows with `NULL` in `column` will not be included.
-Also, `NULL` values cannot be compared, so in results of statements with `ORDER BY` clauses rows with `NULL` values will appear first or last.
+If either side of an operator equals `NULL`, the result will be `NULL`. This is because `NULL` refers to a missing or unknown value, so the result of the comparison is also unknown. The same holds for most [functions](sql_functions.md).
 
-In conditions always check for `NULL` with `IS NULL` or `IS NOT NULL`.
+Return values that are `NULL` are not be included in the result set.
+Also, `NULL` values cannot be compared, so in results of statements with `ORDER BY` clauses rows with `NULL` values will appear either first or last.
 
-In PostgreSQL, `a BETWEEN x AND y` is equivalent to `a >= x AND a <= y`.
+_Equality with `NULL`_:
+* A condition `column = NULL` will never be true, i.e. the result will always be empty.
+* A condition `column <> 'some value'` will not return rows where `column` is `NULL`.
+Therefore, in conditions checking for `NULL`, always use `IS NULL` or `IS NOT NULL`.
+This includes arrays like `('value1', 'value2', ...)`: they cannot contain `NULL`.
 
 ## Aggregation
 
