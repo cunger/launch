@@ -85,6 +85,19 @@ SELECT *
  WHERE ...;
 ```
 
+This can get as complex as necessary:
+
+```sql
+SELECT *
+  FROM table1
+       JOIN table2
+         ON table2.table1_column = table1.column
+       JOIN table3
+         ON (table3.column1, table3.column2) = (table1.column1, table1.column2)
+       ...
+ WHERE ...;
+```
+
 _Outer joins:_
 
 * **LEFT (OUTER) JOIN** contains all records in the left table (with matching records from the right table if present, otherwise `NULL`).
@@ -159,4 +172,18 @@ SELECT radius
   FROM circles
  WHERE something      -- fill in condition
    AND something_else -- here as well
+```
+
+## Views
+
+A view is a virtual table, created by specifying the query from which is results and a name:
+```sql
+CREATE VIEW view_name
+AS <query>
+```
+It can then be queried like any other table (`SELECT * FROM view_name;`), with the only difference that virtual tables are not stored physically: every time data is retrieved from a view, the database re-runs the underlying query.
+
+Views can be deleted as expected:
+```sql
+DROP VIEW view_name;
 ```
