@@ -69,7 +69,8 @@ During table creation:
 -- Column constraint as modifier
 
 CREATE TABLE table (
-  name  text,
+  id    serial       PRIMARY KEY,
+  other integer      REFERENCES table (column),
   age   integer      CHECK (age BETWEEN 0 AND 100),
   email varchar(100) CHECK (email LIKE '%@%')
 );
@@ -77,18 +78,26 @@ CREATE TABLE table (
 -- Table constraint
 
 CREATE TABLE table (
-  name  text,
+  PRIMARY KEY (id),
+  id    serial,
+  other integer,
   age   integer,
   year  integer,
-  CHECK (age > 0 AND 2017 - age = year)  
+  CHECK (age > 0 AND 2017 - age = year),
+  FOREIGN KEY (other) REFERENCES table (column)
 );
 ```
 
 To an existing table:
 
 ```sql
-ALTER TABLE table_name ALTER COLUMN column [ADD CONSTRAINT constraint_name] SET DEFAULT 0;
-ALTER TABLE table_name ALTER COLUMN column [ADD CONSTRAINT constraint_name] SET NOT NULL;
+ALTER TABLE ADD CONSTRAINT name PRIMARY KEY (column);
+ALTER TABLE ADD CONSTRAINT name FOREIGN KEY (column) REFERENCES table (column);
+```
+
+```sql
+ALTER TABLE table_name ALTER COLUMN column [ADD CONSTRAINT name] SET DEFAULT 0;
+ALTER TABLE table_name ALTER COLUMN column [ADD CONSTRAINT name] SET NOT NULL;
 ```
 
 ### Deleting constraints

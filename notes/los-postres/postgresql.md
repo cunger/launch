@@ -52,7 +52,8 @@ COPY table (name, color) FROM 'absolute/path/to/table.csv' WITH CSV HEADER DELIM
 Note that `HEADER` just means the first line is going to be ignored;
 the headers are not used for matching with the table columns.
 So if the order of columns in the CSV differs from the order of columns
-in the table schema, the columns have to be specified in the `COPY` statement.
+in the table schema, the columns have to be specified in the correct order
+in the `COPY` statement.
 
 _Exporting a database or a specific table into an SQL file:_
 
@@ -84,7 +85,7 @@ CREATE TABLE items (
 );
 ```
 
-Sequences are a special kind of database object designed for generating unique, auto-incrementing numeric identifiers. They are usually used for artificial primary key columns. Sequences consist of a single-row table with information on that sequence, most importantly a value of type `bigint`, as well as a generator for incrementing that value. The value can be accessed using `nextval('sequence_name')` and `currval('sequence_name')`, and can be set using `setval('sequence_name', value)`.
+Sequences are a special kind of database object designed for generating auto-incrementing unique numeric identifiers, usually used for artificial primary key columns. Sequences consist of a single-row table with a value of type `bigint` together with information on the sequence, as well as a generator for incrementing the numeric value. The value can be accessed using `nextval('sequence_name')` and `currval('sequence_name')`, and can be set using `setval('sequence_name', value)`.
 
 ```
 # select * from items_id_seq;
