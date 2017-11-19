@@ -19,15 +19,15 @@ Usually, different kinds of entities are modeled through separate tables, and ea
 
 # Keys
 
-Keys are specific kinds of constraints (i.e. rules on what kind of data is allowed in a column) and as such part of the schema definition. They are essential for ensuring the integrity of the data.
-
-Keys can be _natural_, i.e. one or several columns that happen to be unique, or more likely _surrogate_, i.e. created for the specific purpose of being a unique identifier, such as auto-incrementing integers or UUIDs.
+Keys are specific kinds of constraints (i.e. rules on what kind of data is allowed in a column) and as such part of the schema definition. Their main purpose is to  ensure data integrity in the sense that data records can be uniquely identified and referenced. 
 
 ## Primary keys
 
 A _primary key_ is a collection of one or more columns that uniquely identifies each row in a table. In other words, the constraint `PRIMARY KEY` is the same as `NOT NULL UNIQUE`.
 
 Each relational table can have only one primary key. When a primary key is created, also an index is created, that facilitates data selection and sorting based on the primary key column.
+
+Keys can be _natural_, i.e. one or several columns that happen to be unique, or more likely _surrogate_, i.e. created for the specific purpose of being a unique identifier, such as auto-incrementing integers or UUIDs.
 
 ## Foreign keys
 
