@@ -1,5 +1,3 @@
-HTML = content (information + structure)
-CSS = appearance of that content
 
 ## Selectors
 
@@ -18,27 +16,44 @@ p { ... }
 #justme {...}
 ```
 
-Combining them:
+Combining selectors:
+
+```css
+/* targets elements of type p with class=hotdog or class=burger */
+p.hotdog,
+p.burger {
+  ...
+}
 ```
-element.class,
-element.class {
+
+Nesting selectors:
+```css
+/* targets elements with class=mustard within elements with class=hotdog */
+.hotdog .mustard {
   ...
 }
 
-element#id {
+/* targets elements with class=ketchup within elements with class=hotdog */
+.hotdog .ketchup {
   ...
 }
 ```
+
+Spaces matter!
+* `p.mustard` selects all `p` elements with `class="mustard"`
+* `p .mustard` selects all elements that are of type `p` or have `class="mustard"` (independent of their type)
 
 ### Cascade
 
-The cascade determines which properties apply to which elements. It uses the following three concepts in that order to determine which rule takes precedence:
+The cascade determines which properties apply to which elements. It allows styles to be added and overriden.
+
+CSS uses the following three concepts (in that order) to determine which rule takes precedence:
 * _importance_
-  user agent aka browser < user < author < author `!important` declarations < user `!important` declarations (e.g. in order to override properties like font-size that would otherwise hamper the accessibility)
-* _specificity_, calculation examples: https://stuffandnonsense.co.uk/archives/images/specificitywars-05v2.jpg
-  first important rule: type < class < ID
+  user agent (aka browser) < user < author < author `!important` declarations < user `!important` declarations (e.g. in order to override properties like font-size that would otherwise hamper the accessibility)
+* _specificity_:
+  type `0-0-1` < class `0-1-0` < ID `1-0-0`
 * _source order_
-  if all else is equal, the later rule is applied
+  if all else is equal, the rule later in the source code is applied
 
 **Inheritance:** ...
 Font and color properties are inherited, while most others (e.g. box-related ones) are not.
@@ -63,8 +78,23 @@ rgba(0, 255, 0, 0.5) with the last value being an alpha channel,  0 fully transp
 
 **Only be specific when you need to be.**
 
-Start with the least specific selectors, and add more specific ones only if the need arises. Very specific rules paint you a corner.
-Prefer classes over IDs, unless something is really unique, like a hook for JS.
+* Start with the least specific selectors, and add more specific ones only if the need arises. Very specific rules paint you a corner.
+* Prefer classes over IDs, unless something is really unique, like a hook for JS.
+* Prefer simple layering over nesting, for example:
+```css
+/* <div class="flash flash-success"> ... </div> */
+
+.flash {
+  font-size: 19px;
+}
+
+.flash-success {
+  color: green;
+}
+.flash-error {
+  color: red;
+}
+```
 
 **Never rely on source order.**
 
@@ -72,7 +102,7 @@ Prefer classes over IDs, unless something is really unique, like a hook for JS.
 
 **Be expressive and clear.**
 
-For the sake of flexibility, the names of classes and IDs should express the purpose of the element.
+* For the sake of flexibility, the names of classes and IDs should express the purpose of the element.
 > Always use semantic names. Never use presentational names.
 
-Also, add comments, especially for dividing the CSS file into sections that help navigate through the document.
+* Also, add comments, especially for dividing the CSS file into sections that help navigate through the document.

@@ -1,0 +1,22 @@
+body {
+  font-size: 16px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  color: #eee;
+  background-color: #01304b;
+}
+
+h1,
+h2,
+h3 {
+  font-family: Georgia, Times, "Times New Roman", serif;
+}
+
+a {
+  color: #c3b802;
+}
+
+li {
+  margin-bottom: .5em;
+}

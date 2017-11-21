@@ -1,0 +1,32 @@
+p {
+  font-size: 18px;
+}
+
+article p {
+  font-family: sans-serif;;
+}
+
+main li {
+  border-bottom: 1px solid #0066cc;
+}
+
+main ul li {
+  border-bottom: 1px dotted #0066cc;
+}
+
+form {
+  width: 450px;
+}
+
+label {
+  display: block;
+}
+
+.subheading {
+  background: #e0e0e0;
+}
+
+#intro {
+  font-size: 20px;
+  text-decoration: underline;
+}

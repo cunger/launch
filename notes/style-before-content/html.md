@@ -1,18 +1,58 @@
-HTML = content (information + structure)
-CSS = appearance of that content
 
 the basic building block is the _element_
 
+root element: `html`
+
 > Every element in web design is a rectangular box.
 
-root element: `html`
+semantic elements means using elements that describe the type of content and structure, independent of their appearance.
+
+...
+
+* `strong` for marking an element as important
+* `em` for emphasizing an element (e.g. `We have to act <em>now</em>!`)
+* `i` to stylistically offset text, e.g. for alternative voice, or for names and terms (`<i class="taxonomy">Diplodocus</i>`) as well as transliterated foreign words (`<i lang="ja-latn">udon</i> noodles`)
+* `b` to draw attention to an element, without marking it as important
+
+### Structural elements
+
+* `header`, `main`, `footer`
+* `nav` for an element with navigational links
+* `aside` (e.g. for side bars, or additional explanations)
+* `section` (for grouping content)
+* `article` (for content that could be distributed independent of the rest of the site, e.g. blog posts)
 
 ## Block vs inline elements
 
-Default way of creating elements without any further semantics:
+Block elements begin on a new line, thus stacking on top of each other, and can have any width.
+
+Inline elements don't begin on a new line, they ..., lining up and taking up the width of their content.
+
+Containers for creating elements without any further semantics (for grouping and styling purposes):
 * `div`  for block elements
 * `span` for inline elements
+
+Inline elements are not allowed to wrap block elements, with one exception: `a`.
 
 ##
 
 Each HTML element can have a `class` attribute and an `id` attribute.
+
+IDs can serves as _anchors_ for links to elements on the same page:
+```html
+<body id="top">
+  ...
+  <section id="section1">
+    ...
+  </section>
+  ...
+  <a href="#section1">Back to Section 1</a>
+  <a href="#top">Back to top</a>
+</body>
+```
+
+## Comments
+
+```
+<!-- ... -->
+```
