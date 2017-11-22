@@ -1,0 +1,20 @@
+body {
+  font-size: 20px;
+  color: #666;
+}
+
+#ingredients {
+  color: cadetblue;
+}
+
+.ingredient {
+  font-style: italic;
+}
+
+#directions {
+  color: teal;
+}
+
+.direction {
+  font-family: sans-serif;
+}
