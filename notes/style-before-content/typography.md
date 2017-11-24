@@ -25,7 +25,9 @@ monospace stack: "Courier New", Courier, monospace
 
 `font-size: 16px`
 
-margin and padding of text with `em`, i.e. relative to font size
+`em` is a size measure relative to the parent element's font size; useful for:
+* margin and padding of text
+* font size of headings and list items etc. relative to body text font size
 
 Also:
 https://ia.net/topics/100e2r/
