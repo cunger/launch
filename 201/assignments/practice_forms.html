@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Practice Forms</title>
+    <link rel="stylesheet" href="practice_forms.css" />
+  </head>
+
+  <body>
+
+  <form action="#" method="post">
+    <fieldset>
+      <legend>Contact</legend>
+
+      <label for="name">Your Name</label>
+      <input type="text" name="name" id="name" required>
+
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" name="phone" id="phone" placeholder="###-###-####" required>
+
+      <label for="message">Message</label>
+      <textarea name="message" id="message" required>Type your message here.</textarea>
+
+      <button type="submit">Send Message</button>
+      <button type="reset">Clear</button>
+    </fieldset>
+  </form>
+
+  <form>
+    <fieldset>
+      <legend>Search</legend>
+
+      <label for="query">Search for</label>
+      <input type="text" name="query" id="query">
+
+      <input type="radio" name="search-scope" id="tv" value="tv">
+      <label for="tv">TV</label>
+
+      <input type="radio" name="search-scope" id="movies" value="movies">
+      <label for="movies">Movies</label>
+
+      <input type="radio" name="search-scope" id="music" value="music" checked>
+      <label for="music">Music</label>
+
+      <input type="button" value="Search">
+    </fieldset>
+  </form>
+
+  <form>
+    <fieldset>
+      <legend>Review</legend>
+
+      <label for="film">Movie</label>
+      <select name="film" id="film" size="4">
+        <option value="looper">Looper</option>
+        <option value="frozen">Frozen</option>
+        <option value="tommy">Tommy Boy</option>
+        <option value="alien" selected>Alien</option>
+      </select>
+
+      <label for="rating">Rating</label>
+      <input type="range" name="rating" id="rating" min="1" max="5">
+
+      <input type="checkbox" name="favme" id="favme" value="true" checked>
+      <label for="favme">Add to my favourites</label>
+
+      <input type="submit" value="Rate movie">
+    </fieldset>
+  </form>
+
+  </body>
+</html>

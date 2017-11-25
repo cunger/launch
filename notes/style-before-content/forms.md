@@ -28,8 +28,10 @@ Single-line text input:
 
 <!-- Or, more explicitly and thus safer for screen reading:  -->
 <label for="username">User name</label>
-<input type="text" name="username">
+<input type="text" name="username" id="username">
 ```
+Note that `for` requires an `id` value as value (not a `name`). 
+
 HTML provides a range of types, including for example:
 * `date`, `time`, `datetime`
 * `number`

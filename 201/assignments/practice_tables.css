@@ -1,0 +1,25 @@
+table {
+  background-color: cyan;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: 1px solid gray;
+}
+
+.odd-row {
+  background: orange;
+}
+
+.even-row {
+  background: yellow;
+}
+
+th[scope="col"] {
+  color: blue;
+}
+
+th[scope="row"] {
+  color: green;
+}
