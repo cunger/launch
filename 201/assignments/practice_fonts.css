@@ -1,0 +1,39 @@
+body {
+  font: normal 18px Helvetica, Arial, sans-serif;;
+}
+section,
+article {
+  margin: 4em;
+}
+h1 {
+  font-family: Georgia, serif;
+  color: blue;
+}
+p {
+  line-height: 1.4;
+  text-align: justify;
+}
+code {
+  font-family: monospace;
+  font-style: italic;
+  text-decoration: underline;
+  color: green;
+}
+mark {
+  background-color: yellow;
+  font-family: Courier, monospace;
+  font-size: 12px;
+}
+strong {
+  font-weight: bold;
+  font-size: 15px;
+}
+em {
+  font-style: italic;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+a {
+  color: maroon;
+  text-decoration: none;
+}
