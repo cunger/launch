@@ -58,7 +58,9 @@ CSS uses the following three concepts (in that order) to determine which rule ta
 **Inheritance:** ...
 Font and color properties are inherited, while most others (e.g. box-related ones) are not.
 
-## Colors
+## ... and Units
+
+### Colors
 
 * keyword (`black`, `white`, `gray`, `silver`, `maroon`, etc., see [MDN > color-value](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value))
 * hexadecimal: RGB #rrggbb ( or #rgb)
@@ -67,6 +69,34 @@ with 0 black and f white
 -> 16.7+ mio colors = (16^2)^3
 * rgb(0, 255, 0) with 0 black and 255 white
 rgba(0, 255, 0, 0.5) with the last value being an alpha channel,  0 fully transparent,  1 fully opaque
+
+### Lengths
+
+**Absolute:**
+* `px`
+> A CSS reference pixel has an angular width of a physical pixel on a device that displays 96 pixels per inch, adjusted for some typical viewing distance appropriate for the device.
+
+**Relative:**
+* `1em` represents the calculated font-size of the element, so `2em` is twice the font-size of the element (if `em` is used to specify `font-size`, `1em` corresponds to the inherited font-size of the element) - note that `em`s compound when elements are nested
+* `1rem` represents the calculated font-size of the root element
+* `1vh` and `1vw` represent 1% of the viewport's height and width, respectively (not universally supported, though) - e.g. useful for _viewport sized typography_:
+```css
+h1 { font-size: 20vw; }
+p  { font-size: 2vmin; }
+```
+* `%` relates to the length of the same property of the parent element; note that for paddings and margins it always relates to the element's width
+
+Use fallbacks when using units that are not universally supported, e.g.:
+```css
+p {
+  font-size: 20px; font-size: 1.25rem;
+}
+nav {
+  width: 25%; width: 25vw;
+}
+```
+
+Default is `auto` that "determines an appropriate length based on the content and the element's content".
 
 ## Comments
 

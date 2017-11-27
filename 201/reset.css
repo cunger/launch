@@ -1,6 +1,6 @@
-/* Based on:
+/*
+   CSS Reset, based on:
    http://meyerweb.com/eric/tools/css/reset/
-   (v2.0 | public domain)
 */
 
 html, body, div, span, applet, object, iframe,
@@ -23,15 +23,27 @@ time, mark, audio, video {
   font: inherit;
   vertical-align: baseline;
 }
+
+/* Universal box sizing */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+img {
+  box-sizing: content-box;
+}
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
-body {
-  font-size: 16px;
-  line-height: 1.4;
+input, textarea {
+  display: inline-block;
 }
+
 ol, ul {
   list-style: none;
 }
@@ -46,7 +58,4 @@ q:before, q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-}
-acronym {
-  font-feature-settings: "c2sc" 1;
 }
