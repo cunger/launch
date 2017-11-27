@@ -1,3 +1,27 @@
+### Centering content
+
+```css
+/* Put element in a container */
+.container {
+  text-align: center;
+}
+
+/* or set left and right margins to auto */
+element {
+  display: block;
+  margin: 0 auto;
+}
+```
+
+### Scaling an image when viewport gets smaller than image size
+
+```css
+img {
+  max-width: 800px;
+  width: 100%;
+}
+```
+
 ## Lists
 
 ```css

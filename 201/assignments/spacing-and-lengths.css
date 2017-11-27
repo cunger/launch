@@ -1,0 +1,60 @@
+body {
+  text-align: center;
+  margin: 50px;
+}
+
+img {
+  width: 100%;
+  max-width: 800px;
+  min-width: 500px;
+}
+
+div {
+  width: 300px;
+  height: 300px;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0 20px;
+}
+
+.yin {
+  background: #fcc;
+  padding: 20px;
+}
+
+.yang {
+  background: #ccf;
+  border: 5px solid black;
+  width: 20px;
+}
+
+ul {
+  border: 10px solid blue;
+  padding: 0;
+  list-style: none;
+  background: #a7ceff;
+}
+
+li {
+  border: 10px solid red;
+  box-sizing: border-box;
+  min-height: 120px;
+  line-height: 120px;
+  margin: -40px 1%;
+  text-align: center;
+  background: #ffffcc;
+  display: inline-block;
+  width: 23%;
+}
+
+table {
+  width: 100%;
+  background: #a7ceff;
+  border-spacing: 10px;
+}
+
+td {
+  width: 25%;
+  text-align: center;
+  background: #ffffcc;
+}

@@ -1,0 +1,37 @@
+html {
+  font-size: 32px;
+}
+
+body {
+  margin: 0;
+  background-color: #fffee0;
+  border: 1px solid gray;
+}
+
+.box {
+  box-sizing: border-box;
+  display: inline-block;
+  height: 100px;
+  width: 32%;
+}
+
+.container {
+  border: 1px solid black;
+  background-color: #ffffe0;
+}
+
+.first {
+  border: 1px solid red;
+  background-color: #ff8080;
+}
+
+.second {
+  border: 1px solid green;
+  background-color: #80ff80;
+  margin: 0 2%;
+}
+
+.third {
+  border: 1px solid blue;
+  background-color: #a0a0ff;
+}
