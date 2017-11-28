@@ -1,3 +1,39 @@
+# Guidelines
+
+**Only be specific when you need to be.**
+
+* Start with the least specific selectors, and add more specific ones only if the need arises. Very specific rules paint you a corner.
+* Prefer classes over IDs, unless something is really unique, like a hook for JS.
+* Prefer simple layering over nesting, for example:
+```css
+/* <div class="flash flash-success"> ... </div> */
+
+.flash {
+  font-size: 19px;
+}
+
+.flash-success {
+  color: green;
+}
+.flash-error {
+  color: red;
+}
+```
+
+**Never rely on source order.**
+
+**Use a reset or baseline CSS as starting point.** Otherwise each browser will present you with a different environment.
+
+**Be expressive and clear.**
+
+* For the sake of flexibility, the names of classes and IDs should express the purpose of the element.
+> Always use semantic names. Never use presentational names.
+
+* Also, add comments, especially for dividing the CSS file into sections that help navigate through the document.
+
+
+# Examples
+
 ### Centering content
 
 ```css
