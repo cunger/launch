@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>CSS Selectors</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css_complex_selectors.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Site Title</h1>
+      <ul>
+        <li>
+          <a href="#">Nav Cagetory 1</a>
+          <ul>
+            <li><a href="#">Sub category item 1</a></li>
+            <li><a href="#">Sub category item 2</a></li>
+            <li><a href="#">Sub category item 3</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Nav Cagetory 2</a>
+          <ul>
+            <li><a href="#">Sub category item 1</a></li>
+            <li><a href="#">Sub category item 2</a></li>
+            <li><a href="#">Sub category item 3</a></li>
+          </ul>
+        </li>
+      </ul>
+    </header>
+
+    <main>
+      <h1>Main Page</h1>
+      <p id="intro">Site introduction lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non ultricies augue. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
+      <article>
+        <h2 class="subheading">Article Title</h2>
+        <p>Sed non nunc quam. Fusce vitae dui ut ante gravida posuere. Phasellus arcu nibh, posuere ac dignissim tincidunt, interdum placerat nisi. Nunc sagittis odio arcu, id suscipit enim maximus sit amet. Praesent congue tempus ipsum, at molestie nulla varius in. Donec sollicitudin diam sit amet dapibus faucibus. Nulla at porta ex, at hendrerit felis. Mauris dapibus, arcu vitae fringilla posuere, odio dui pretium mauris, eleifend imperdiet est arcu a lectus.</p>
+        <ul>
+          <li>ac turpis</li>
+          <li>mauris</li>
+          <li>ultrices</li>
+          <li>laoreet</li>
+        </ul>
+        <p>Nunc ac turpis a mauris ultrices laoreet porta quis tellus. Phasellus pellentesque imperdiet erat quis suscipit. Proin vitae varius felis. Morbi at lacus mattis, vestibulum neque at, pretium libero. Nam et pellentesque enim. Nam augue diam, porta ac dapibus ut, semper eget tortor. Duis gravida tristique neque, nec tincidunt nunc commodo ac.</p>
+      </article>
+
+      <article>
+        <h2>Article Title</h2>
+        <p>Suspendisse interdum nec metus volutpat consequat. Aliquam tincidunt, tortor eu accumsan suscipit, ipsum magna dapibus ex, efficitur dictum metus eros et est. Vestibulum sapien metus, mollis in dapibus non, facilisis vel nunc. Integer faucibus sit amet felis nec dignissim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer dictum gravida dui</p>
+        <p>Et venenatis ligula volutpat et. Proin purus nibh, efficitur et porttitor in, ultrices et sapien. Suspendisse id nulla cursus, volutpat nulla a, tempor tortor. Donec aliquam sodales congue. Mauris ornare, ligula quis tristique fermentum, est nisl suscipit metus, sed semper tellus elit quis metus. Aenean id dictum dolor. Proin nec blandit nisi. Quisque ut quam in enim viverra dignissim. Sed quis dapibus eros. Nam feugiat cursus est nec feugiat. Ut vehicula, sapien sed aliquet rutrum, tellus est rutrum mi, non tempor augue massa eu risus</p>
+        <ol>
+          <li>Vivamus</li>
+          <li>luctus</li>
+          <li>molestie</li>
+          <li>ante</li>
+          <li>eget</li>
+        </ol>
+      </article>
+
+      <form action="#" method="get">
+        <fieldset>
+          <label for="first_name">First Name</label>
+          <input id="first_name" type="text" required="">
+          <label for="last_name">Last Name</label>
+          <input id="last_name" type="text" required="">
+          <label for="email">Email</label>
+          <input id="email" type="email" required="">
+          <label for="phone">Phone</label>
+          <input id="phone" type="text">
+          <ul>
+            <li>
+              <label><input type="checkbox"><span>I prefer email over text message</span></label>
+            </li>
+            <li>
+              <label><input type="checkbox"><span>I agree to the site's terms of use</span></label>
+            </li>
+          </ul>
+        </fieldset>
+      </form>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Confirmed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Samus Aran</td>
+            <td>samus@tallon.iv</td>
+            <td>✔</td>
+            <td>314-159-2653</td>
+          </tr>
+          <tr>
+            <td>Markus Persson</td>
+            <td>me@minecraft.net</td>
+            <td>✔</td>
+            <td>481-516-2342</td>
+          </tr>
+          <tr>
+            <td>Nathan Drake</td>
+            <td>nate@uncharted.pro</td>
+            <td>X</td>
+            <td>911-119-2007</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>

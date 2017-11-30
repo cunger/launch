@@ -88,3 +88,35 @@ li {
 /* display can also be inline, e.g. to include a list into running text,
    but then no margin can be added */
 ```
+
+## UI stuff
+
+```css
+/* mark required input fields more prominently than optional ones */
+input {
+  border: 1px solid #eee;
+}
+input[required] {
+  border: 1px solid #000;
+}
+/* mark the input field that is currently edited */
+input[type="text"]:focus {
+  background: #e5ff89;
+}
+/* highlight the checked checkboxes */
+input[type="checkbox"]:checked + span {
+  background: #e5ff89;
+}
+```
+
+## Tables
+
+```css
+/* Color alternating rows */
+tr:nth-child(even) {
+  background: #ccc;
+}
+tr:nth-child(odd) {
+  background: #fff
+}
+```

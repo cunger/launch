@@ -26,22 +26,50 @@ p.burger {
 }
 ```
 
-Nesting selectors:
-```css
-/* targets elements with class=mustard within elements with class=hotdog */
-.hotdog .mustard {
-  ...
-}
+### Descendant selectors
 
-/* targets elements with class=ketchup within elements with class=hotdog */
-.hotdog .ketchup {
-  ...
-}
+```css
+/* Any descendant
+  (targets elements of type a within elements of type header) */
+header a { ... }
+
+/* Direct child
+  (targets elements of type a that are direct children of elements of type header) */
+header > a { ... }
+
+/* Sibling
+  (targets elements of type p that are siblings of elements of type header) */
+header ~ p { ... }
+/* Adjacent sibling */
+header + p { ... }
 ```
 
 Spaces matter!
 * `p.mustard` selects all `p` elements with `class="mustard"`
 * `p .mustard` selects all elements that are of type `p` or have `class="mustard"` (independent of their type)
+
+### Attribute selectors
+
+```css
+/* Element with attribute present, regardless of the value */
+a[target] { ... }
+/* Element with attribute with a particular value */
+a[href="#"] { ... }
+/* Element with attribute value containing a given value */
+a[href*="login"] { ... }
+/* Element with attribute value starting with a given value */
+a[href^="https://"] { ... }
+/* Element with attribute value ending with a given value */
+a[href$=".pdf"] { ... }
+
+/* Element with one of space-separated attribute values matching */
+div[role~="tag"] { ... }
+/* e.g. matches <div role="tag button"> */
+
+/* Element with one part of a hyphenated value matching */
+div[lang|="en"]
+/* e.g. matches <div lang="en-US"> */
+```
 
 ### Cascade
 
@@ -109,9 +137,17 @@ Default is `auto` that "determines an appropriate length based on the content an
 > A CSS pseudo-class is a keyword added to a selector that specifies a special state of the selected element.
 -- [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/pseudo-classes)
 
-e.g. `a:hover`, `a:visited`, `button:checked`
+Examples:
+* `a:hover`, `a:visited`
+* `input:disabled`, `input:checked`
+* `li:first-child`, `li:last-child` (selecting the `li` element that is the first/last child)
+* `section:target` (targets all `section` elements that have an ID attribute value that is part of a URL fragment, e.g. anchors on a page, like `<section id="here"`, that are referenced like `<a href="#here">` or `<a href="https://example.com#here">`)
+* `div:empty`
+* `p:not(.intro)`, `:not(div)`
 
 > A CSS pseudo-element is a keyword added to a selector that lets you style a specific part of the selected element.
 -- [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements)
 
-e.g. `div::before`, `div::after` (which create a pseudo-element that is the first/last child of the `div`)
+Examples:
+* `div::before`, `div::after` (which create an inline pseudo-element that is the first/last child of the `div`)
+* `p::first-line`
