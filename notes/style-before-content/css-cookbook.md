@@ -34,6 +34,49 @@
 
 # Examples
 
+### Containing floats: Fixed width side bar next to fluid content area
+
+https://codepen.io/chru/pen/EbrNLZ
+
+```html
+<div id="columns">
+  <div id="primary">
+    Main content
+  </div>
+
+  <div id="secondary">
+    Sidebar content
+  </div>
+</div>
+
+<footer>
+  Footer
+</footer>
+```
+
+```css
+#columns {
+  margin: 0 0 0 200px;
+}
+#primary {
+  float: right;
+  width: 100%;
+}
+#secondary {
+  float: left;
+  width: 200px;
+  margin: 0 0 0 -200px;
+}
+/* Clear fix */
+#columns:after {
+  content: ".";
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+```
+
 ### Centering content
 
 ```css

@@ -141,6 +141,8 @@ Examples:
 * `a:hover`, `a:visited`
 * `input:disabled`, `input:checked`
 * `li:first-child`, `li:last-child` (selecting the `li` element that is the first/last child)
+* `bento:first-of-type`, `bento:last-of-type`
+* `bento:empty`
 * `section:target` (targets all `section` elements that have an ID attribute value that is part of a URL fragment, e.g. anchors on a page, like `<section id="here"`, that are referenced like `<a href="#here">` or `<a href="https://example.com#here">`)
 * `div:empty`
 * `p:not(.intro)`, `:not(div)`
@@ -148,6 +150,10 @@ Examples:
 > A CSS pseudo-element is a keyword added to a selector that lets you style a specific part of the selected element.
 -- [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements)
 
+> A pseudo element is one that does not exist in the actual HTML, but the browser will insert it after the initial page rendering
+
 Examples:
 * `div::before`, `div::after` (which create an inline pseudo-element that is the first/last child of the `div`)
 * `p::first-line`
+
+It needs to have `content` defined in order to be rendered, even if only `content: "";`.
