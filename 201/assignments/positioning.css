@@ -1,0 +1,28 @@
+#note {
+  background: yellow;
+  padding: 20px;
+  width: 400px;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  margin-left: -200px;
+  z-index: 2;
+}
+
+#note-corner {
+  width: 20px;
+  height: 20px;
+  background: red;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+}
+
+#filter {
+  background: rgba(0, 0, 0, .6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
