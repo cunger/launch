@@ -27,6 +27,8 @@ They all start as _object identity_: two objects are equal if they are the same 
 1 == 1.0 # => true
 ```
 
+`eql?` is used as a stricter version of `==`, requiring the class of the two objects to be equal, in addition to their values. `eql?` is used by Ruby to compare Hash keys. 
+
 ## Case equality
 
 `===` is used in `case` statements and often only vaguely resembles equality. `a === b` can rather be understood as: _If I have a drawer `a`, does it make sense to put `b` in?_
