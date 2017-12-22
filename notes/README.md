@@ -9,7 +9,7 @@ There's so much good stuff when working through the [Launch School](https://laun
 
 * [Los Postres](https://github.com/cunger/launch/tree/master/notes/los-postres): SQL and relational databases
 
-* [All style before content](https://github.com/cunger/launch/tree/master/notes/style-before-content): HTML and CSS
+* [All Style before Content](https://github.com/cunger/launch/tree/master/notes/style-before-content): HTML and CSS
 
 As well as some extra-curricular stuff:
 
