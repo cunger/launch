@@ -44,8 +44,7 @@ Floated elements without a specified width will take up as much space as their c
 
 ## Position
 
-* Default: `position: static;`
-Which means that an element is placed within the normal flow and doesn't accept box offset properties.
+* `position: static;` is the default and means that an element is placed within the normal flow and doesn't accept box offset properties.
 
 * `position: relative;` (together with `left`, `right`, `top`, `bottom`)
 will move the element from the original position of the element in the specified directions, while
@@ -81,4 +80,4 @@ For horizontal alignment of elements, changing them to `inline-block`s is usuall
 The `overflow` property specifies what happens when an element has a fixed size and the content doesn't fit into it.
 * `visible` (the default) renders the content, which then flows outside of the box (but without affecting other elements)
 * `hidden` hides any content that extends beyond the box (and self-clears all floats in the element)
-* `scroll` and `auto` make the overflowing content accessible via scrollbars, where `auto` shows them only when they are necessary, while `scroll` always shows them. independent of whether they are needed
+* `scroll` and `auto` make the overflowing content accessible via scrollbars, where `auto` shows them only when they are necessary, while `scroll` always shows them (independent of whether they are needed).

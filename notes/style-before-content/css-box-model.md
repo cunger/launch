@@ -69,7 +69,7 @@ And `border-radius` for rounding the corners of an element, where `border-radius
 
 See MDN's full list of [block elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements#Elements) (plus `body`) and [inline elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Inline_elements#Elements). Note that `img` is `inline`, and that `input` and `textarea` are `inline` in some browsers and `inline-block` in others.
 
-This is determined by the element's `display` property. Each element has a default `display` property that can be override. Most common values:
+This is determined by the element's `display` property. Each element has a default `display` property that can be overridden. Most common values:
 * `block` (accepting all box model properties, like padding and margins)
 * `inline`
 * `inline-block` (are positioned like inline elements, but otherwise behave like block elements),
@@ -77,5 +77,3 @@ This is determined by the element's `display` property. Each element has a defau
 * `flex` and `grid`
 
 The default vertical alignment of inline elements (`inline` and `inline-block`) is `vertical-align: baseline;`, other values are `middle` and `top`.
-
-## Box positioning
