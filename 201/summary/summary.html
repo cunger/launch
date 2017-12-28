@@ -38,23 +38,119 @@
           </p>
 
           <div class="example-border example-margin">
-            <a href="#">Home</a>
-            <a href="#">Portfolio</a>
-            <a href="#">Contact</a>
+            <a href="#">margin: 30px;</a>
+            <a href="#">margin: 30px;</a>
+            <a href="#">margin: 30px;</a>
           </div>
 
           <p>
             In the example I put a margin of 30px on all sides<span class="change">. A</span>s you can see if you check the anchor tag in the developer tools<span class="change">:</span> only the left and right side of the contents are affected by the margin.
           </p>
 
+          <h3>What about padding?</h3>
+
+          <p>
+            Inline elements accept padding values on all sides. <span class="change">But the top and bottom padding will spill into surrounding elements.</span>
+          </p>
+
+          <div class="example-border example-padding">
+            <a href="#">pading: 30px;</a>
+            <a href="#">pading: 30px;</a>
+            <a href="#">pading: 30px;</a>
+          </div>
+
+          <h3>Floating inline elements</h3>
+
+          <p>
+            Floating inline elements will change its display value to a block level element and <span class="change">thus are</span> subject to all block level characteristics. Which means <span class="change">they</span> can take margin and padding values, <span class="change">as well as</span> height and width values.
+          </p>
+
+          <div class="example-border example-inline-float">
+            <a href="#">float: left;</a>
+            <a href="#">float: left;</a>
+            <a href="#">float: left;</a>
+          </div>
+
         </section>
 
         <section>
           <h2>Block elements</h2>
+
+          <p>
+            Block level elements take up the entire width of the page and always start <span class="change">on</span> a new line.<span class="change"> They</span> can have margin<span class="change">s</span> and padding<span class="change">s</span>. If no width is set<span class="change">, they</span> will expand naturally to fill <span class="change">their</span> parent container. If no height is set, <span class="change">they</span> will expand to fit <span class="change">their</span> content.
+          </p>
+
+          <h3>Example</h3>
+
+          <p class="reminder">
+            (Note that div elements are naturally block level elements.)
+          </p>
+
+          <div class="example nothing">
+            This is a div with no width and height set.
+          </div>
+
+          <div class="example something">
+            This a div with no width but with a height of 60px, with a padding and margin of 20px around it.
+          </div>
+
+          <div class="example something-else">
+            This a div with a width of 90px and no height set.
+          </div>
+
+          <p>
+          In the first example, the div fills the entire width, and uses just enough height to fill its content. In the second box, we didn't set a width, but it still filled the entire width (counting the padding and margin); it also uses 60px of height plus the margin and padding. For the third box, we set the width to 90px, and as expected, it took just enough height to fill its content. The text was squished because of the reduced width, so the browser expanded the height to accommodate the content.
+          </p>
+
+          <h3>Floating block elements</h3>
+
+          <p>
+          Floating block elements with no width and height set <span class="change">are</span> shrunk to the widest element within each div, in <span class="change">the following example</span> the texts inside.
+          </p>
+
+          <div class="example-inline-float">
+            <div class="example float-left">float: left;</div>
+            <div class="example float-right">float: right;</div>
+          </div>
+
+          <p>
+            Since div elements are block elements, we can specify width and height, as in the following example.
+          </p>
+
+          <div class="example-inline-float">
+            <div class="example float-left bigger">float: left;</div>
+            <div class="example float-right bigger">float: right;</div>
+          </div>
+
+          <h3>Can we change an inline element into a block element?</h3>
+
+          <p>
+            Yes, we can change display values from a block element to inline element and vice versa<span class="change"> by overriding the display value</span>. <span class="change">In the following example, anchors are changed to block elements.</span>
+          </p>
+
+          <div class="example-border example-block">
+            <a href="#">display: block;</a>
+            <a href="#">display: block;</a>
+            <a href="#">display: block;</a>
+          </div>
+
         </section>
 
         <section>
           <h2>Inline-block elements</h2>
+
+          <p>
+            Inline-block elements are inline elements that can take block elements properties, such as width and height. <span class="change">They act</span> similarly to <span class="change">floated elements</span>.
+          </p>
+
+          <h3>Example</h3>
+
+           <div class="example-border example-inline-block">
+            <a href="#">display: inline-block;</a>
+            <a href="#">display: inline-block;</a>
+            <a href="#">display: inline-block;</a>
+          </div>
+
         </section>
       </section>
 
@@ -65,7 +161,7 @@
           <h2>Floats</h2>
         </section>
 
-        <section> 
+        <section>
           <h2>Position</h2>
         </section>
       </section>

@@ -1,4 +1,4 @@
-# Box model 
+# Box model
 
 > Every element in web design is a rectangular box.
 
@@ -20,6 +20,22 @@ div {
   margin: 10px;           /* same value for all four sides */
   margin: 10px 5px;       /* top + bottom, left + right */
   margin: 10px 5px 0 6px; /* top, right, bottom, left */
+}
+```
+
+If `height` is specified as percentage, it is interpreted w.r.t. its containing element. If the height of the containing element cannot be calculated, the `height` property of its child is reset to `auto` (usually meaning the height that the content requires). Example:
+```css
+/* Without height on body and html, height of div cannot be calculated. */
+body,
+html {
+  height: 100%;
+  /* Without a reset of padding and margin to 0,
+     the final height will be greater than the height of the viewport. */
+}
+
+div {
+  border: 1px solid black;
+  height: 100%;
 }
 ```
 

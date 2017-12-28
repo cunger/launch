@@ -16,6 +16,7 @@ HTML and CSS cheat sheets for my future self
 
 * [CSS](hash.md)
 * [CSS box model](css-box-model.md)
+* [CSS floats](css-float.md)
 * [CSS positioning](css-positioning.md)
 * [CSS cookbook](css-cookbook.md)
 

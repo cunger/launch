@@ -22,22 +22,78 @@ h1 {
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #999;
+  box-sizing: border-box;
 }
 
 .example-border {
-  width: 650px;
-  margin: 20px 0;
-  padding: 10px;
+  width: 600px;
   border: 1px dashed #000;
+}
+
+.example-border a {
+  background: rgba(191, 191, 191, 0.4);
 }
 
 .example-margin a {
   margin: 30px;
 }
 
-.change {
-  background: #ffd800;
+.example-padding a {
+  padding: 30px;
 }
-.add {
+
+.example-inline-float a {
+  float: left;
+  width: 70px;
+  height: 40px;
+  margin-right: 4px;
+}
+.example-inline-float {
+  overflow: hidden;
+}
+
+.example-block a {
+  display: block;
+  margin: 2px 0;
+}
+
+.example-inline-block a {
+  display: inline-block;
+  width: 160px;
+  height: 20px;
+  margin: 10px;
+}
+
+div.example {
+  background: #b1d1e2;
+}
+
+div.something {
+  height: 60px;
+  padding: 20px;
+  margin: 20px;
+}
+
+div.something-else {
+  width: 90px;
+}
+
+.float-left {
+  float: left;
+}
+.float-right {
+  float: right;
+}
+
+.bigger {
+  width: 200px;
+  height: 60px;
+}
+
+.reminder {
+  font-style: italic;
+}
+
+.change {
   background: #ffd800;
 }
