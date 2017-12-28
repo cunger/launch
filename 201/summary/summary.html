@@ -38,9 +38,9 @@
           </p>
 
           <div class="example-border example-margin">
-            <a href="#">margin: 30px;</a>
-            <a href="#">margin: 30px;</a>
-            <a href="#">margin: 30px;</a>
+            <a href="#"><span class="code">margin: 30px;</span></a>
+            <a href="#"><span class="code">margin: 30px;</span></a>
+            <a href="#"><span class="code">margin: 30px;</span></a>
           </div>
 
           <p>
@@ -54,21 +54,21 @@
           </p>
 
           <div class="example-border example-padding">
-            <a href="#">pading: 30px;</a>
-            <a href="#">pading: 30px;</a>
-            <a href="#">pading: 30px;</a>
+            <a href="#"><span class="code">padding: 30px;</span></a>
+            <a href="#"><span class="code">padding: 30px;</span></a>
+            <a href="#"><span class="code">padding: 30px;</span></a>
           </div>
 
           <h3>Floating inline elements</h3>
 
           <p>
-            Floating inline elements will change its display value to a block level element and <span class="change">thus are</span> subject to all block level characteristics. Which means <span class="change">they</span> can take margin and padding values, <span class="change">as well as</span> height and width values.
+            Floating inline elements will change its display value to a block<span class="change">-</span>level element and <span class="change">thus are</span> subject to all block<span class="change">-</span>level characteristics. Which means <span class="change">they</span> can take margin and padding values, <span class="change">as well as</span> height and width values.
           </p>
 
-          <div class="example-border example-inline-float">
-            <a href="#">float: left;</a>
-            <a href="#">float: left;</a>
-            <a href="#">float: left;</a>
+          <div class="example-border example-float">
+            <a href="#"><span class="code">float: left;</span></a>
+            <a href="#"><span class="code">float: left;</span></a>
+            <a href="#"><span class="code">float: left;</span></a>
           </div>
 
         </section>
@@ -77,13 +77,13 @@
           <h2>Block elements</h2>
 
           <p>
-            Block level elements take up the entire width of the page and always start <span class="change">on</span> a new line.<span class="change"> They</span> can have margin<span class="change">s</span> and padding<span class="change">s</span>. If no width is set<span class="change">, they</span> will expand naturally to fill <span class="change">their</span> parent container. If no height is set, <span class="change">they</span> will expand to fit <span class="change">their</span> content.
+            Block<span class="change">-</span>level elements take up the entire width of the page and always start <span class="change">on</span> a new line.<span class="change"> They</span> can have margin<span class="change">s</span> and padding<span class="change">s</span>. If no width is set<span class="change">, they</span> will expand naturally to fill <span class="change">their</span> parent container. If no height is set, <span class="change">they</span> will expand to fit <span class="change">their</span> content.
           </p>
 
           <h3>Example</h3>
 
           <p class="reminder">
-            (Note that div elements are naturally block level elements.)
+            (Note that div elements are naturally block<span class="change">-</span>level elements.)
           </p>
 
           <div class="example nothing">
@@ -108,18 +108,18 @@
           Floating block elements with no width and height set <span class="change">are</span> shrunk to the widest element within each div, in <span class="change">the following example</span> the texts inside.
           </p>
 
-          <div class="example-inline-float">
-            <div class="example float-left">float: left;</div>
-            <div class="example float-right">float: right;</div>
+          <div class="example-float">
+            <div class="example float-left"><span class="code">float: left;</span></div>
+            <div class="example float-right"><span class="code">float: right;</span></div>
           </div>
 
           <p>
             Since div elements are block elements, we can specify width and height, as in the following example.
           </p>
 
-          <div class="example-inline-float">
-            <div class="example float-left bigger">float: left;</div>
-            <div class="example float-right bigger">float: right;</div>
+          <div class="example-float wrapper">
+            <div class="example float-left big"><span class="code">float: left;</span></div>
+            <div class="example float-right big"><span class="code">float: right;</span></div>
           </div>
 
           <h3>Can we change an inline element into a block element?</h3>
@@ -129,11 +129,10 @@
           </p>
 
           <div class="example-border example-block">
-            <a href="#">display: block;</a>
-            <a href="#">display: block;</a>
-            <a href="#">display: block;</a>
+            <a href="#"><span class="code">display: block;</span></a>
+            <a href="#"><span class="code">display: block;</span></a>
+            <a href="#"><span class="code">display: block;</span></a>
           </div>
-
         </section>
 
         <section>
@@ -146,11 +145,10 @@
           <h3>Example</h3>
 
            <div class="example-border example-inline-block">
-            <a href="#">display: inline-block;</a>
-            <a href="#">display: inline-block;</a>
-            <a href="#">display: inline-block;</a>
+             <a href="#"><span class="code">display: inline-block;</span></a>
+             <a href="#"><span class="code">display: inline-block;</span></a>
+             <a href="#"><span class="code">display: inline-block;</span></a>
           </div>
-
         </section>
       </section>
 
@@ -159,10 +157,116 @@
 
         <section>
           <h2>Floats</h2>
+
+          <p>
+            A floated element is taken out of the normal flow <span class="change">and</span> then shifted left or right.<span class="change"> </span>When you float<span class="change"> </span>an element<span class="change">,</span> it becomes a block-level element. <span class="change">In order to return to the normal flow, a subsequent element needs to clear the float.</span>
+          </p>
+
+          <h3>Example</h3>
+
+          <div class="example-float">
+            <div class="example float-left big"><span class="code">float: left;</span></div>
+            <div class="example float-right big"><span class="code">float: right;</span></div>
+            <br />
+            <div class="example clear bigger"><span class="code">clear: both;</span></div>
+          </div>
+
+          <p>
+            <span class="change">One alternative way to clear floats is by means of a clearfix (also see the <a href="http://nicolasgallagher.com/micro-clearfix-hack/">micro clearfix</a> by Nicholas Gallagher):</span>
+          </p>
+
+          <pre>
+            elementName::after {
+              content: " ";
+              display:block;
+              clear: both;
+            }
+          </pre>
         </section>
 
         <section>
           <h2>Position</h2>
+
+          <p>
+            Every now and then we want to position things the way we want it to be and move it around the page, and floats simply cannot do this as it can only take an element to position left or right of the page. This is where positioning comes in. There are four types of <span class="change">positioning</span>:
+          </p>
+
+          <ul>
+            <li>static</li>
+            <li>fixed</li>
+            <li>relative</li>
+            <li>absolute</li>
+          </ul>
+
+          <section>
+            <h3>Static position</h3>
+
+            <p>
+              The element renders normally on the page - this is the default position of elements on the page.
+            </p>
+          </section>
+
+          <section>
+            <h3>Fixed position</h3>
+
+            <p>
+              This will allow you to put an element in <span class="change">a specific</span> place <span class="change">and keep it there,</span> even when the page is scrolled. <span class="change">The accompanying properties</span> <span class="code">top</span>, <span class="code">right</span>, <span class="code">bottom</span> and <span class="code">left</span> are used to <span class="change">specify the distance of the element to the sides of the viewport</span>.
+            </p>
+
+            <p>
+              Fixed positioned elements are taken out of the flow and <span class="change">do</span> not leave a gap in the location of the page where you originally put it.
+            </p>
+
+            <p>
+              Notice the blue box on the bottom left side of the page. It is a fixed position element.
+            </p>
+
+            <div class="example fixed">
+              <span class="code">position: fixed;</span>
+            </div>
+          </section>
+
+          <section>
+            <h3>Relative position</h3>
+
+            <p>
+              Positioned relative to its normal position. Setting the offset values will cause the element to move away from its normal position according to the values you've set. However, its position in the normal flow of the document will be preserved and following texts will not wrap around it.
+            </p>
+
+            <p>
+              <span class="change">All other elements treat the relatively positioned one as if it were in its non-offset position. So</span> when we position an element with offset values<span class="change">,</span> it <span class="change">might overlap with other elements, while its original position stays empty.</span>
+            </p>
+
+            <div class="example relative">
+              <span class="code">position: relative;</span>
+            </div>
+
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non cumque repellat sapiente vitae nihil debitis accusamus, odit, tempore id reiciendis consequatur necessitatibus veritatis, distinctio vel, cum repellendus numquam blanditiis perferendis?
+            </p>
+          </section>
+
+          <section id="section-absolute-position">
+            <h3>Absolute position</h3>
+
+            <p>
+              When the element is positioned absolute it is taken out of the normal flow and the original space of that element in the document will not be preserved.
+            </p>
+
+            <p>
+              Absolutely positioned elements are moved in relation to their closest relatively positioned parent element. Should a relatively positioned parent element not exist, the absolutely positioned element will be positioned in relation to the <span class="code">&lt;body&gt;</span> element.
+            </p>
+
+            <p>
+              Let's <span class="change">look at an example</span>:
+              I will set the position of the section title with id <span class="code">section-absolute-position</span> to <span class="code">position: relative;</span> so that the absolutely positioned element will be basing its offset values on the whole section element.
+            Now notice the box beside left to this section, it is an absolutely positioned element.
+            </p>
+
+            <div class="example absolute">
+              <span class="code">position: absolute;</span>
+            </div>
+          </section>
         </section>
       </section>
     </div>

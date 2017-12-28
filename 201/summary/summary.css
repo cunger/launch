@@ -26,7 +26,7 @@ h1 {
 }
 
 .example-border {
-  width: 600px;
+  width: 740px;
   border: 1px dashed #000;
 }
 
@@ -42,13 +42,13 @@ h1 {
   padding: 30px;
 }
 
-.example-inline-float a {
+.example-float a {
   float: left;
-  width: 70px;
+  width: 120px;
   height: 40px;
   margin-right: 4px;
 }
-.example-inline-float {
+.example-float {
   overflow: hidden;
 }
 
@@ -59,7 +59,7 @@ h1 {
 
 .example-inline-block a {
   display: inline-block;
-  width: 160px;
+  width: 220px;
   height: 20px;
   margin: 10px;
 }
@@ -84,10 +84,40 @@ div.something-else {
 .float-right {
   float: right;
 }
+.clear {
+  clear: both;
+}
 
-.bigger {
+.fixed {
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+  padding: 20px;
+}
+.relative {
+  position: relative;
+  right: 90px;
+  bottom: -45px;
+}
+.absolute {
+  position: absolute;
+  bottom: 60px;
+  left: -220px;
+}
+
+#section-absolute-position {
+  position: relative;
+}
+
+.big {
   width: 200px;
   height: 60px;
+  border: 1px solid #fff;
+}
+.bigger {
+  width: 100%;
+  height: 60px;
+  border: 1px solid #fff;
 }
 
 .reminder {
@@ -96,4 +126,8 @@ div.something-else {
 
 .change {
   background: #ffd800;
+}
+
+.code {
+  font-family: monospace;
 }
