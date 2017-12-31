@@ -4,14 +4,15 @@ For floats, see [CSS floats](css-float.md).
 
 ## Position
 
-* `position: static;` is the default and means that an element is placed within the normal flow and doesn't accept box offset properties.
+* `position: static;` is the default and means that an element is placed within the normal flow and doesn't accept box offset properties. All elements with a value different from `static` are said to be _positioned_, while a static element is not positioned.
 
 * `position: relative;` (together with `left`, `right`, `top`, `bottom`)
 will move the element from the original position of the element in the specified directions, while
     * preserving the space the element would have originally taken (so other elements cannot move into that space)
     * not adjusting the position of other elements - as far as the other elements are concerned, an element with a relative position is in its non-offset position  
+  Without any of the properties `left`, `right`, `top`, `bottom`, a relatively positioned element is placed exactly like a static one.
 
-* `position: absolute;` positions an element according to the specified box offsets relative to its closest relatively positioned parent element (or `body` if there is none). It removes the element from the normal flow, so you can put it anywhere, and it won't affect or be affected by any other elements in the flow. In particular:
+* `position: absolute;` positions an element according to the specified box offsets relative to its closest positioned ancestor element (or `body` if there is none). It removes the element from the normal flow, so you can put it anywhere, and it won't affect or be affected by any other elements in the flow. In particular:
     * its original position and space are not preserved
     * other elements are not affected, so the positioned element might overlap them
 

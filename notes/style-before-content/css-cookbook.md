@@ -31,64 +31,44 @@
 
 * Also, add comments, especially for dividing the CSS file into sections that help navigate through the document.
 
+# ...
+
+## Backgrounds
+
+Not all browsers support `rgba` colors (e.g. IE8), so provide a safe fallback as well.
+```css
+div {
+  background: #b2b2b2;
+  background: rgba(0, 0, 0, .3);
+}
+```
 
 # Examples
 
-### Containing floats: Fixed width side bar next to fluid content area
-
-https://codepen.io/chru/pen/EbrNLZ
-
-```html
-<div id="columns">
-  <div id="primary">
-    Main content
-  </div>
-
-  <div id="secondary">
-    Sidebar content
-  </div>
-</div>
-
-<footer>
-  Footer
-</footer>
-```
+### Centering content horizontally
 
 ```css
-#columns {
-  margin: 0 0 0 200px;
-}
-#primary {
-  float: right;
-  width: 100%;
-}
-#secondary {
-  float: left;
-  width: 200px;
-  margin: 0 0 0 -200px;
-}
-/* Clear fix */
-#columns:after {
-  content: ".";
-  visibility: hidden;
+element {
   display: block;
-  height: 0;
+  margin: 0 auto;
+  /* usually together with max-width */
+}
+```
+
+### Containing floats (aka clearfix)
+
+```css
+.group::after {
+  content: "";
+  display: block;
   clear: both;
 }
 ```
 
-### Centering content
-
 ```css
-/* Put element in a container */
-.container {
-  text-align: center;
-}
-
-/* or set left and right margins to auto */
-element {
-  display: block;
-  margin: 0 auto;
+.group {
+  overflow: auto;
+  zoom: 1;
 }
 ```
 
