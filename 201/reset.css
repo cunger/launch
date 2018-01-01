@@ -1,5 +1,5 @@
 /*
-   CSS Reset, based on:
+   CSS reset based on:
    http://meyerweb.com/eric/tools/css/reset/
 */
 
@@ -58,4 +58,8 @@ q:before, q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+img, fieldset {
+  border: none;
 }

@@ -1,0 +1,113 @@
+@import url("reset.css");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: #d2dbbd;
+  background: linear-gradient(#d2dbbd, #fbfff5) no-repeat;
+  color: #3e606f;
+  font: normal 18px "Roboto Condensed", sans-serif;
+}
+
+/* Placing header, main and footer in center of page */
+
+header,
+main,
+footer {
+  box-sizing: border-box;
+  width: 960px;
+}
+
+header {
+  margin: 20px auto 0 auto;
+}
+main {
+  margin: 0 auto;
+}
+footer {
+  margin: 10px auto 20px auto;
+}
+
+/* Positioning logo and navigation bar */
+
+h1 {
+  background: transparent url("assets/logo.png") no-repeat;
+  padding: 45px 0 15px 115px;
+  font-size: 36px;
+  color: #193441;
+  float: left;
+}
+
+nav {
+  float: right;
+  padding-top: 75px;
+}
+
+header {
+  padding: 0 20px;
+}
+header::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* Styling the navigation bar */
+
+nav li {
+  display: inline-block;
+}
+nav a {
+  display: block;
+  padding: 10px 40px 14px 40px;
+  border-radius: 10px 10px 0 0;
+  background: #fcfff5;
+  color: #91aa9d;
+  text-decoration: none;
+}
+nav a:hover,
+nav a:active {
+  background: #91aa9d;
+  color: #fff;
+}
+
+/* Main content */
+
+main {
+  padding: 30px;
+  background: #fff;
+  box-shadow: 0 4px 4px 1px rgba(0, 0, 0, .2);
+}
+main::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.full-line {
+  width: 100%;
+}
+.floated-right {
+  float: right;
+  margin-left: 30px;
+}
+
+h2 {
+  font-size: 32px;
+  padding-top: 36px;
+  padding-bottom: 6px;
+}
+
+p {
+  margin: 20px 0;
+}
+
+/* Styling the footer */
+
+footer {
+  font-size: 14px;
+}
