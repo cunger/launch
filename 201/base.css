@@ -17,3 +17,9 @@ p {
 acronym {
   font-feature-settings: "c2sc" 1;
 }
+
+/* Form styling */
+
+input[type="text"] {
+  padding: .4em;
+}

@@ -1,0 +1,65 @@
+form,
+fieldset,
+.field {
+  margin: 10px 0;
+  border: none;
+}
+
+legend {
+  display: none;
+}
+
+label,
+input,
+select,
+textarea,
+.field ul {
+  display: inline-block;
+  padding: .2em .6em;
+}
+
+.field ul {
+  list-style: none;
+  margin-left: 20%;
+}
+.field li {
+  float: left;
+}
+
+label,
+input,
+select {
+  vertical-align: middle;
+}
+textarea {
+  vertical-align: top;
+}
+
+label {
+  width: 20%;
+  text-align: right;
+  padding-right: 1em;
+}
+
+input,
+select,
+textarea {
+  width: 70%;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input[type="submit"],
+input[type="reset"] {
+  width: auto;
+}
+
+input[type="submit"] {
+  margin-left: 20%;
+}
+
+input[type="reset"] {
+  margin-left: 10px;
+}

@@ -1,0 +1,94 @@
+body {
+  font: normal 16px Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  font-size: 28px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+
+form {
+  width: 600px;
+  margin: 0 auto;
+}
+
+fieldset {
+  background: #ececec;
+  border: 0;
+  border-left: 4px solid #ccc;
+  padding: 50px 30px 30px 30px;
+  margin-bottom: -10px;
+}
+fieldset:last-child {
+  margin-top: 12px;
+}
+
+legend {
+  font-weight: bold;
+  font-size: 20px;
+  color: #000;
+  position: relative;
+  top: 30px;
+}
+
+label {
+  font-weight: bold;
+  color: #666;
+  display: inline-block;
+  margin-bottom: .6em;
+}
+
+.terms {
+  font-weight: normal;
+  display: inline-block;
+  width: 90%;
+  vertical-align: top;
+}
+
+input,
+textarea {
+  border: 1px solid #0861ce;
+  border-radius: 4px;
+  padding: .8em;
+  width: 100%;
+}
+
+input[type="checkbox"] {
+  width: 10px;
+}
+
+input[type="submit"] {
+  background: #0861ce;
+  color: #fff;
+  font-weight: bold;
+  display: block;
+  width: auto;
+  padding: .8em 1.6em;
+  margin-top: 20px;
+}
+input[type="submit"]:focus,
+input[type="submit"]:hover {
+  background: #ccc;
+}
+
+.field {
+  display: inline-block;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.w-2 {
+  width: 50%;
+}
+.w-3 {
+  width: 33.3%;
+}
+.w-2,
+.w-3 {
+  padding-right: 10px;
+}
+.w-2:last-child,
+.w-3:last-child {
+  padding-right: 0;
+}

@@ -1,0 +1,15 @@
+input,
+select {
+  display: block;
+  margin-top: .4em;
+  margin-bottom: 1em;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  display: inline;
+}
+
+form ul {
+  list-style-type: none;
+}

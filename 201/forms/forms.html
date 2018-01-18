@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Advanced Form Layout</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="forms.css" />
+  </head>
+
+  <body>
+    <form action="#" method="post">
+      <h1>Create Your Profile</h1>
+
+      <fieldset>
+        <legend>Personal Info</legend>
+
+        <div class="field">
+          <label for="first-name">Your Name</label>
+          <br>
+          <div class="field w-2">
+            <input type="text" name="first-name" id="first-name" placeholder="First">
+          </div><!--
+       --><div class="field w-2">
+            <input type="text" name="last-name" id="last-name" placeholder="Last">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email">
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Social Media Accounts</legend>
+
+        <div class="field w-3">
+          <label for="facebook">Facebook</label>
+          <input type="text" name="facebook" id="facebook">
+        </div><!--
+
+     --><div class="field w-3">
+          <label for="twitter">Twitter</label>
+          <input type="text" name="twitter" id="twitter">
+        </div><!--
+
+     --><div class="field w-3">
+          <label for="linkedin">LinkedIn</label>
+          <input type="text" name="linkedin" id="linkedin">
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Account Info</legend>
+
+        <div class="field">
+          <label for="profile-name">Profile Name</label>
+          <input type="text" name="profile-name" id="profile-name">
+        </div><!--
+
+      --><div class="field w-2">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password">
+        </div><!--
+
+     --><div class="field w-2">
+          <label for="confirm-password">Confirm Password</label>
+          <input type="password" name="confirm-password" id="confirm-password">
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Bio</legend>
+
+        <textarea rows=6 name="bio" id="bio"></textarea>
+      </fieldset>
+
+      <fieldset>
+        <label>
+          <input type="checkbox">
+          <span class="terms">I agree to treat other users with respect, and will not say anything
+          at all if I have nothing nice to say.</span>
+        </label>
+
+        <input type="submit" value="Create Account">
+      </fieldset>
+    </form>
+  </body>
+</html>

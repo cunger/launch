@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Forms</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="forms.css" />
+  </head>
+
+  <body>
+
+  <section>
+    <h1>1 - 2</h1>
+
+    <form action="#" method="post" novalidate>
+      <fieldset>
+        <legend>Contact</legend>
+
+        <label for="firstname">First name</label>
+        <input type="text" name="firstname" id="firstname">
+
+        <label for="lastname">Last name</label>
+        <input type="text" name="lastname" id="lastname">
+
+        <label for="email">Email address</label>
+        <input type="email" name="email" id="email">
+
+        <label for="phone">Phone number</label>
+        <input type="tel" name="phone" id="phone">
+        <select name="phone-type" id="phone-type">
+          <option value="home" selected>Home</option>
+          <option value="business">Business</option>
+          <option value="mobile">Mobile</option>
+        </select>
+
+        <input type="submit" value="Send">
+      </fieldset>
+    </form>
+  </section>
+
+  <section>
+    <h1>3</h1>
+
+    <form action="#" method="get">
+      <fieldset>
+        <legend>Filter news articles</legend>
+
+        <fieldset>
+          <legend>Category</legend>
+
+          <ul>
+            <li><input type="radio" name="category" value="core"> Core</li>
+            <li><input type="radio" name="category" value="plugins"> Plugins and Libraries</li>
+            <li><input type="radio" name="category" value="conventions"> Conventions</li>
+            <li><input type="radio" name="category" value="reviews"> Reviews</li>
+            <li><input type="radio" name="category" value="opinion"> Opinion</li>
+            <li><input type="radio" name="category" value="people"> People</li>
+          </ul>
+        </fieldset>
+
+        <fieldset>
+          <legend>Tags</legend>
+
+          <ul>
+            <li><input type="checkbox" name="tag" value="html"> HTML</li>
+            <li><input type="checkbox" name="tag" value="css"> CSS</li>
+            <li><input type="checkbox" name="tag" value="js"> Javascript</li>
+            <li><input type="checkbox" name="tag" value="ruby"> Ruby</li>
+            <li><input type="checkbox" name="tag" value="rails"> Rails</li>
+            <li><input type="checkbox" name="tag" value="python"> Python</li>
+            <li><input type="checkbox" name="tag" value="django"> Django</li>
+          </ul>
+        </fieldset>
+
+        <input type="submit" value="Apply filter">
+      </fieldset>
+    </form>
+  </section>
+
+  <section>
+    <h1>4 - 6</h1>
+
+    <form action="#" method="get">
+      <fieldset>
+        <legend>Filter news articles</legend>
+
+          <label for="category">Category</label>
+
+          <select name="category" id="category">
+            <option value="core"> Core</option>
+            <option value="plugins"> Plugins and Libraries</option>
+            <option value="conventions"> Conventions</option>
+            <option value="reviews"> Reviews</option>
+            <option value="opinion"> Opinion</option>
+            <option value="people"> People</option>
+          </select>
+
+          <label for="tag">Tags</label>
+
+          <select name="tag" id="tag" multiple>
+            <option value="html"> HTML</option>
+            <option value="css"> CSS</option>
+            <option value="js"> Javascript</option>
+            <option value="ruby"> Ruby</option>
+            <option value="rails"> Rails</option>
+            <option value="python"> Python</option>
+            <option value="django"> Django</option>
+          </select>
+
+        <input type="submit" value="Apply filter">
+
+        <input type="reset" value="Reset">
+      </fieldset>
+    </form>
+  </section>
+  </body>
+</html>

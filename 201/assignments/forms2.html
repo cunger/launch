@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Forms</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="base.css" />
+    <link rel="stylesheet" href="forms2.css" />
+  </head>
+
+  <body>
+    <form action="#" method="post">
+
+      <fieldset>
+        <legend>Name</legend>
+
+        <div class="field">
+          <label for="first-name">First name</label>
+          <input type="text" name="first-name" id="first-name" placeholder="Clark">
+        </div>
+
+        <div class="field">
+          <label for="last-name">Last name</label>
+          <input type="text" name="last-name" id="last-name" placeholder="Kent">
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Contact</legend>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" placeholder="superman@krypton.com" required>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Address</legend>
+
+        <div class="field">
+          <label for="street">Street</label>
+          <input type="text" name="street" id="street" placeholder="Lois Lane 23">
+        </div>
+
+        <div class="field">
+          <label for="city">City</label>
+          <input type="text" name="city" id="city" placeholder="Metropolis">
+        </div>
+
+        <div class="field">
+          <label for="zipcode">Zipcode</label>
+          <input type="number" name="zipcode" id="zipcode" placeholder="12345">
+        </div>
+
+        <div class="field">
+          <label for="country">Country</label>
+          <select name="country" id="country">
+            <option>Czech Republic</option>
+            <option>Germany</option>
+            <option selected>Ireland</option>
+            <option>The Netherlands</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Message</legend>
+
+        <div class="field">
+          <ul>
+            <li><label><input type="radio" name="topic" value="praise"> Praise</label></li>
+            <li><label><input type="radio" name="topic" value="complaint"> Complaint</label></li>
+            <li><label><input type="radio" name="topic" value="question"> Question</label></li>
+            <li><label><input type="radio" name="topic" value="other"> Other</label></li>
+          </ul>
+        </div>
+
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea rows="10" name="message" id="message" required></textarea>
+        </div>
+      </fieldset>
+
+      <input type="hidden" name="date" value="2018-01-01">
+      <input type="submit" value="Send">
+      <input type="reset"  value="Reset">
+    </form>
+  </body>
+</html>
