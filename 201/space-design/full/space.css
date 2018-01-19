@@ -1,0 +1,107 @@
+@import url('reset.css');
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+body {
+  font-size: 20px;
+  font-family: 'Nunito', sans-serif;
+  color: #45494d;
+  text-align: center;
+}
+
+/* Header with logo and nav bar */
+
+header {
+  background: transparent url("images/bg_body.gif") 306px 0 repeat;
+  height: 510px;
+  padding-top: 75px;
+}
+
+header nav {
+  margin-top: 96px;
+}
+
+header li {
+  display: inline-block;
+  margin-right: 90px;
+}
+header li:last-child {
+  margin-right: 0;
+}
+
+header a {
+  color: #cacaca;
+  font-size: 24px;
+  text-decoration: none;
+}
+header a:hover,
+header a.active {
+  color: #6db9ff;
+  font-weight: bold;
+}
+
+/* Footer with Social Media links */
+
+footer {
+  background: #e7e7e7;
+  color: #b2b2b2;
+  height: 290px;
+  padding: 80px 400px;
+}
+
+footer ul {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+footer li {
+  display: inline-block;
+  margin-right: 124px;
+}
+footer li:last-child {
+  margin-right: 0;
+}
+
+footer div {
+  width: 46px;
+  height: 46px;
+  background: transparent url("images/icons_social-media.png") 0 0 no-repeat;
+}
+
+footer div.facebook {
+  background-position: 0 -46px;
+}
+footer div.email {
+  background-position: 0 -92px;
+}
+footer div.instagram {
+  background-position: 0 -138px;
+}
+
+/* Main */
+
+main {
+  padding: 0 300px;
+  padding-bottom: 80px;
+}
+
+h1,
+h2 {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 36px;
+  margin-top: 90px;
+  margin-bottom: 30px;
+}
+
+h1::before,
+h1::after {
+  content: "·";
+  padding: 0 20px;
+}
+
+h2 {
+  color: #3e59b2;
+  font-size: 26px;
+  margin-bottom: 20px;
+}
