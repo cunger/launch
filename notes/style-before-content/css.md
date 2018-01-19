@@ -138,8 +138,8 @@ Default is `auto` that "determines an appropriate length based on the content an
 -- [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/pseudo-classes)
 
 Examples:
-* `a:hover`, `a:visited`
-* `input:disabled`, `input:checked`
+* `a:hover`, `a:active`, `a:visited`
+* `input:focuse`, `input:disabled`, `input:checked`
 * `li:first-child`, `li:last-child` (selecting the `li` element that is the first/last child)
 * `bento:first-of-type`, `bento:last-of-type`
 * `bento:empty`

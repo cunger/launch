@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>Adding Pseudo Elements</title>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        margin: 0;
+        font: normal 18px Helvetica, Arial, sans-serif;
+        color: #333333;
+      }
+      h1 {
+        margin-top: 0;
+        font-size: 24px;
+      }
+      h2 {
+        margin-top: 0;
+        font-size: 20px;
+      }
+      ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+
+      #column {
+        margin: 0 140px 0 160px;
+      }
+
+      header {
+        float: left;
+        width: 160px;
+        height: 100vh;
+        padding: 15px;
+        margin-left: -160px;
+        font-size: 14px;
+        background: #2c3e50;
+        box-sizing: border-box;
+      }
+      header a {
+        text-decoration: none;
+        color: #ecf0f1;
+      }
+      header li {
+        padding-bottom: 15px;
+      }
+
+      main {
+        float: left;
+        width: 100%;
+        padding: 25px;
+        box-sizing: border-box;
+      }
+
+      footer {
+        float: right;
+        width: 140px;
+        height: 100vh;
+        padding: 15px;
+        margin-right: -140px;
+        font-size: 12px;
+        background: #e74c3c;
+        box-sizing: border-box;
+      }
+      footer li {
+        padding-bottom: 10px;
+      }
+      footer a {
+        display: block;
+        padding: 5px;
+        text-decoration: none;
+        color: #2980b9;
+        background: #ffffff;
+      }
+
+      nav a::before {
+        content: "";
+        width: 27px;
+        margin-right: 5px;
+        display: inline-block;
+        vertical-align: middle;
+        background: transparent url("icons_nav.png") 0 0 no-repeat;
+      }
+      .home::before {
+        height: 26px;
+      }
+      .photos::before {
+        background-position: 0 -26px;
+        height: 20px;
+      }
+      .contact::before {
+        background-position: 0 -46px;
+        height: 17px;
+      }
+      .home:hover::before {
+        background-position: -27px 0;
+      }
+      .photos:hover::before {
+        background-position: -27px -26px;
+      }
+      .contact:hover::before {
+        background-position: -27px -46px;
+      }
+
+      footer a::before {
+        content: "";
+        width: 24px;
+        height: 24px;
+        margin-right: 5px;
+        display: inline-block;
+        vertical-align: middle;
+        background: transparent url("icons_social.png") 0 0 no-repeat;
+        background-size: 24px;
+      }
+      footer a:hover::before {
+        background-color: #00bf8f;
+      }
+      .facebook::before {
+        background-position: 0 -24px;
+      }
+      .instagram::before {
+        background-position: 0 -48px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="column">
+      <header>
+        <h1><a href="">My Blog</a></h1>
+        <nav>
+          <ul>
+            <li><a href="" class="home">Home</a></li>
+            <li><a href="" class="photos">My Photos</a></li>
+            <li><a href="" class="contact">Contact Me</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <h2>Welcome!</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tincidunt, turpis tristique aliquet sollicitudin, ipsum orci tempus sem, nec semper ipsum odio eget lacus. In hac habitasse platea dictumst. Vivamus hendrerit leo a nunc convallis gravida. Nunc lobortis tincidunt massa, id pulvinar ante blandit a. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc in vulputate nibh, vel aliquet arcu. Cras sed ipsum mauris. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed turpis urna, lacinia ut tincidunt at, venenatis a ex. Etiam velit felis, eleifend id lobortis vitae, finibus id sapien. Nullam suscipit consectetur metus, vitae tristique leo lacinia ac. Curabitur varius urna malesuada, condimentum erat non, cursus dolor. Pellentesque nibh libero, gravida id ante ut, feugiat imperdiet est.</p>
+        <p>Nam eu lacus lacinia, imperdiet odio sed, pretium magna. Suspendisse et rutrum magna. Quisque semper, velit eu posuere bibendum, leo metus viverra ligula, ac rutrum neque neque in diam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur venenatis sollicitudin vulputate. Vestibulum congue cursus lacus, at fringilla ex rutrum in. Donec sapien risus, pharetra id odio quis, dignissim sodales nisl. Sed elementum venenatis tortor id porta. Nunc ex orci, dignissim sit amet dui at, rhoncus pharetra lorem. Suspendisse venenatis pharetra lectus vitae pharetra. Ut tempor justo vitae quam gravida, in tempus elit laoreet. Fusce ac ante ac metus vestibulum maximus eu nec turpis. Ut sed feugiat ante.</p>
+      </main>
+
+      <footer>
+        <ul>
+          <li><a href="" class="twitter">Twitter</a></li>
+          <li><a href="" class="facebook">Facebook</a></li>
+          <li><a href="" class="instagram">Instagram</a></li>
+        </ul>
+      </footer>
+    </div>
+  </body>
+</html>
