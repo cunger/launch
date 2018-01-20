@@ -2,20 +2,18 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 body {
+  background-color: #fff;
+  color: #45494d;
   font-size: 20px;
   font-family: 'Nunito', sans-serif;
-  color: #45494d;
   text-align: center;
-}
-
-li {
-  display: inline-block;
 }
 
 /* Header with logo and nav bar */
 
 header {
   background: #2f2840 url("images/bg_body.gif") 50% 0 repeat;
+  color: #cacaca;
   height: 510px;
 }
 
@@ -30,7 +28,6 @@ nav li {
 }
 
 nav a {
-  color: #cacaca;
   font-size: 24px;
   text-decoration: none;
   text-transform: uppercase;
@@ -43,47 +40,20 @@ nav a.active {
   font-weight: bold;
 }
 
-/* Footer with Social Media links */
-
-footer {
-  background: #e7e7e7;
-  color: #b2b2b2;
-  height: 286px;
-  padding: 40px 400px 0 400px;
-}
-
-footer li {
-  display: inline-block;
-  margin-right: 124px;
-}
-footer li:last-child {
-  margin-right: 0;
-}
-
-footer div {
-  width: 46px;
-  height: 46px;
-  background: transparent url("images/icons_social-media.png") 0 0 no-repeat;
-}
-
-footer div.facebook {
-  background-position: 0 -46px;
-}
-footer div.email {
-  background-position: 0 -92px;
-}
-footer div.instagram {
-  background-position: 0 -138px;
-}
-
 /* Main */
 
 main {
-  padding: 0 300px 80px 300px;
+  padding-top: 100px;
 }
 
 section {
-  margin-bottom: 80px;
+  width: 1000px;
+  padding-bottom: 100px;
+  margin: 0 auto;
+}
+
+section p {
+  padding: 0 100px;
 }
 
 h2,
@@ -93,10 +63,8 @@ h3 {
 
 h2 {
   font-size: 36px;
-  margin-top: 96px;
-  margin-bottom: 34px;
+  padding-bottom: 40px;
 }
-
 h2::before,
 h2::after {
   content: "·";
@@ -106,13 +74,64 @@ h2::after {
 h3 {
   color: #3e59b2;
   font-size: 26px;
+  padding-bottom: 20px;
+}
+
+figure {
+  padding-bottom: 50px;
+}
+
+ul.team {
+  padding-top: 60px;
+}
+ul.team li {
+  display: inline-block;
+  width: 140px;
+  margin: 25px;
+}
+ul.team img {
   margin-bottom: 20px;
 }
 
-main li {
-  width: 140px;
-  margin-right: 60px;
+a {
+  color: #3e59b2;
+  text-decoration: none;
 }
-main li:last-child {
-  margin-right: 0;
+
+/* Footer with Social Media links */
+
+footer {
+  background: #e7e7e7;
+  color: #b2b2b2;
+  padding: 80px 0;
+}
+
+footer p {
+  margin-bottom: 40px;
+}
+
+footer li {
+  display: inline-block;
+  padding: 0 62px;
+}
+
+footer a {
+  display: block;
+  width: 46px;
+  height: 46px;
+  background: transparent url("images/icons_social-media.png") 0 0 no-repeat;
+  /* Hide link text */
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+footer a.facebook {
+  background-position: 0 -46px;
+}
+footer a.email {
+  background-position: 0 -92px;
+}
+footer a.instagram {
+  background-position: 0 -138px;
 }
