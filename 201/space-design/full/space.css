@@ -8,34 +8,38 @@ body {
   text-align: center;
 }
 
+li {
+  display: inline-block;
+}
+
 /* Header with logo and nav bar */
 
 header {
-  background: transparent url("images/bg_body.gif") 306px 0 repeat;
+  background: #2f2840 url("images/bg_body.gif") 50% 0 repeat;
   height: 510px;
+}
+
+h1 {
   padding-top: 75px;
+  padding-bottom: 96px;
 }
 
-header nav {
-  margin-top: 96px;
+nav li {
+  display: inline;
+  padding: 0 46px;
 }
 
-header li {
-  display: inline-block;
-  margin-right: 90px;
-}
-header li:last-child {
-  margin-right: 0;
-}
-
-header a {
+nav a {
   color: #cacaca;
   font-size: 24px;
   text-decoration: none;
+  text-transform: uppercase;
 }
-header a:hover,
-header a.active {
+nav a:hover,
+nav a.active {
   color: #6db9ff;
+}
+nav a.active {
   font-weight: bold;
 }
 
@@ -44,14 +48,10 @@ header a.active {
 footer {
   background: #e7e7e7;
   color: #b2b2b2;
-  height: 290px;
-  padding: 80px 400px;
+  height: 286px;
+  padding: 40px 400px 0 400px;
 }
 
-footer ul {
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
 footer li {
   display: inline-block;
   margin-right: 124px;
@@ -79,29 +79,40 @@ footer div.instagram {
 /* Main */
 
 main {
-  padding: 0 300px;
-  padding-bottom: 80px;
+  padding: 0 300px 80px 300px;
 }
 
-h1,
-h2 {
+section {
+  margin-bottom: 80px;
+}
+
+h2,
+h3 {
   font-weight: bold;
 }
 
-h1 {
+h2 {
   font-size: 36px;
-  margin-top: 90px;
-  margin-bottom: 30px;
+  margin-top: 96px;
+  margin-bottom: 34px;
 }
 
-h1::before,
-h1::after {
+h2::before,
+h2::after {
   content: "·";
   padding: 0 20px;
 }
 
-h2 {
+h3 {
   color: #3e59b2;
   font-size: 26px;
   margin-bottom: 20px;
+}
+
+main li {
+  width: 140px;
+  margin-right: 60px;
+}
+main li:last-child {
+  margin-right: 0;
 }
