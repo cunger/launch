@@ -5,5 +5,6 @@
 
 ## Markup
 
-* Put logo inan `h1` if appropriate.
+* Link logo to home.
+* Put logo in an `h1` if appropriate.
 * Put `img` in a `figure` if appropriate.

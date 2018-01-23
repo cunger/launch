@@ -2,15 +2,15 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 body {
-  background-color: #fff;
-  color: #45494d;
   font-family: 'Nunito', sans-serif;
   text-align: center;
+  background-color: #fff;
+  color: #45494d;
 }
 
 img {
-  width: 100%;
   display: block;
+  width: 100%;
 }
 
 /* Header with logo and nav bar */
@@ -28,7 +28,7 @@ h1 {
 
 nav li {
   display: inline-block;
-  padding: 0 2em 3.5em 3em;
+  padding: 0 4% 3.5em 4%;
 }
 
 nav a {
@@ -45,13 +45,13 @@ nav a.active {
   font-weight: bold;
 }
 
-@media (max-width: 532px) {
+@media (max-width: 562px) {
   nav li {
     display: block;
-    padding: 0;
+    padding: 0.4em 0;
   }
   nav {
-    padding-bottom: 3em;
+    padding-bottom: 2.6em;
   }
 }
 
@@ -84,7 +84,7 @@ h2 {
 h2::before,
 h2::after {
   content: "·";
-  padding: 0 1.25em;
+  padding: 0 4%;
 }
 
 h3 {
@@ -103,6 +103,7 @@ ul.team {
 ul.team li {
   display: inline-block;
   margin: 2.5% 5%;
+  font-size: 1.3em;
 }
 ul.team img {
   margin-bottom: 1.25rem;
@@ -126,11 +127,11 @@ a {
 footer {
   background: #e7e7e7;
   color: #b2b2b2;
-  padding: 5rem 0;
+  padding: 5em 0;
 }
 
 footer p {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2.5em;
 }
 
 footer li {
