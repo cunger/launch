@@ -1,14 +1,7 @@
-* {
-  background-repeat: no-repeat;
-}
 
 /* Typographic stuff */
 
-body {
-  font-size: 16px;
-}
 p {
-  font-size: 1em;
   line-height: 1.4em;
   margin-top: 1.5em;
   margin-bottom: 1.5em;
@@ -16,6 +9,12 @@ p {
 
 acronym {
   font-feature-settings: "c2sc" 1;
+}
+
+/* Images */
+
+img {
+  max-width: 100%;
 }
 
 /* Form styling */

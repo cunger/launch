@@ -4,31 +4,36 @@
 body {
   background-color: #fff;
   color: #45494d;
-  font-size: 20px;
   font-family: 'Nunito', sans-serif;
   text-align: center;
+}
+
+img {
+  width: 100%;
+  display: block;
 }
 
 /* Header with logo and nav bar */
 
 header {
   background: #2f2840 url("images/bg_body.gif") 50% 0 repeat;
-  color: #cacaca;
-  height: 510px;
 }
 
 h1 {
-  padding-top: 75px;
-  padding-bottom: 96px;
+  max-width: 298px;
+  padding-top: 6rem;
+  padding-bottom: 3rem;
+  margin: 0 auto;
 }
 
 nav li {
-  display: inline;
-  padding: 0 46px;
+  display: inline-block;
+  padding: 0 2em 3.5em 3em;
 }
 
 nav a {
-  font-size: 24px;
+  color: #cacaca;
+  font-size: 1.6em;
   text-decoration: none;
   text-transform: uppercase;
 }
@@ -40,20 +45,31 @@ nav a.active {
   font-weight: bold;
 }
 
+@media (max-width: 532px) {
+  nav li {
+    display: block;
+    padding: 0;
+  }
+  nav {
+    padding-bottom: 3em;
+  }
+}
+
 /* Main */
 
 main {
-  padding-top: 100px;
+  padding-top: 5rem;
 }
 
 section {
-  width: 1000px;
-  padding-bottom: 100px;
+  padding-bottom: 5em;
   margin: 0 auto;
+  width: 75%;
+  max-width: 1000px;
 }
 
 section p {
-  padding: 0 100px;
+  text-align: justify;
 }
 
 h2,
@@ -62,35 +78,42 @@ h3 {
 }
 
 h2 {
-  font-size: 36px;
-  padding-bottom: 40px;
+  font-size: 2.25em;
+  padding-bottom: 1em;
 }
 h2::before,
 h2::after {
   content: "·";
-  padding: 0 20px;
+  padding: 0 1.25em;
 }
 
 h3 {
   color: #3e59b2;
-  font-size: 26px;
-  padding-bottom: 20px;
+  font-size: 1.6em;
+  padding-bottom: 1.25em;
 }
 
 figure {
-  padding-bottom: 50px;
+  padding-bottom: 3rem;
 }
 
 ul.team {
-  padding-top: 60px;
+  padding-top: 3.75rem;
 }
 ul.team li {
   display: inline-block;
-  width: 140px;
-  margin: 25px;
+  margin: 2.5% 5%;
 }
 ul.team img {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
+  width: 140px;
+}
+
+@media (min-width: 805px) and (max-width: 1285px) {
+  ul.team {
+    width: 60%;
+    margin: 0 auto;
+  }
 }
 
 a {
@@ -103,16 +126,16 @@ a {
 footer {
   background: #e7e7e7;
   color: #b2b2b2;
-  padding: 80px 0;
+  padding: 5rem 0;
 }
 
 footer p {
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
 }
 
 footer li {
   display: inline-block;
-  padding: 0 62px;
+  padding: 0 5%;
 }
 
 footer a {
