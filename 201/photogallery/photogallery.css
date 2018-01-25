@@ -1,0 +1,75 @@
+@import url('reset.css');
+
+body {
+  background: #151515;
+  color: #f0f0f0;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+main {
+  background: #333;
+  min-width: 600px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  padding-top: 1em;
+  padding-bottom: .8em;
+}
+
+figure {
+  width: 100%;
+}
+
+figcaption {
+  text-align: left;
+  padding-top: .4em;
+}
+
+/* Styling all images */
+
+img {
+  box-sizing: border-box;
+  margin: 0 auto;
+  width: 100%;
+}
+
+figure img {
+  border: 15px solid #fff;
+}
+
+.thumbnails img {
+  border: 3px solid #fff;
+}
+
+/* Spacing around and between thumbnail images */
+
+.thumbnails {
+  margin-top: 2rem;
+}
+
+.thumbnails li {
+  display: inline-block;
+  width: 25%;
+}
+.thumbnails li:nth-child(2n) {
+  padding-left: .5rem;
+  padding-right: 1rem;
+}
+.thumbnails li:nth-child(2n+1) {
+  padding-left: 1rem;
+  padding-right: .5rem;
+}
+.thumbnails li:first-child {
+  padding-left: 0;
+  padding-right: 1.5rem;
+}
+.thumbnails li:last-child {
+  padding-left: 1.5rem;
+  padding-right: 0;
+}
