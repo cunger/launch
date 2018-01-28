@@ -71,7 +71,7 @@ div[lang|="en"]
 /* e.g. matches <div lang="en-US"> */
 ```
 
-### Cascade
+## The cascade
 
 The cascade determines which properties apply to which elements. It allows styles to be added and overriden.
 
@@ -79,9 +79,18 @@ CSS uses the following three concepts (in that order) to determine which rule ta
 * _importance_
   user agent (aka browser) < user < author < author `!important` declarations < user `!important` declarations (e.g. in order to override properties like font-size that would otherwise hamper the accessibility)
 * _specificity_:
-  type `0-0-1` < class `0-1-0` < ID `1-0-0`
+  elements, pseudo-elements `0-0-1` < class, pseudo-class, attribute `0-1-0` < ID `1-0-0` < inline styles
+  (and the universal selector `*` has a specificity of `0-0-0`)
 * _source order_
   if all else is equal, the rule later in the source code is applied
+
+Since the specificity of anchor classes is the same for all of them, their order determines which one is applied last. That's why they should be specified in the following order:  
+```css
+a:link
+a:visited
+a:hover
+a:active
+```
 
 **Inheritance:** ...
 Font and color properties are inherited, while most others (e.g. box-related ones) are not.

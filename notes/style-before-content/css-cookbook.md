@@ -112,6 +112,14 @@ li {
    but then no margin can be added */
 ```
 
+Margins between list elements:
+```css
+li + li {
+  margin-top: 1em;
+}
+```
+Also see [`* + *`](http://alistapart.com/article/axiomatic-css-and-lobotomized-owls).
+
 ## UI stuff
 
 ```css
