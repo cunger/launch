@@ -20,13 +20,22 @@ will move the element from the original position of the element in the specified
 
 In order to center an `absolute` or `fixed` element:
 ```css
-#element {
+element {
   width: 200px;
   position: absolute;
   top: 0;
-  /* move the left offset to the center, and then move it back by the width of the element */
+  /* move the left offset to the center, and then move it back by half the width of the element */
   left: 50%;
-  margin-left: -200px;
+  margin-left: -100px;
+}
+
+/* With CSS transform if the dimensions of the element are dynamic: */
+
+element {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 ```
 
