@@ -72,6 +72,13 @@ element {
 }
 ```
 
+_Floats vs inline blocks:_ 
+
+If a parent element contains only "floated" elements,
+`display: inline-block` and `float: left, overflow: auto` both achieve the same thing
+(where the former displays whitespaces between the elements while the latter doesn't).
+
+
 ### Scaling an image when viewport gets smaller than image size
 
 ```css
