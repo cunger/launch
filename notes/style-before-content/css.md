@@ -166,3 +166,4 @@ Examples:
 * `p::first-line`
 
 It needs to have `content` defined in order to be rendered, even if only `content: "";`.
+Also, pseudo-elements don't work on replace elements (e.g. `img` and form elements, such as `input`, `button`, `textarea`, `select`).

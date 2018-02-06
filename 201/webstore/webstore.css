@@ -73,8 +73,9 @@ img {
   margin: 0 auto;
 }
 
+/* Toggling images */
+
 label {
-  height: 160px;
   cursor: pointer;
 }
 
@@ -88,15 +89,21 @@ input:checked ~ img {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 1;
 }
 
-input:checked ~ img::before {
-  content: "";
+input:checked ~ .placeholder:empty {
+  display: inline-block;
+  height: 136px;
+}
+
+input:checked ~ .placeholder::before {
+  content: "\200b";
+  display: block;
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1;
   background: rgba(0, 0, 0, 0.5);
 }
