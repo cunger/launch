@@ -1,0 +1,92 @@
+@import url('reset.css');
+
+/* Colors and fonts */
+
+html {
+  font-family: Helvetica, Arial, sans-serif;
+  background: #fff;
+  color: #45494d;
+}
+
+header {
+  background: #3d3d3d;
+  color: #fff;
+}
+
+/* Header */
+
+header {
+  padding: 0 1rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+header img {
+  width: 100%;
+  max-width: 500px;
+}
+
+nav {
+  padding-top: 2.5em;
+  padding-bottom: 1em;
+}
+
+nav li {
+  font-size: 1.4rem;
+}
+
+/*
+And if the screen is wide enough, put header nav links next to each other.
+*/
+@media screen and (min-width: 800px) {
+  nav li {
+    display: inline-block;
+    padding: 0 1em;
+  }
+}
+
+/* Headings */
+
+
+h1 {
+  font-size: 4.2rem;
+  letter-spacing: 0.3em;
+  padding-top: 2em;
+  padding-bottom: 0.6em;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+/* Main */
+
+/* Aside */
+
+aside {
+  background: #f6f7f8;
+}
+
+/* Footer */
+
+
+/* Links */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a.to-author,
+nav a.is-selected,
+nav a:hover {
+  color: #499789;
+}
+
+/* Form styling */
