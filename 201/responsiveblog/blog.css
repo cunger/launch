@@ -8,38 +8,45 @@ html {
   color: #45494d;
 }
 
-header {
-  background: #3d3d3d;
-  color: #fff;
-}
-
 /* Header */
 
-header {
-  padding: 0 1rem;
+body > header {
+  background: #3d3d3d;
+  color: #fff;
   text-align: center;
-  text-transform: uppercase;
+  padding: 0 1rem;
+  margin-bottom: 2rem;
 }
 
-header img {
+body > header img {
   width: 100%;
   max-width: 500px;
 }
 
-nav {
+body > header nav {
   padding-top: 2.5em;
   padding-bottom: 1em;
 }
 
-nav li {
+body > header nav li {
   font-size: 1.4rem;
 }
 
+article > header {
+  padding-bottom: 1.6em;
+}
+
 /*
-And if the screen is wide enough, put header nav links next to each other.
+* If the screen is wide enough:
+* - increase space above and below nav bar
+* - put header nav links next to each other
 */
 @media screen and (min-width: 800px) {
-  nav li {
+  body > header nav {
+    padding-top: 6em;
+    padding-bottom: 2em;
+  }
+  body > header nav li {
     display: inline-block;
     padding: 0 1em;
   }
@@ -47,34 +54,120 @@ And if the screen is wide enough, put header nav links next to each other.
 
 /* Headings */
 
-
 h1 {
   font-size: 4.2rem;
   letter-spacing: 0.3em;
   padding-top: 2em;
   padding-bottom: 0.6em;
+  text-transform: uppercase;
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: bold;
 }
 
 h3 {
-  font-size: 1.4rem;
+  font-size: 1.2em;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
-/* Main */
+/* */
 
-/* Aside */
+#torso {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Main and aside */
+
+main {
+  padding: 2em;
+}
+
+article {
+  margin-bottom: 2em;
+}
+
+p {
+  text-align: justify;
+}
+
+main,
+aside {
+  line-height: 1.5;
+}
 
 aside {
   background: #f6f7f8;
+  color: #787b80;
+  font-size: 0.9rem;
+}
+
+aside section {
+  padding: 2em;
+  margin: 1em;
+}
+
+aside h3 {
+  color: #40474e;
+}
+
+aside nav li::before {
+  content: url('blt_ul.png');
+  padding-right: 0.5em;
+}
+
+/*
+* If the screen gets wider, place the sections in aside next to each other.
+*/
+@media screen and (min-width: 600px) and (max-width: 800px) {
+  aside section {
+    float: left;
+    margin: 0;
+  }
+
+  aside section:first-of-type {
+    width: 25%;
+  }
+  aside section:last-of-type {
+    width: 75%;
+  }
+
+  aside {
+    overflow: hidden;
+    margin: 0;
+  }
+}
+
+/*
+* If the screen is wide enough, place main and aside next to each other.
+*/
+@media screen and (min-width: 801px) {
+  main {
+    float: left;
+    width: 65%;
+  }
+
+  aside {
+    overflow: hidden;
+  }
+
+  footer {
+    clear: both;
+  }
 }
 
 /* Footer */
 
+footer {
+  border-top: 1px solid #d0d0d0;
+  margin-top: 4rem;
+  padding: 1em 2em;
+  font-size: 0.8rem;
+  color: #787b80;
+}
 
 /* Links */
 
@@ -86,7 +179,24 @@ a {
 a.to-author,
 nav a.is-selected,
 nav a:hover {
-  color: #499789;
+  color: #50c3af;
+}
+
+a.button,
+a.button:hover {
+  display: inline-block;
+  margin: 4em 2em 2em 0;
+  padding: 0.1em 1.5em;
+  border: none;
+  border-radius: 20px;
+  background: #50c3af;
+  color: #fff;
+}
+
+a.button-disabled,
+a.button-disabled:hover {
+  background: #d2d5da;
+  cursor: default;
 }
 
 /* Form styling */

@@ -1,5 +1,5 @@
 
-_Mobile first:_ Write CSS for mobile version and use media queries to add rules (and images, etc.) for larger screens. This way, load time and bandwidth use on mobile devices can be minimized. 
+_Mobile first:_ Write CSS for mobile version and use media queries to add rules (and images, etc.) for larger screens. This way, load time and bandwidth use on mobile devices can be minimized.
 
 ## Importing CSS with media queries
 
@@ -10,7 +10,7 @@ HTML:
 
 CSS:
 ```css
-@import url('file.css') media-query
+@import url('file.css') media-query;
 
 @media media-query {
   ...
