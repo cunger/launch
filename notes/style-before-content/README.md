@@ -24,3 +24,7 @@ HTML and CSS cheat sheets for my future self
 ### Web design
 
 * [Web typography](web-typography.md)
+
+### Checklist
+
+* [Checklist](checklist.md)
