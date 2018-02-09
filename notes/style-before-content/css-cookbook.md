@@ -43,6 +43,10 @@ div {
 }
 ```
 
+## Images
+
+Use `border-radius: 100%;` to create circular images.
+
 # Examples
 
 ### Centering content horizontally
@@ -72,7 +76,7 @@ element {
 }
 ```
 
-_Floats vs inline blocks:_ 
+_Floats vs inline blocks:_
 
 If a parent element contains only "floated" elements,
 `display: inline-block` and `float: left, overflow: auto` both achieve the same thing

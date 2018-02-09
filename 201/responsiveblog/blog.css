@@ -34,6 +34,20 @@ body > header nav li {
 
 article > header {
   padding-bottom: 1.6em;
+  vertical-align: middle;
+}
+
+img {
+  vertical-align: middle;
+}
+
+section header {
+  padding-top: 1.4em;
+  padding-bottom: 0.8em;
+}
+
+main section {
+  margin-top: 2em;
 }
 
 /*
@@ -73,7 +87,12 @@ h3 {
   text-transform: uppercase;
 }
 
-/* */
+aside h2 {
+  padding-bottom: 0.8em;
+}
+
+/* Container for everything below the header
+  (centered and with a fixed max-width) */
 
 #torso {
   max-width: 1000px;
@@ -112,11 +131,12 @@ aside section {
 
 aside h3 {
   color: #40474e;
+  padding-bottom: 1em;
 }
 
-aside nav li::before {
-  content: url('blt_ul.png');
-  padding-right: 0.5em;
+aside nav ul {
+  list-style: url('blt_ul.png');
+  padding-left: 20px;
 }
 
 /*
@@ -182,15 +202,26 @@ nav a:hover {
   color: #50c3af;
 }
 
+input[type=button],
 a.button,
 a.button:hover {
   display: inline-block;
-  margin: 4em 2em 2em 0;
-  padding: 0.1em 1.5em;
   border: none;
   border-radius: 20px;
   background: #50c3af;
   color: #fff;
+}
+
+a.button,
+a.button:hover {
+  margin: 4em 2em 2em 0;
+  padding: 0.1em 1.5em;
+}
+
+input[type=button] {
+  padding: 0.4em 1.5em;
+  margin-top: 0.4em;
+  cursor: pointer;
 }
 
 a.button-disabled,
@@ -200,3 +231,33 @@ a.button-disabled:hover {
 }
 
 /* Form styling */
+
+form {
+  margin-top: 2rem;
+}
+
+input,
+label {
+  display: block;
+}
+
+label {
+  font-size: 1.2em;
+  font-weight: bold;
+  padding-top: 0.4em;
+}
+
+input,
+textarea {
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  padding: 0.4em 1em;
+}
+
+input[type=text],
+input[type=email] {
+  width: 80%;
+}
+textarea {
+  width: 100%;
+}

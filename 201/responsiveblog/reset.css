@@ -31,9 +31,6 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
-img {
-  box-sizing: content-box;
-}
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
