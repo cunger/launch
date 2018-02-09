@@ -1,0 +1,8 @@
+@import url('reset.css');
+
+header {
+  background: url('http://2014.jsconfbr.org/images/front.jpg');
+}
+footer {
+  background: url('http://2014.jsconfbr.org/images/people.jpg');
+}

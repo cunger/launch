@@ -48,7 +48,7 @@ Where `width` refers to the width of the viewport, and `device-width` refers to 
 orientation : portrait | landscape
 ```
 
-## Examples
+### Example
 
 ```css
 /* Include background image only if the viewport provides enough space */
@@ -57,5 +57,15 @@ orientation : portrait | landscape
   h1 {
     background: url('large-image.jpg');
   }
+}
+```
+
+### Multiple expressions
+
+Expressions can be composed with `and` and `,` (meaning or). For example:  
+
+```css
+@media screen and (min-width: 400px, orientation: landscape) and (max-width: 800px) {
+/* = screen that has (a min-width of 400px or orientation landscape) and a max-width of 800px */
 }
 ```
