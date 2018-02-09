@@ -1,8 +1,115 @@
-@import url('reset.css');
+@import url("reset.css");
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+/**** Layout ****/
+
+/* Header */
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+nav li {
+  display: inline-block;
+  padding: 1em 2em;
+}
 
 header {
-  background: url('http://2014.jsconfbr.org/images/front.jpg');
+  height: 428px; /* = height of background image */
+  padding-top: 160px;
 }
+
+/* Main */
+
+/* Footer */
+
+/**** Theme ****/
+
+html {
+  font-family: "Roboto", sans-serif;
+  background: #fff;
+  text-align: center;
+}
+
+body {
+  color: #727272;
+}
+
+header {
+  background: url("http://2014.jsconfbr.org/images/front.jpg") center no-repeat;
+  color: #fff;
+}
+
+header p {
+  font-size: 2rem;
+}
+
+nav {
+  border-top: 10px solid #f5f5f5;
+  border-bottom: 1px solid #f5f5f5;
+  background: #fff;
+  font-size: 0.8em;
+}
+
+section {
+  border-top: 1px solid #f5f5f5;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+}
+
 footer {
-  background: url('http://2014.jsconfbr.org/images/people.jpg');
+  background: #161719 url("http://2014.jsconfbr.org/images/people.jpg");
+  color: #fff;
+}
+
+/* Headlines */
+
+h1 {
+  font-size: 4.5rem;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 3rem;
+  font-weight: 300;
+  color: #444;
+}
+
+h3 {
+  color: #008000;
+  font-weight: bold;
+}
+
+h4 {
+  font-weight: bold;
+}
+
+/* Links */
+
+a {
+  color: #008000;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a.button {
+  background: #008000;
+  color: #fff;
+}
+a.button:hover {
+  background: #006000;
+  text-decoration: none;
+}
+
+nav a {
+  color: #444;
+  font-weight: normal;
+  text-transform: uppercase;
 }
