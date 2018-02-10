@@ -237,12 +237,13 @@ td {
     margin: 0;
   }
 
-  tr {
-    position: relative;
-  }
-
+  tr,
   td {
     display: block;
+  }
+
+  tr {
+    position: relative;
   }
 
   td:first-of-type {
@@ -253,6 +254,9 @@ td {
     position: absolute;
     top: 0;
     left: 0;
+  }
+
+  table.schedule img {
     width: 50px;
   }
 }
