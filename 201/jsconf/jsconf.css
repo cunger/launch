@@ -3,7 +3,7 @@
 
 /**** Layout ****/
 
-/* Header */
+/** Header **/
 
 nav {
   position: fixed;
@@ -22,16 +22,55 @@ header {
   padding-top: 160px;
 }
 
-/* Main */
+/** Main **/
 
-/* Footer */
+section {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Speakers */
+
+li.speaker {
+  display: inline-block;
+  vertical-align: top;
+  width: 280px; /* = width of images */
+  height: 400px;
+  padding: 0;
+  margin: 4px 8px;
+}
+
+.author-description {
+  display: none;
+}
+
+/* Schedule */
+
+table.schedule img {
+  width: 130px;
+}
+
+/* Location */
+
+iframe {
+  width: 100%;
+  height: 400px;
+}
+
+/** Footer **/
+
+.team h3,
+.team p {
+  max-width: 1000px;
+  margin: 0 auto;
+}
 
 /**** Theme ****/
 
 html {
   font-family: "Roboto", sans-serif;
   background: #fff;
-  text-align: center;
+  text-align: justify;
 }
 
 body {
@@ -41,10 +80,15 @@ body {
 header {
   background: url("http://2014.jsconfbr.org/images/front.jpg") center no-repeat;
   color: #fff;
+  text-align: center;
 }
 
 header p {
   font-size: 2rem;
+}
+
+p {
+  margin: 1em 0;
 }
 
 nav {
@@ -60,9 +104,28 @@ section {
   padding-bottom: 2rem;
 }
 
+.centered {
+  text-align: center;
+}
+
 footer {
-  background: #161719 url("http://2014.jsconfbr.org/images/people.jpg");
+  background: #161719 url("http://2014.jsconfbr.org/images/people.jpg") no-repeat center 23%;
+  background-size: cover;
+  padding: 10px 0;
   color: #fff;
+}
+
+footer p {
+  padding-bottom: 1em;
+}
+
+.team {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1em 0;
+}
+
+li.speaker {
+  border: 1px solid #f5f5f5;
 }
 
 /* Headlines */
@@ -76,11 +139,30 @@ h2 {
   font-size: 3rem;
   font-weight: 300;
   color: #444;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 h3 {
   color: #008000;
   font-weight: bold;
+}
+
+footer h2 {
+  color: #fff;
+  font-weight: 300;
+}
+
+footer h3 {
+  color: #fff;
+  font-size: 2em;
+  text-transform: uppercase;
+}
+
+li.speaker > h3 {
+  font-size: 1.4em;
+  padding-top: 1em;
+  padding-bottom: 0.4em;
 }
 
 h4 {
@@ -100,6 +182,9 @@ a:hover {
 }
 
 a.button {
+  display: inline-block;
+  padding: 0.6em 2em;
+  margin: 0.4em 0;
   background: #008000;
   color: #fff;
 }
@@ -112,4 +197,62 @@ nav a {
   color: #444;
   font-weight: normal;
   text-transform: uppercase;
+}
+
+table a {
+  font-size: 1rem;
+}
+
+/* Schedule table */
+
+table {
+  font-size: 1.5em;
+}
+
+tr {
+  border-top: 1px solid #f5f5f5;
+}
+
+tr:last-of-type {
+  border-bottom: 1px solid #f5f5f5;
+}
+
+td {
+  padding: 10px;
+  vertical-align: middle;
+}
+
+/**** Breakpoint at 655px ****/
+
+@media screen and (max-width: 655px) {
+  nav {
+    display: none;
+  }
+
+  header h1 {
+    font-size: 2.8rem;
+  }
+  header p {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+
+  tr {
+    position: relative;
+  }
+
+  td {
+    display: block;
+  }
+
+  td:first-of-type {
+    text-align: right;
+  }
+
+  td:last-of-type {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+  }
 }
