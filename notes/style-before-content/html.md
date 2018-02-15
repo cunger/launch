@@ -1,13 +1,11 @@
 
-the basic building block is the _element_
+HTML specifies content, i.e. information and structure, while CSS specifies the appearance of that content.
 
-root element: `html`
+The basic building block in HTML is the _element_. The root element is `html`.
 
 > Every element in web design is a rectangular box.
 
-semantic elements means using elements that describe the type of content and structure, independent of their appearance.
-
-...
+Semantic elements means using elements that describe the type of content and structure, independent of their appearance. For example:
 
 * `strong` for marking an element as important
 * `em` for emphasizing an element (e.g. `We have to act <em>now</em>!`)
@@ -26,7 +24,7 @@ semantic elements means using elements that describe the type of content and str
 
 Block elements begin on a new line, thus stacking on top of each other, and can have any width.
 
-Inline elements don't begin on a new line, they ..., lining up and taking up the width of their content.
+Inline elements don't begin on a new line, they line up and take up only the width of their content.
 
 Containers for creating elements without any further semantics (for grouping and styling purposes):
 * `div`  for block elements
@@ -34,7 +32,7 @@ Containers for creating elements without any further semantics (for grouping and
 
 Inline elements are not allowed to wrap block elements, with one exception: `a`.
 
-##
+## Attributes and anchors
 
 Each HTML element can have a `class` attribute and an `id` attribute.
 
@@ -53,6 +51,6 @@ IDs can serves as _anchors_ for links to elements on the same page:
 
 ## Comments
 
-```
+```html
 <!-- ... -->
 ```

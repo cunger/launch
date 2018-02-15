@@ -4,8 +4,6 @@ HTML and CSS cheat sheets for my future self
 
 ## Table of contents
 
-* [Intro](intro.md)
-
 ### HTML
 
 * [HTML](html.md)
@@ -25,6 +23,7 @@ HTML and CSS cheat sheets for my future self
 
 * [Web typography](web-typography.md)
 
-### Checklist
+### Guidelines
 
 * [Checklist](checklist.md)
+* [Shay Howe's style guidelines](https://learn.shayhowe.com/html-css/writing-your-best-code/)

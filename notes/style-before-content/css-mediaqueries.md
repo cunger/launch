@@ -29,9 +29,11 @@ media features := feature
                 | feature : value
 ```
 
-Examples for media features:
-
-Width (and analogously for `height`):
+Features include, among others, **device orientation**:
+```
+orientation : portrait | landscape
+```
+and **width**:
 ```
            width: 600px;
        min-width: 400px;
@@ -43,12 +45,9 @@ max-device-width: 800px;
 ```
 
 Where `width` refers to the width of the viewport, and `device-width` refers to the width of the screen (independent of device orientation).
+And analogously for `height`.
 
-```
-orientation : portrait | landscape
-```
-
-### Example
+**Example:**
 
 ```css
 /* Include background image only if the viewport provides enough space */
@@ -60,12 +59,10 @@ orientation : portrait | landscape
 }
 ```
 
-### Multiple expressions
-
 Expressions can be composed with `and` and `,` (meaning or). For example:  
 
 ```css
+/* screen that has (a min-width of 400px or orientation landscape) and a max-width of 800px */
 @media screen and (min-width: 400px, orientation: landscape) and (max-width: 800px) {
-/* = screen that has (a min-width of 400px or orientation landscape) and a max-width of 800px */
 }
 ```

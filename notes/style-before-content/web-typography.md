@@ -1,33 +1,24 @@
 
-
 ## Font stacks
 
 https://www.smashingmagazine.com/2009/09/complete-guide-to-css-font-stacks/
 
-Preferred Font, Next best thing, Something common and sorta close, Similar Web-safe, Generic font family
+A font stack roughly looks like this:
+```
+preferred font, next best thing, something common and sorta close, similar web-safe, generic font family
+```
 
 Generic font families with safe fonts:
 * `serif`: Arial / Helvetica
 * `sans-serif`: Times New Roman / Times
 * `monospace`: Courier New / Courier
 
-Common bare-bones stack, e.g. useful as tails:
+Common bare-bones stack like the following are useful as tails:
 
-wide serif stack: Georgia, Utopia, Palatino, "Palatino Linotype", serif
-narrow serif stack: "Times New Roman", Times, serif
+* _wide serif:_ `Georgia, Utopia, Palatino, "Palatino Linotype", serif`
+* _narrow serif:_ `"Times New Roman", Times, serif`
 
-wide sans serif stack: Verdana, Geneva, sans-serif
-narrow sans serif stack: Tahoma, Arial, Helvetica, sans-serif
+* _wide sans serif:_ `Verdana, Geneva, sans-serif`
+* _narrow sans serif:_ `Tahoma, Arial, Helvetica, sans-serif`
 
-monospace stack: "Courier New", Courier, monospace
-
-## Body font
-
-`font-size: 16px`
-
-`em` is a size measure relative to the parent element's font size; useful for:
-* margin and padding of text
-* font size of headings and list items etc. relative to body text font size
-
-Also:
-https://ia.net/topics/100e2r/
+* _monospace:_ `"Courier New", Courier, monospace`

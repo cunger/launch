@@ -2,7 +2,7 @@
 
 **Only be specific when you need to be.**
 
-* Start with the least specific selectors, and add more specific ones only if the need arises. Very specific rules paint you a corner.
+* Start with the least specific selectors, and add more specific ones only if the need arises. Very specific rules paint you into a corner.
 * Prefer classes over IDs, unless something is really unique, like a hook for JS.
 * Prefer simple layering over nesting, for example:
 ```css
@@ -31,9 +31,9 @@
 
 * Also, add comments, especially for dividing the CSS file into sections that help navigate through the document.
 
-# ...
+# Examples
 
-## Backgrounds
+## Backgrounds and images
 
 Not all browsers support `rgba` colors (e.g. IE8), so provide a safe fallback as well.
 ```css
@@ -43,23 +43,48 @@ div {
 }
 ```
 
-## Images
-
 Use `border-radius: 100%;` to create circular images.
 
-# Examples
-
-### Centering content horizontally
-
+Scaling an image when viewport gets smaller than image size:
 ```css
-element {
+img {
+  max-width: 800px;
+  width: 100%;
+}
+```
+
+## Centering content
+
+Horizontally:
+```css
+.element {
   display: block;
   margin: 0 auto;
   /* usually together with max-width */
 }
+
+/* or with FlexBox */
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 ```
 
-### Containing floats (aka clearfix)
+In the center of the page:
+```css
+img {
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+```
+
+For more comprehensive information, see [CSS Tricks](https://css-tricks.com/centering-css-complete-guide/) and [W3C](https://www.w3.org/Style/Examples/007/center.en.html).
+
+## Containing floats (aka clearfix)
 
 ```css
 .group::after {
@@ -82,15 +107,6 @@ If a parent element contains only "floated" elements,
 `display: inline-block` and `float: left, overflow: auto` both achieve the same thing
 (where the former displays whitespaces between the elements while the latter doesn't).
 
-
-### Scaling an image when viewport gets smaller than image size
-
-```css
-img {
-  max-width: 800px;
-  width: 100%;
-}
-```
 
 ## Lists
 
@@ -131,7 +147,7 @@ li + li {
 ```
 Also see [`* + *`](http://alistapart.com/article/axiomatic-css-and-lobotomized-owls).
 
-## UI stuff
+## Forms
 
 ```css
 /* mark required input fields more prominently than optional ones */
@@ -160,5 +176,13 @@ tr:nth-child(even) {
 }
 tr:nth-child(odd) {
   background: #fff
+}
+
+/* Center text in all columns but left-align it in the first column */
+tbody td {
+  text-align: center;
+}
+tbody t:first-of-type {
+  text-align: left;
 }
 ```
