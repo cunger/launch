@@ -53,6 +53,29 @@ img {
 }
 ```
 
+## Image sprites
+
+Include the sprite sheet as background image and shift it using
+`background-position: <pixels shifted right> <pixels shifted down>;`. For example:
+
+```css
+.button {
+  background: url("button_sprite.png");
+  height: 20px;
+  width: 20px;
+}
+
+#button,
+#button1 {
+  background-position: -20px 0px;
+}
+
+#button:hover,
+#button2 {
+  background-position: -40px 0px;
+}
+```
+
 ## Centering content
 
 Horizontally:
@@ -186,3 +209,7 @@ tbody t:first-of-type {
   text-align: left;
 }
 ```
+
+### WTF?
+
+> Table rows, `<tr>`s, do not receive borders unless you set `border-collapse: collapse;` on the parent `<table>`. Moreover, if the `<tr>` and children `<td>`s or `<th>`s have the same `border-width`, the rows will not see their border applied. -- http://wtfhtmlcss.com/

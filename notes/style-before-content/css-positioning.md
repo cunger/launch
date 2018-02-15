@@ -12,11 +12,11 @@ will move the element from the original position of the element in the specified
     * not adjusting the position of other elements - as far as the other elements are concerned, an element with a relative position is in its non-offset position  
   Without any of the properties `left`, `right`, `top`, `bottom`, a relatively positioned element is placed exactly like a static one.
 
-* `position: absolute;` positions an element according to the specified box offsets relative to its closest positioned ancestor element (or `body` if there is none). It removes the element from the normal flow, so you can put it anywhere, and it won't affect or be affected by any other elements in the flow. In particular:
+* `position: absolute;` positions an element according to the specified box offsets relative to its closest positioned ancestor element (or `body` if there is none), i.e. relative to its closest parent with a position other than `static`. It removes the element from the normal flow, so you can put it anywhere, and it won't affect or be affected by any other elements in the flow. In particular:
     * its original position and space are not preserved
     * other elements are not affected, so the positioned element might overlap them
 
-* `position: fixed;` works the same as `absolute` but with respect to the viewport and not a parent element. E.g., an offset of `top: 0; left: 0; right: 0;` gives a fixed header. (Note that support in older browsers is not great.)
+* `position: fixed;` works the same as `absolute` but with respect to the viewport and not a parent element. E.g., an offset of `top: 0; left: 0; right: 0;` gives a fixed header. 
 
 In order to center an `absolute` or `fixed` element:
 ```css
