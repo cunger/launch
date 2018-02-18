@@ -115,9 +115,3 @@ Example:
 ```
 
 The `legend` element is essential for screen readers, so it should be included even when hidden from display.
-
-## Styling
-
-```css
-
-```
