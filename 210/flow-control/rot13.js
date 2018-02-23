@@ -23,7 +23,9 @@ function rot13(string) {
     var result = char + ROTATION;
 
     if (result > end) {
-      result = result - end + start - 1;
+      // wrap it: add the surplus that reaches beyond `end` (`result - end`)
+      // to `start - 1` (so we start counting the first char at the start)
+      result = (start - 1) + (result - end);
     }
 
     return result;
