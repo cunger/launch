@@ -1,6 +1,8 @@
 
-function push(array, value) {
-  array[array.length] = value;
+function push(array, ...values) {
+  values.forEach(function (value) {
+    array[array.length] = value;
+  });
   return array.length;
 }
 
@@ -20,6 +22,18 @@ function unshift(array, value) {
   }
   // inserting the value at the first position
   array[0] = value;
+
+  return array.length;
+}
+
+// Unshifting arbitarily many values:
+
+function unshift(array, ...values) {
+  values.forEach(function (value) {
+    array.splice(0, 0, value)
+  });
+  // or shorter (Nick Johnson):
+  // arr.splice(0, 0, ...values);
 
   return array.length;
 }
