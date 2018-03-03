@@ -12,5 +12,6 @@
 * [Arrays](arrays.md)
 * [Functions](functions.md)
 * [Scope](scope.md)
-* [Objects and prototypes](objects.md)
+* [Objects](objects.md)
+* [Common patterns](patterns.md)
 * [References](references.md)

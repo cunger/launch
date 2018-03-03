@@ -34,13 +34,7 @@ Objects are mutable, all other values are primitives and immutable.
 
 Primitives are compared by value (just beware that `NaN` does not equal anything, not even itself) and passed by value, while objects are compared by reference (thus are strictly equal only to themselves) and passed by reference.
 
-Objects are created by the corresponding constructors (see [Objects](objects.md)) or by means of special literals:
-
-* Object literals: `{}`
-* Array literals: `[]`
-* Regular expression literals: `//`
-
-The primitive types Boolean, Number, String have corresponding constructors that create wrapper objects, wrapping the primitive value into an object. Primitives borrow properties from those wrappers, as in `fnord.toUpperCase()`.
+The primitive types Boolean, Number, String have object constructors that create wrapper objects, wrapping the primitive value into an object. Primitives borrow properties from those wrappers, as in `fnord.toUpperCase()`.
 
 ## Type coercion
 
@@ -80,7 +74,9 @@ Binary operators in general trigger numeric conversion:
 * loose/lenient equality (`==`, `!=`)
 With the exception that comparison and equality operators don't trigger numeric conversion if both operands are strings, or any operand is `null` or `undefined`, and `+` triggers string conversion if any operand is a string.
 
-If an operand is an object, it is first converted to a primitive (meaning to a Number or String), roughly following [this algorithm](https://gist.github.com/samoshkin/baf070ab19b73f4f39ec54149fb37c30#file-js-to-primitive-internal-js). Note that, as a result, arrays are converted to strings. Also note that a `{}` at the beginning of the line is interpreted as a block statement (not an object) and is ignored:
+If an operand is an object, it is first converted to a primitive (meaning to a Number or String), roughly following [this algorithm](https://gist.github.com/samoshkin/baf070ab19b73f4f39ec54149fb37c30#file-js-to-primitive-internal-js). Note that, as a result, arrays are converted to strings.
+
+Also note that `{` at the beginning of a line is always interpreted as a block statement, not as an object, thus for the operation it is ignored:
 ```js
 {}+[]+{}
 ==> +[]+{}
