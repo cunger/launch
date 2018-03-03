@@ -1,15 +1,17 @@
 
 ![A snail determined to fly on a rocket](http://clipart-library.com/images/qcBqRobc5.jpg)
 
-There's so much good stuff when working through the [Launch School](https://launchschool.com) curriculum that it would be a pity to forget all of it. These notes collect the bare essentials I want to remember. They are like the slime trail of a snail, sticky remainders of the slow but steady path to a future full of code.
+There's so much good stuff when working through the [Launch School](https://launchschool.com) curriculum that it would be a pity to forget. These notes collect the bare essentials I want to remember. They are like the slime trail of a snail, sticky remainders of the slow but steady path to proficiency.
 
-* [Ruby Kernel Panic](https://github.com/cunger/launch/tree/master/notes/ruby-kernel-panic): Basics of Ruby and OOP
+* [Ruby Kernel Panic](https://github.com/cunger/launch/tree/master/notes/ruby-kernel-panic): Ruby and OOP
 
 * [Beyond Lies the Wub](https://github.com/cunger/launch/tree/master/notes/beyond-lies-the-wub): Fundamentals of web development
 
 * [Los Postres](https://github.com/cunger/launch/tree/master/notes/los-postres): SQL and relational databases
 
 * [All Style before Content](https://github.com/cunger/launch/tree/master/notes/style-before-content): HTML and CSS
+
+* [Sandcrawler Rulebook](https://github.com/cunger/launch/tree/master/notes/sandcrawler-rulebook): JavaScript
 
 As well as some extra-curricular stuff:
 
