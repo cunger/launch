@@ -50,10 +50,10 @@ Type coercion is the conversion of a value of one type to a value of another typ
 
 As functions, wrapper object constructors convert to the corresponding primitive type.
 
-* `Number(undefined)` >> `NaN`
-* `Number(null)` >> `0`
-* `Number(false)` >> `0`, `Number(true)` >> `1`
-* Given a string, it parses it as a number, e.g. `Number('3.14')` >> `3.14`. If that fails, it return `NaN`.
+* `Number(undefined) ==> NaN`
+* `Number(null) ==> 0`
+* `Number(false) ==> 0`, `Number(true) ==> 1`
+* Given a string, it parses it as a number, e.g. `Number('3.14') ==> 3.14`. If that fails, it return `NaN`.
   Alternatively use `+x`, or `parseInt(x, 10)` and `parseFloat(x)`, which is especially useful if the input string also contains a unit:
   ```js
   parseInt('20pt', 10) // 20

@@ -1,4 +1,7 @@
-# Intentional coding
+
+# Rule \#1: Have a plan.
+
+# Rule \#2: Always know what you're doing. Always know what your code is doing.
 
 One part of coding is about being able to program fluently on a syntactic as well as a conceptual and logical level. The other part is about the process and approach you follow on the way from a problem to an implemented solution. For me, it can be put into two snappy imperatives:
 
@@ -21,7 +24,6 @@ There’s no need to look clever. It’s far more important to **strive for clar
 * Include examples and test cases right from the beginning.
 * If not sure, look up the documentation and verify behavior and expected results. **Always know what your code is doing.**
 
-Never skip writing** tests and documentation.** With each program you write, practice it until it becomes second nature.
+Never skip writing **tests and documentation.** With each program you write, practice it until it becomes second nature.
 
-And wherever you go, **show up prepared**.
-
+# Rule \#3: Wherever you go, **show up prepared**.

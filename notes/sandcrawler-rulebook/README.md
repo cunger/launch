@@ -10,6 +10,7 @@
 * [Types and values](types-values.md)
 * [Booleans](booleans.md)
 * [Arrays](arrays.md)
+* [Functions](functions.md)
 * [Scope](scope.md)
 * [Objects and prototypes](objects.md)
 * [References](references.md)

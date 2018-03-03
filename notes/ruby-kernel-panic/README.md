@@ -4,8 +4,6 @@ Ruby cheat sheets for my future self
 
 ## Table of contents
 
-* [Intro](intro.md)
-* [Intentional coding](intentional-coding.md)
 * [Array](array.md)
 * [Hash](hash.md)
 * [Putting and printing](puts-print-p.md)
@@ -21,5 +19,4 @@ Ruby cheat sheets for my future self
 * [Enumerable and each](enumerable-each.md)
 * [Enumerator](enumerator.md)
 * [Exceptions](exceptions.md)
-* [Outro](outro.md)
 * [References](references.md)

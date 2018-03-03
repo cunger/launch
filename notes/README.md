@@ -3,16 +3,22 @@
 
 There's so much good stuff when working through the [Launch School](https://launchschool.com) curriculum that it would be a pity to forget. These notes collect the bare essentials I want to remember. They are like the slime trail of a snail, sticky remainders of the slow but steady path to proficiency.
 
-* [Ruby Kernel Panic](https://github.com/cunger/launch/tree/master/notes/ruby-kernel-panic): Ruby and OOP
+* [Into](intro.md)
 
-* [Beyond Lies the Wub](https://github.com/cunger/launch/tree/master/notes/beyond-lies-the-wub): Fundamentals of web development
+* [Problem solving and coding rules](intentional-coding.md)
 
-* [Los Postres](https://github.com/cunger/launch/tree/master/notes/los-postres): SQL and relational databases
+* [Ruby and OOP](https://github.com/cunger/launch/tree/master/notes/ruby-kernel-panic)
 
-* [All Style before Content](https://github.com/cunger/launch/tree/master/notes/style-before-content): HTML and CSS
+* [Fundamentals of Web Development](https://github.com/cunger/launch/tree/master/notes/beyond-lies-the-wub)
 
-* [Sandcrawler Rulebook](https://github.com/cunger/launch/tree/master/notes/sandcrawler-rulebook): JavaScript
+* [SQL and Relational Databases](https://github.com/cunger/launch/tree/master/notes/los-postres)
 
-As well as some extra-curricular stuff:
+* [HTML and CSS](https://github.com/cunger/launch/tree/master/notes/style-before-content)
+
+* [JavaScript](https://github.com/cunger/launch/tree/master/notes/sandcrawler-rulebook)
+
+* [Outro](outro.md)
+
+Extra-curricular stuff:
 
 * [Perls](https://github.com/cunger/launch/tree/master/notes/perls): Excellent books compressed in small shiny perls
