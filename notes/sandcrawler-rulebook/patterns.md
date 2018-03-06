@@ -15,6 +15,51 @@ function isNumeric(value) {
 }
 ```
 
+### Iterating over an object
+
+```js
+Object.keys(object).forEach(function (key) {
+  // ... 
+});
+
+var values = Object.keys(object).map(key => object[key]);
+// ES2017: Object.values(object)
+```
+
+### Sorting numbers
+
+```js
+function sortAscending(array) {
+  return array.slice().sort(function (x, y) { return x - y });
+}
+
+function sortDescending(array) {
+  return array.slice().sort(function (x, y) { return y - x });
+}
+```
+
+### Reduce
+
+Counting occurrences:
+
+```js
+array.reduce(function (counts, element)) {
+  counts[element] = (counts[element] || 0) + 1;
+  return counts;
+}, {});
+```
+
+Finding the minimum:
+
+```js
+array.reduce(function (currentMin, currentElement) {
+  if (currentElement < currentMin) {
+    return currentElement;
+  } else {
+    return currentMin;
+  }
+});
+```
 
 ### Current date and time
 
