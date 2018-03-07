@@ -1,4 +1,4 @@
-function generateClassstudentsummary(students) {
+function generateClassRecordSummary(students) {
   const EXAM_WEIGHT = 0.65;
   const EXERCISE_WEIGHT = 0.35;
 
@@ -106,7 +106,7 @@ var studentScores = {
   },
 };
 
-console.log(generateClassstudentsummary(studentScores));
+console.log(generateClassRecordSummary(studentScores));
 // {
 //   studentGrades: [ '93 (A)', '81 (C)', '86 (B)', '100 (A)', '69 (D)' ],
 //   exams: [

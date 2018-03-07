@@ -19,7 +19,7 @@ function isNumeric(value) {
 
 ```js
 Object.keys(object).forEach(function (key) {
-  // ... 
+  // ...
 });
 
 var values = Object.keys(object).map(key => object[key]);
@@ -38,7 +38,7 @@ function sortDescending(array) {
 }
 ```
 
-### Reduce
+### Collection pipes
 
 Counting occurrences:
 
