@@ -72,6 +72,7 @@ Binary operators in general trigger numeric conversion:
 * comparison operators (`>`, `<`, `<=`, `>=`)
 * arithmetic operators (`-`, `+`, `*`, `/`, `%`)
 * loose/lenient equality (`==`, `!=`)
+
 With the exception that comparison and equality operators don't trigger numeric conversion if both operands are strings, or any operand is `null` or `undefined`, and `+` triggers string conversion if any operand is a string.
 
 If an operand is an object, it is first converted to a primitive (meaning to a Number or String), roughly following [this algorithm](https://gist.github.com/samoshkin/baf070ab19b73f4f39ec54149fb37c30#file-js-to-primitive-internal-js). Note that, as a result, arrays are converted to strings.
