@@ -30,10 +30,11 @@ _Iteration:_
 ```js
 array.forEach(function (element) {
   if (!func(element)) {
-    return false; // This is the return value of the anonymous function and will be ignored. 
+    return false; // This is the return value of the anonymous function and will be ignored.
   }
 }); // ==> undefined
 ```
+Also, `forEach` always iterates over the whole list; the only way to break out is by throwing an error.
 
 _Filter and transform:_
 * `filter(function)` returns a new array.
