@@ -1,24 +1,32 @@
+function sentences(text) {
+  return text.match(/.*?[.!?](\s|$)/g) || [];
+}
+
 function wordCount(sentence) {
   return sentence.split(' ').length;
 };
 
-function longestSentence(text) {
-  var sentences = text.match(/.*?[.!?]/g);
-  if (!sentences) {
-    console.log('Did not find any sentence.');
-    return;
-  }
-
-  var longestSentence = sentences.reduce(function (longest, current) {
+function findLongest(strings) {
+  return strings.reduce(function (longest, current) {
     current = current.trim();
     return wordCount(current) > wordCount(longest) ? current : longest;
-  });
-
-  console.log(longestSentence);
-  console.log('\nThe longest sentence has ' + wordCount(longestSentence) + ' words.');
+  }, '');
 }
 
-// Example
+function longestSentence(text) {
+  var longestSentence = findLongest(sentences(text));
+
+  if (!longestSentence) {
+    console.log('Did not find any sentence.');
+  } else {
+    console.log(longestSentence);
+    console.log('\nThe longest sentence has ' + wordCount(longestSentence) + ' words.');
+  }
+}
+
+// Examples
+
+var emptyText = '';
 
 var longText = 'Four score and seven years ago our fathers brought forth' +
 ' on this continent a new nation, conceived in liberty, and' +
@@ -49,6 +57,10 @@ var longText = 'Four score and seven years ago our fathers brought forth' +
 ' of freedom -- and that government of the people, by' +
 ' the people, for the people, shall not perish from the' +
 ' earth.';
+
+longestSentence(emptyText);
+
+// Did not find any sentence.
 
 longestSentence(longText);
 
