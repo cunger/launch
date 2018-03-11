@@ -29,10 +29,7 @@ console.log(equals(expand('545,64:11'), [545].concat(range(564, 611))) === true)
 // For each range string:
 //   * Split it into significant-part-of-numbers.
 //   * If there is only one: add expansion of it to the result.
-//   * Otherwise: Iterate from i = 1 to end:
-//       Add range from expanded i-1 to expanded i to the result.
-//       e.g. 3:5   => range(3, 5)
-//            3:5:1 => range(3, 5) + range(5, 11) // and take care that 5 is not added twice
+//   * Otherwise: Expand all numbers, e.g. => [3, 5, 1], and then build range(first, last).
 
 function expand(string) {
   var numbers = [];
@@ -50,23 +47,14 @@ function expand(string) {
 }
 
 function toRange(string, previousNumber) {
-  var numbers = [];
   var numberStrings = string.split(/:|\-|\.\./g);
+  var numbers = numberStrings.map(function (numberString) {
+    var number = getFullNumber(previousNumber, numberString);
+    previousNumber = number;
+    return number;
+  })
 
-  if (numberStrings.length == 1) {
-    return [ getFullNumber(previousNumber, numberStrings[0]) ];
-  }
-
-  var i;
-  for (i = 1; i < numberStrings.length; i += 1) {
-    start = getFullNumber(previousNumber, numberStrings[i - 1]);
-    end   = getFullNumber(start, numberStrings[i]);
-    if (i > 1) start += 1;
-    numbers.push(...range(start, end));
-    previousNumber = end;
-  }
-
-  return numbers;
+  return range(numbers[0], numbers[numbers.length - 1]);
 }
 
 function getFullNumber(previousNumber, string) {
