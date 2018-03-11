@@ -79,3 +79,9 @@ function random(min, max) {
   return min + Math.floor(Math.abs(max - min + 1) * Math.random());
 }
 ```
+
+### Enum-like objects
+
+```js
+const Wekkday = Object.freeze({ Monday: 1, Tuesday: 2, ... });
+```
