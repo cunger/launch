@@ -83,5 +83,5 @@ function random(min, max) {
 ### Enum-like objects
 
 ```js
-const Wekkday = Object.freeze({ Monday: 1, Tuesday: 2, ... });
+const Weekday = Object.freeze({ Monday: 1, Tuesday: 2, ... });
 ```
