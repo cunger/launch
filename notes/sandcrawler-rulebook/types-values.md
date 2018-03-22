@@ -34,7 +34,7 @@ Objects are mutable, all other values are primitives and immutable.
 
 Primitives are compared by value (just beware that `NaN` does not equal anything, not even itself) and passed by value, while objects are compared by reference (thus are strictly equal only to themselves) and passed by reference.
 
-The primitive types Boolean, Number, String have object constructors that create wrapper objects, wrapping the primitive value into an object. Primitives borrow properties from those wrappers, as in `fnord.toUpperCase()`.
+The primitive types Boolean, Number, String have object constructors that create wrapper objects, wrapping the primitive value into an object. Primitives borrow properties from those wrappers, as in `"fnord".toUpperCase()`.
 
 ## Type coercion
 
@@ -57,11 +57,12 @@ As functions, wrapper object constructors convert to the corresponding primitive
 * `String()` does the obvious (except for conversion to primitives, see end of [Chapter 8: Values](http://speakingjs.com/es5/ch08.html)).
   Preferred over `x.toString()`, as the latter throws an error when called on `null` or `undefined` and can be overridden by individual objects (and thus lead to unexpected results). If you want a JSON string, use `JSON.stringify(x)`, which prints everything as `null` that doesn't convert into a JSON value (e.g. functions and `undefined`). When called on an object that implements `toJSON()`, it calls that method.
 
-* `Boolean(x)` converts `x` to `false` if it is false, and to `true` otherwise. Falsy values are:
+* `Boolean(x)` converts `x` to `false` if it is falsy, and to `true` otherwise. Falsy values are:
     * `false`
     * `null`, `undefined`
     * `0`, `NaN`
     * `''`
+    
   Alternatively, `!!x` can be used to convert any value into a Boolean, due to the way `!` works (see [Booleans](booleans.md)).
 
 ### Implicit type coercion

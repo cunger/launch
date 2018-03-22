@@ -3,7 +3,7 @@
 
 There's so much good stuff when working through the [Launch School](https://launchschool.com) curriculum that it would be a pity to forget. These notes collect the bare essentials I want to remember. They are like the slime trail of a snail, sticky remainders of the slow but steady path to proficiency.
 
-* [Into](intro.md)
+* [Intro](intro.md)
 
 * [Problem solving and coding rules](intentional-coding.md)
 

@@ -1,7 +1,7 @@
 
 ## Expressions and statements
 
-The two major syntactic categories in JavaScript are _expressions_ and _statements_. A programs is a sequence of statements. Statements _do stuff_: they declare variables or functions, assign a value to a variable, define a conditional loop, evaluate an expression, and so on. Expressions produce a value.
+The two major syntactic categories in JavaScript are _expressions_ and _statements_. A program is a sequence of statements. Statements _do stuff_: they declare variables or functions, assign a value to a variable, define a conditional loop, evaluate an expression, and so on. Expressions produce a value.
 
 Functions can be defined by means of a function declaration statement:
 ```js

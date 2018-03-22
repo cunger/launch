@@ -29,9 +29,7 @@ _Iteration:_
 * `forEach(function)` always returns `undefined`, independent of the return value of the passed callback function.
 ```js
 array.forEach(function (element) {
-  if (!func(element)) {
-    return false; // This is the return value of the anonymous function and will be ignored.
-  }
+  return false; // This is the return value of the anonymous function and will be ignored.
 }); // ==> undefined
 ```
 Also, `forEach` always iterates over the whole list; the only way to break out is by throwing an error.
@@ -39,7 +37,7 @@ Also, `forEach` always iterates over the whole list; the only way to break out i
 _Filter and transform:_
 * `filter(function)` returns a new array.
 * `map(function)` also returns a new array.
-* `array.sort(function)` sorts the array in place, i.e. is mutating. Note that without providing a comparison function (returning a number <0, 0, >0), the default sort comparison is by string Unicode points, with all array elements will be converted into strings (yes, also numbers!).
+* `array.sort(function)` sorts the array in place, i.e. is mutating. Note that without providing a comparison function (returning a number <0, 0, >0), the default sort comparison is by string Unicode points, with all array elements being converted into strings (yes, also numbers!).
 
 _Checks:_
 * `some(function)`
