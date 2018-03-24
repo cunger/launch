@@ -43,6 +43,17 @@ function f(start, count, end) {
   // ...
 }
 ```
+Default values are used whenever the argument is `undefined` - both when it is left out and when it is explicitly set to `undefined`. 
+
+Arguments are bound to parameters from left to right, independent of default values:
+```js
+function f(a = 1, b) {
+  return [a, b];
+}
+
+f();  // [1, undefined]
+f(2); // [2, undefined]
+```
 
 ## Output
 
