@@ -43,7 +43,7 @@ function f(start, count, end) {
   // ...
 }
 ```
-Default values are used whenever the argument is `undefined` - both when it is left out and when it is explicitly set to `undefined`. 
+Default values are used whenever the argument is `undefined` - both when it is left out and when it is explicitly set to `undefined`.
 
 Arguments are bound to parameters from left to right, independent of default values:
 ```js
@@ -65,3 +65,23 @@ A _pure_ function
 * is **referentially transparent**, i.e. given the same inputs, the output is always the same, and
 * **does not produce any side effects**.
 In particular, this means it doesn't depend on or modify variables outside of its scope.
+
+## Constructor functions
+
+capitalized by convention
+
+`new`
+
+Roughly what `new` does (from Speaking JavaScript):
+```js
+function newOperator(Constructor, args) {
+  var thisValue = Object.create(Constructor.prototype); // a new object is created, with the Constructor.prototype object as prototype
+  var result = Constructor.apply(thisValue, args);      // the constructor function is called with `this` being the newly created object
+
+  if (typeof result === 'object' && result !== null) {  // if the constructor function decides to return another object than the newly created one
+    return result;
+  }
+
+  return thisValue; // return the newly created object
+}
+```

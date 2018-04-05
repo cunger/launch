@@ -21,3 +21,5 @@ Keep in mind that `{` at the beginning of a line is always interpreted as a bloc
 {} + {};               // ==> +{}
                        // ==> NaN
 ```
+
+## Object creation patterns
