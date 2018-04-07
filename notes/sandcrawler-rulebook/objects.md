@@ -1,6 +1,6 @@
 # Objects
 
-Objects are created by the corresponding constructors or by means of special literals:
+Objects are created by the corresponding constructors (`Object`, `Array,` etc.) or by means of special literals:
 
 * Object literals: `{}`
 * Array literals: `[]`
@@ -21,3 +21,5 @@ Keep in mind that `{` at the beginning of a line is always interpreted as a bloc
 {} + {};               // ==> +{}
                        // ==> NaN
 ```
+
+`Object.freeze(obj)` prevents all properties of `obj` to be re-assigned. Note that the references of those properties are frozen; their values can, however, still be mutated. Frozen objects cannot be unfrozen.

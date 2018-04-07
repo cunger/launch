@@ -65,9 +65,3 @@ bar();
 ```
 
 Keep in mind that function expressions are not hoisted, i.e. `var f = function () {...}` behaves just like any other variable assignment, with the declaration being hoisted, the function definition not.
-
-## Closures
-
-When a function is defined, it has access to all variables in its own as well as in its surrounding scopes. This access is retained throughout the life-time of the function, independent in which scope it is invoked. Note that this means access to the identifiers; functions will look up the corresponding values only when invoked.  
-
-> A closure is a function plus the connection to the scope in which the function was created. The name stems from the fact that a closure “closes over” the free variables of a function[, i.e. the variables not declared within the function].

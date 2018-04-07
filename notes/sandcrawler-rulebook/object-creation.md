@@ -1,12 +1,14 @@
 # Object creation
 
-object literals if only one object is needed
+If you need only one object, you can use an object literal. (Cf. [prototypal inheritance](prototypal-inheritance.md): there are no classes, thus we don't need a class to create a singleton object, we can just create it.)
+
+If you need more than one object of th same kind, specify a way to create those objects, such that they can share behaviour.
 
 ## Factory pattern
 
 ```js
 function makePoint(x, y) {
-  // var private = ...
+  // var private = 'private data here'
 
   return {
     x: x || 0,
@@ -37,12 +39,14 @@ function Point(x, y) {
     return new Point(x, y);
   }
 
-  // State  
+  // State -> each object created from this constructor
+  // will have those properties as its own properties
   this.x = x || 0;
   this.y = y || 0;
 }
 
-// Shared behaviour
+// Shared behaviour -> only the prototype has the property,
+// all objects created from it delegate method calls to it
 Point.prototype.distanceFromOrigin = function () {
   return Math.sqrt(this.x * this.x + this.y * this.y);
 };
@@ -86,12 +90,11 @@ var point1 = Object.create(Point);
 var point2 = Object.create(Point).init(1, 1);
 ```
 
-Disadvantage:
-* `instanceof` does not work, because it expects a _constructor_ as argument.
+Note that `instanceof` does not work here, because it expects a _constructor_ as argument. Instead, use `Point.isPrototypeOf(point1)`.
 
 # Behind the curtains
 
-## `new`
+### `new`
 
 * A new object is created using the constructor function.
 * The constructor function is executed with `this` set to the new object.
@@ -108,7 +111,7 @@ new Constructor(args)
 }
 ```
 
-## `Object.create`
+### `Object.create`
 
 ```js
 function create(object) {
