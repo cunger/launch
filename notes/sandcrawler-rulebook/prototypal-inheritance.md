@@ -1,0 +1,1 @@
+There are no classes. Objects inherit directly from other objects; more specifically: an object contains a link to another object, its _prototype_, to which it delegates properties. The object itself needs to contain only those properties that are different from its prototype. 
