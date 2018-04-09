@@ -16,8 +16,8 @@ var fnord = function () {
 When a function created by a function declaration is called, we speak of _function invocation_; when a function created as a property of an object (i.e. a _method_) is called, we speak of _method invocation_.
 
 A _pure_ function
-* is **referentially transparent**, i.e. given the same inputs, the output is always the same, and
-* **does not produce any side effects**.
+* is referentially transparent, i.e. given the same inputs, the output is always the same, and
+* does not produce any side effects.
 
 In particular, this means it doesn't depend on or modify variables outside of its scope.
 
@@ -74,16 +74,16 @@ Functions without an explicit `return` statement have `undefined` as return valu
 Functions initially have no context, but receive one when they are executed.
 Thus with every function invocation, the function has access to its _execution context_, through the keyword [`this`](this.md).
 This can be either
-* an _implicit execution context_ (the global object), or
-* an _explicit execution context_ (when invoked with an explicit receiver, or by means of `call` or `apply`).
+* an **implicit execution context** (the global object), or
+* an **explicit execution context** (when invoked with an explicit receiver, or by means of `call` or `apply`).
 
 Binding a function to its execution context happens when the function is executed, not when it is defined. It's thus quite different from lexical variable scope.
 
-Upon _function invocation_, the execution context, and thus `this`, is the global object (`window` in the browser, `global` in Node),
+Upon **function invocation**, the execution context, and thus `this`, is the global object (`window` in the browser, `global` in Node),
 because the function is implicitly called on the global object.
 (`this` also refers to the global object outside of any function scope. Unless in strict mode, then it is `undefined`.)
 
-Upon _method invocation_, the execution context, and thus `this`, is the calling object.
+Upon **method invocation**, the execution context, and thus `this`, is the calling object.
 
 ```js
 var obj = {
@@ -123,6 +123,7 @@ Function.prototype.bind = function (context) {
   };
 }
 ```
+That is, `bind` uses _partial application_, see below.
 
 ### Context loss
 
@@ -190,7 +191,7 @@ var obj = {
 }
 ```
 These methods therefore take an optional context argument (e.g. `forEach(callback, [thisArg])`):
- ```js
+```js
  var obj = {
    stuff: [],
    method: function () {
@@ -199,3 +200,44 @@ These methods therefore take an optional context argument (e.g. `forEach(callbac
      }, this)
    }
  }
+```
+
+## Partial function application
+
+Partial function application is the process of applying a function to some of its parameters and return a function that expects the rest of the parameters.
+
+_Example:_
+```js
+function fMap(fn, list) {
+  return list.map(fn);
+}
+
+function fMapWith(fn) {
+  return function (list) {
+    return fMap(fn, list);
+  }
+}
+
+const incrementElements = fMapWith(x => x + 1);
+
+incrementElements([1, 2, 3]);
+incrementElements([1, 3, 5, 7]);
+```
+
+Partial application like this relies on the facts that JavaScript supports closures (so the returned function can access `fn`, even when invoked in a different context) and that functions are first-class citizens, i.e. can be arguments and return values.
+
+A generic version for arbitrarily many arguments looks like this (very similar to what `bind` does):
+```js
+function partial(fn) {
+  var args = Array.prototype.slice.call(arguments, 1);
+  var self = this;
+
+  return function() {
+    return fn.apply(self, args.concat(Array.prototype.slice.call(arguments)));
+  };
+}
+```
+
+Finally, _currying_ is the process as transforming a function of _n_ arguments such that it can be called as a chain of _n_ functions each with a single argument. This has no real use case in JavaScript, though. Cf. [Ben Alman](http://benalman.com/news/2012/09/partial-application-in-javascript/):
+* In functional languages like Haskell, every function is inherently curried, i.e. takes exactly one argument. Applying a function to several arguments is basically syntactic sugar for chained applications of a curried function.
+* In JavaScript, function application is defined to take all arguments, i.e. functions are inherently uncurried.   
