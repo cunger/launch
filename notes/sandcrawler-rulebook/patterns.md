@@ -26,6 +26,19 @@ var values = Object.keys(object).map(key => object[key]);
 // ES2017: Object.values(object)
 ```
 
+### Shallow copying and merging of objects
+
+```js
+var object1 = ...
+var object2 = ...
+
+var copy1  = Object.assign({}, object1);
+var merged = Object.assign(copy1, object2);
+```
+
+`Object.assign(target, ...sources)` copies the values of all enumerable own properties of the source objects
+to the target object and returns `target`.
+
 ### Sorting numbers
 
 ```js

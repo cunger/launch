@@ -15,6 +15,9 @@ Properties can be accessed in two way:
 
 To delete a property, use `delete object.property;`.
 
+Object properties can capture _state_ as well as _behaviour_ (in object _methods_, i.e. properties that happen to have a function as value).
+Objects thus organize code by putting related data and functions together.
+
 Keep in mind that `{` at the beginning of a line is always interpreted as a block statement, not as an object. For example:
 ```js
 { foo: 'bar' }['foo']; // ==> ['foo']
@@ -23,3 +26,23 @@ Keep in mind that `{` at the beginning of a line is always interpreted as a bloc
 ```
 
 `Object.freeze(obj)` prevents all properties of `obj` to be re-assigned. Note that the references of those properties are frozen; their values can, however, still be mutated. Frozen objects cannot be unfrozen.
+
+## Global object
+
+When running, JavaScript creates a global object, which serves as implicit execution context.
+* In the browser this is `window` (standardized in the browser's DOM, not in ECMAScript).
+* In Node it is `global`. (Note, however, that Node is a modular environment and `this` in modules points to `module.export`.)
+
+Properties that have been declared on the global object are created with a _Don't Delete_ flag, so they cannot be deleted.
+```js
+// declared and added to the global object
+var x = 1;
+function f () {}
+
+// not declared, but added to the global object
+y = 1;
+
+delete global.x; // false
+delete global.f; // false
+delete global.y; // true
+```

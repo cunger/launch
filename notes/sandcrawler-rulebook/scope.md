@@ -1,17 +1,35 @@
 # Variable scope
 
-JavaScript variables are lexically scoped, i.e. the structure of the source code determines which variables are accessible where. Furthermore, variables declared via `var` are function-scoped. That is, functions create a new scope, while code blocks (`{ ... }`) do not.  
+JavaScript variables are lexically scoped, i.e. the structure of the source code determines which variables are accessible where.
 
-In ES6, variables declared via `let` and `const` are block-scoped, i.e. their scope is the innermost enclosing block.
+Each scope has access to the variables it contains and to the variables in the scopes that surround it.
 
-In ES5, a common pattern to mimic block scope is an _immediately invoked function expression_ (IIFE):
+Variables declared via `var` are function-scoped. That is, functions create a new scope, while code blocks (`{ ... }`) do not. `var` variables are hoisted, and when declared in the global scope, they are added to the global object.
+
+In ES6, variables declared via `let` and `const` are block-scoped, i.e. their scope is the innermost enclosing block. They are not subject to hoisting and are not added to the global object.
+
+```js
+var x = 0;
+let y = 1;
+
+this.x; // => 0
+this.y; // => undefined
+```
+
+In ES5, a common pattern to mimic block scope (and thus limit the lifetime of a variable, either to make it private or to avoid global variables) is an _immediately invoked function expression_ (IIFE):
 ```js
 (function () {
   // ...
 }());
 ```
+IIFEs can, of course, be passed parameters and given a meaningful name, just like any other function expression:
+```js
+var x = 23;
 
-Each scope has access to the variables it contains and to the variables in the scopes that surround it.
+(function meaningfulName(number) {
+  // ...
+}(2 * x));
+```
 
 ## Identifier look-up and hoisting
 
