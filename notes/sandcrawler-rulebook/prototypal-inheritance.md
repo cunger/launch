@@ -1,6 +1,6 @@
 # Prototypes
 
-There are no classes; objects inherit directly from other objects. More specifically: Every object has an internal property `[[prototype]]` that points to another object, its _prototype_. It can be accessed by `__proto__` or (for browser compatibility reasons much preferred) `Object.getPrototypeOf(obj)` and checked by `pobj.isPrototypOf(obj)`. For functions this is by default `Function.prototype`, for arrays it's `Array.prototype`, etc.
+There are no classes; objects inherit directly from other objects. More specifically: Every object has an internal [property](http://2ality.com/2012/10/javascript-properties.html) `[[Prototype]]` that points to another object, its _prototype_. It can be accessed by `__proto__` or (for browser compatibility reasons much preferred) `Object.getPrototypeOf(obj)` and checked by `pobj.isPrototypOf(obj)`. For functions this is by default `Function.prototype`, for arrays it's `Array.prototype`, etc.
 
 Note that `foo.isPrototypeOf(bar)` is transitive, i.e. checks whether `foo` is anywhere in the prototype chain of `bar`, while `Object.getPrototypeOf(foo)` returns the object that `foo.__proto__` points to, i.e. it's "direct" prototype.
 
