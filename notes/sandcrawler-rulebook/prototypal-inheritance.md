@@ -23,7 +23,7 @@ function Dolphin(name) {
 const flipper = new Dolphin('flipper');
 ```
 
-![](proto1.png)
+![Prototype hierarchy with Dolphin](proto1.png)
 
 ```js
 function Animal() {}
@@ -37,6 +37,4 @@ Dolphin.prototype.constructor = Dolphin; // otherwise `flipper instanceof Animal
 // also on all objects that inherit from Animal).
 ```
 
-![](proto2.png)
-
-Note that
+![Prototype hierarchy with Dolphin and Animal](proto2.png)
