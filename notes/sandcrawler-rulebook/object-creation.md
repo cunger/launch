@@ -1,6 +1,14 @@
 # Object creation
 
-If you need only one object, you can use an object literal. (Cf. [prototypal inheritance](prototypal-inheritance.md): there are no classes, thus we don't need a class to create a singleton object, we can just create it.)
+Since there are no classes, objects can be created directly. If you need only one object, the most straightforward way is by means of an object literal, for example:
+```js
+var obj = {
+  property: 'value',
+  method: function () {
+    return true;
+  }
+};
+```
 
 If you want it to hold private data, you can use an IIFE. For example:
 ```js
@@ -77,6 +85,10 @@ var point2 = new Point(1, 1); // or: Point(1, 1)
 ```
 
 All properties set in the constructor function will be own properties of the created object, all properties set on the prototype will be delegated.
+
+> The constructor is responsible for setting up instance-specific data, the prototype contains shared data (i.e., the methods).
+-- [2ality](http://2ality.com/2012/01/js-inheritance-by-example.html)
+
 If the created objects don't need a unique state at the beginning, the created object can be empty initially and delegate everything, for example:
 
 ```js

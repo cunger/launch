@@ -12,6 +12,7 @@
 * [Arrays](arrays.md)
 * [Functions](functions.md) and their [execution context](execution-context.md)
 * [Scope](scope.md)
+* [Private data](private-data.md)
 * [Objects](objects.md)
 * [Prototypal inheritance](prototypal-inheritance.md)
 * [Object creation patterns](object-creation.md)

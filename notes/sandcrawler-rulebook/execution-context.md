@@ -10,7 +10,8 @@ Since functions are first-class citizens, they can be removed from their objects
 
 Upon **function invocation** (e.g. `smile()`), the execution context, and thus `this`, is the global object (`window` in the browser, `global` in Node),
 because the function is implicitly called on the global object.
-(`this` also refers to the global object outside of any function scope. Unless in strict mode, then it is `undefined`.)
+
+`this` also refers to the global object outside of any function scope. Unless in strict mode, then it is `undefined`.
 
 Upon **method invocation** (e.g. `person.smile()`), there is an explicit receiver; the execution context, and thus `this`, is the calling object.
 
@@ -21,14 +22,14 @@ var obj = {
       console.log(this);
     }
 
-    whereAmI(); // this === global object, because function invocation
+    whereAmI();    // this === global object, because function invocation
   }
 };
 
-obj.method();   // this === obj, because method invocation
+obj.method();      // this === obj, because method invocation
 
 func = obj.method;
-func();         // this === global object, because function invocation
+func();            // this === global object, because function invocation
 ```
 See also _context loss_ below.
 
@@ -44,7 +45,7 @@ func.call();                // this === global
 obj.func.call();            // this === global
 ```
 
-`bind` permanently binds a function to a provided object. It creates and returns a new function that always uses the provided object as execution context.
+`bind` permanently binds a function to a provided object. It creates and returns a new function that always uses the provided object as execution context. (Except for when the function is called as a constructor with `new`, then `this` will be the newly created object.)
 
 Here's roughly how `bind` works:
 ```js

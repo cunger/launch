@@ -1,6 +1,8 @@
 # Objects
 
-Objects are created by the corresponding constructors (`Object`, `Array,` etc.) or by means of special literals:
+Objects are roughly maps from strings to values. A key-value pair is called a _property_, and _methods_ are properties whose values are functions.
+
+Objects are created by constructors (e.g. the pre-defined constructors `Object`, `Array,` etc.) or by means of special literals:
 
 * Object literals: `{}`
 * Array literals: `[]`

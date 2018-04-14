@@ -15,13 +15,19 @@ var fnord = function () {
 
 When a function created by a function declaration is called, we speak of _function invocation_; when a function created as a property of an object (i.e. a _method_) is called, we speak of _method invocation_.
 
+All functions can be invoked in two ways:
+* as a function: `f(args)`
+* as a constructor: `new f(args)`
+
+For _constructor functions_, see [object creation](object-creation.md).
+
+## Pure functions
+
 A _pure_ function
 * is referentially transparent, i.e. given the same inputs, the output is always the same, and
 * does not produce any side effects.
 
 In particular, this means it doesn't depend on or modify variables outside of its scope.
-
-For _constructor functions_, see [object creation](object-creation.md).
 
 ## Input
 
@@ -80,7 +86,7 @@ When a function is defined, a _closure_ is created that.
 
 Closures thus preserve the function's access to all variables in its own as well as in its surrounding scopes. This access is retained throughout the life-time of the function, independent in which scope it is invoked. Note that this means access to the identifiers; functions will look up the corresponding values only when invoked.  
 
-Closures have a few distinct use cases.
+Closures play a key role, for instance, in [private data](private-data.md) and partial function application.
 
 ### Partial function application
 
@@ -121,35 +127,3 @@ function partial(fn) {
 Finally, _currying_ is the process as transforming a function of _n_ arguments such that it can be called as a chain of _n_ functions each with a single argument. This has no real use case in JavaScript, though. Cf. [Ben Alman](http://benalman.com/news/2012/09/partial-application-in-javascript/):
 * In functional languages like Haskell, every function is inherently curried, i.e. takes exactly one argument. Applying a function to several arguments is basically syntactic sugar for chained applications of a curried function.
 * In JavaScript, function application is defined to take all arguments, i.e. functions are inherently uncurried.   
-
-### Private data
-
-```js
-// From Douglas Crockford
-
-var digitName = function () {
-  var names = ['zero', 'one', 'two', 'three', 'four',
-               'five', 'six', 'seven', 'eight', 'nine'];
-
-  return function (n) {
-    return names[n];
-  };
-}();
-```
-
-Douglas Crockford's power constructor:
-
-```js
-function powerConstructor() {
-  var that = Object.create(prototypeObject);
-  var privateData = 'secret';
-
-  that.priviledgedMethod = function () {
-    // ... privateData ...
-  };
-
-  return that;
-}
-```
-
-IIFEs are a way to create temporary, private scope.
