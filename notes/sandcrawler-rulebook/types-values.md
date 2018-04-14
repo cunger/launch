@@ -34,7 +34,8 @@ Objects are mutable, all other values are primitives and immutable.
 
 Primitives are compared by value (just beware that `NaN` does not equal anything, not even itself) and passed by value, while objects are compared by reference (thus are strictly equal only to themselves) and passed by reference.
 
-The primitive types Boolean, Number, String have object constructors that create wrapper objects, wrapping the primitive value into an object. Primitives borrow properties from those wrappers, as in `"fnord".toUpperCase()`.
+The primitive types Boolean, Number, String have object constructors that create wrapper objects holding the corresponding primitive value.
+When a function is called on a primitive value, as in `"fnord".toUpperCase()`, the corresponding constructor is called in order to create a temporary object of the appropriate type. In this case, a function is called on a string, which leads to the creation of a temporary object by means of the `String` constructor function. That object has `String.prototype` as its prototype, which implements methods like `toUpperCase`. This method's return value will be returned an the temporary object again destroyed. In this way, primitive values can "borrow" methods from the relevant constructor's prototype object. 
 
 ## Type coercion
 
@@ -62,7 +63,7 @@ As functions, wrapper object constructors convert to the corresponding primitive
     * `null`, `undefined`
     * `0`, `NaN`
     * `''`
-    
+
   Alternatively, `!!x` can be used to convert any value into a Boolean, due to the way `!` works (see [Booleans](booleans.md)).
 
 ### Implicit type coercion

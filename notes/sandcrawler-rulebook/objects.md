@@ -33,18 +33,50 @@ Keep in mind that `{` at the beginning of a line is always interpreted as a bloc
 
 When running, JavaScript creates a global object, which serves as implicit execution context.
 * In the browser this is `window` (standardized in the browser's DOM, not in ECMAScript).
-* In Node it is `global`. (Note, however, that Node is a modular environment and `this` in modules points to `module.export`.)
+* In Node it is `global`.
 
-Properties that have been declared on the global object are created with a _Don't Delete_ flag, so they cannot be deleted.
+In the browser, declared variables and functions are added as properties to the global object.
+They carry a _Don't Delete_ flag, so they cannot be deleted.
 ```js
-// declared and added to the global object
-var x = 1;
-function f () {}
+var name = 'Bobbo';
+function say() {}
 
-// not declared, but added to the global object
+this === window;    // => true
+
+window.name;        // => 'Bobbo'
+window.say;         // => function say() {}
+
+delete window.name; // false
+delete window.say;  // false
+```
+
+Undeclared variables are also added to the global object but can be deleted:
+```js
 y = 1;
 
-delete global.x; // false
-delete global.f; // false
-delete global.y; // true
+window.y;           // => 1
+delete window.y;    // true
+```
+
+Node is a modular environment, therefore the execution context in the Node console is different.
+Declared variables are local variables within the module's scope.
+```js
+var name = 'Bobbo';
+function say() {}
+
+this === module.exports; // => true
+
+module.exports.name;     // => undefined
+module.exports.say;      // => undefined
+
+global.name;             // => undefined
+global.say;              // => undefined
+```
+
+Undeclared variables are added to the global object:
+```js
+y = 1;                   // added to global
+
+global.y;                // => 1
+module.exports.y;        // => undefined
 ```

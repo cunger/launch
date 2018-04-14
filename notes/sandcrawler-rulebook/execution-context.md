@@ -8,12 +8,12 @@ Since functions are first-class citizens, they can be removed from their objects
 
 ## Implicit execution context
 
-Upon **function invocation** (e.g. `smile()`), the execution context, and thus `this`, is the global object (`window` in the browser, `global` in Node),
-because the function is implicitly called on the global object.
+Upon **function invocation** (e.g. `smile()`), the execution context, and thus `this`, is the global object, because the function is implicitly called on the global object. That is, `window` in the browser environment, and `global` in Node (and `module.exports` within a module).
 
 `this` also refers to the global object outside of any function scope. Unless in strict mode, then it is `undefined`.
 
 Upon **method invocation** (e.g. `person.smile()`), there is an explicit receiver; the execution context, and thus `this`, is the calling object.
+Just don't get confused with _explicit_ and _implicit_: When executing `person.smile()`, the execution context of `smile` is implicitly bound to `person`, as this is the explicit receiver of the function call.
 
 ```js
 var obj = {

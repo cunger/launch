@@ -2,14 +2,11 @@
 
 There are no classes; objects inherit directly from other objects. More specifically: Every object has an internal [property](http://2ality.com/2012/10/javascript-properties.html) `[[Prototype]]` that points to another object, its _prototype_. It can be accessed by `__proto__` or (for browser compatibility reasons much preferred) `Object.getPrototypeOf(obj)` and checked by `pobj.isPrototypOf(obj)`. For functions this is by default `Function.prototype`, for arrays it's `Array.prototype`, etc.
 
-Note that `foo.isPrototypeOf(bar)` is transitive, i.e. checks whether `foo` is anywhere in the prototype chain of `bar`, while `Object.getPrototypeOf(foo)` returns the object that `foo.__proto__` points to, i.e. it's "direct" prototype.
+Note that `foo.isPrototypeOf(bar)` is transitive, i.e. checks whether `foo` is anywhere in the prototype chain of `bar`, while `Object.getPrototypeOf(bar)` returns the object that is the value of `bar`'s internal `[[Prototype]]`' property, i.e. it's immediate prototype.
 
-## Behaviour delegation
+The **prototype chain** of an object is a sequence of objects starting with the object referenced by the object's internal `[[Prototype]]` property, followed by the reference of that object's `[[Prototype]]` property, and so on, until the referenced object is `Object.prototype`, which is each object's prototype and does not have a prototype itself. `Object.prototype` implements methods like `toString`, `valueOf`, `hasOwnProperty`, `isPrototypeOf`, etc.
 
-When trying to access a property of an object, JavaScript first checks the object itself, and if it doesn't find a property of that name, walks through the prototype chain until it finds it or runs out of prototypes. The end of the prototype chain is `Object.prototype` (which implements methods like `toString`, `valueOf`, `hasOwnProperty`, `isPrototypeOf`, etc., and which has no prototype).
-Methods found on a prototype instead of the object are still called in the context of the calling object, of course.
-
-This is how behaviour is shared, and how objects can override prototype behaviour with more specific implementations.
+Behaviour is shared between objects by **delegation**: When trying to access a property of an object, JavaScript first checks the object itself, and if it does not find a property of that name, walks through the prototype chain until it finds it or runs out of prototypes. An object thus delegates each property that is does not specify itself to the first object on its prototype chain that does specify it. At the same time it can override prototype behaviour by specifying the property as its own.
 
 In order to check whether a property exists on the object as opposed to one of its prototypes, use `obj.hasOwnProperty('key')` or `Object.getOwnPropertyNames(obj)`.
 
