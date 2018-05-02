@@ -77,7 +77,7 @@ Functions without an explicit `return` statement have `undefined` as return valu
 
 ## Closures
 
-When a function is defined, a _closure_ is created that.
+When a function is defined, a _closure_ is created.
 
 > A closure is the combination of a function and the lexical environment within which that function was declared.
 -- MDN

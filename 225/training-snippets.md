@@ -30,7 +30,7 @@ var fnord = function () {
 }
 ```
 
-Both lines 1-3 and lines 5-7 create a function together with a global variable `fnord` to which the function is assigns as value. The former do this by means of a function declaration, while the latter do this by declaring a global variable and assigning it the function as value. The only difference between both is that the function declaration will be hoisted including the function body, while from lines 5-7, only the variable declaration will be hoisted, and the assignment of that variable to the function will stay in place. So the first option makes `fnord` available as function everywhere within that scope, while in the second option, `fnord` will be `undefined` until line 5 is executed.
+Both lines 1-3 and lines 5-7 create a function together with a global variable `fnord` to which the function is assigned as value. The former do this by means of a function declaration, while the latter do this by declaring a global variable and assigning it the function as value. The only difference between both is that the function declaration will be hoisted including the function body, while from lines 5-7, only the variable declaration will be hoisted, and the assignment of that variable to the function will stay in place. So the first option makes `fnord` available as function everywhere within that scope, while in the second option, `fnord` will be `undefined` until line 5 is executed.
 
 ## 3
 
@@ -51,7 +51,7 @@ foo.sayName();
 baz();
 ```
 
-Line 11 is a _method invocation_, invoking the function that is the value of the property `sayName` of the object `foo`. This function logs the `name` property of the current execution context `this`. Since the function was invoked with `foo` as the receiver, `this` points to `foo`, and `this.name` references the `name` property of the `foo` object. Its value is `name`, which is a globally defined variable accessible within the object, with value `'Bobbo'`. Line 11 will thus log `Boobo`.
+Line 11 is a _method invocation_, invoking the function that is the value of the property `sayName` of the object `foo`. This function logs the `name` property of the current execution context `this`. Since the function was invoked with `foo` as the receiver, `this` points to `foo`, and `this.name` references the `name` property of the `foo` object. Its value is `name`, which is a globally defined variable accessible within the object, with value `'Bobbo'`. Line 11 will thus log `Bobbo`.
 
 Line 12 is a _function invocation_, executing the function value of `foo.sayName` in the context of the global object - the implicit receiver of the function invocation. Therefore, `this` points to the global object and what will be logged is the value of the global object's property `name`. In the browser, this property is defined on line 1, line 12 will thus also log `Bobbo`. (This is different in Node, though, which will log `undefined`.)
 
@@ -219,19 +219,15 @@ Foo.__proto__ === Function.prototype;         // true
 Foo.prototype.constructor === Foo;            // true
 ```
 
-Line 1 creates an empty object by means of the object literal `{}` an assigns it to the variable `bar`. This object has `Object.prototype` as its prototype. Line 2 then creates a new object by means of `Object.create`, explicitly setting that object's prototype to the value of `bar`, and assigs it to `baz`. Line 3 in the same way creates a new object with the value of `baz` as prototype. Line 5 evaluates to true, because `bar.isPrototypeOf(foo)` checks whether `bar` is on the prototype chain of `foo`, which is the sequence `baz`, `bar`, `Object.prototype`. Line 6, on the other hand, evaluates to `false`, as `Object.getPrototypeOf(foo)` returns the immediate prototype of `foo`, i.e. the value of it's internal `[[Prototype]]` property, which is `baz`.  
+Line 1 creates an empty object by means of the object literal `{}` and assigns it to the variable `bar`. This object has `Object.prototype` as its prototype. Line 2 then creates a new object by means of `Object.create`, explicitly setting that object's prototype to the value of `bar`, and assigns it to `baz`. Line 3 in the same way creates a new object with the value of `baz` as prototype. Line 5 evaluates to true, because `bar.isPrototypeOf(foo)` checks whether `bar` is on the prototype chain of `foo`, which is the sequence `baz`, `bar`, `Object.prototype`. Line 6, on the other hand, evaluates to `false`, as `Object.getPrototypeOf(foo)` returns the immediate prototype of `foo`, i.e. the value of it's internal `[[Prototype]]` property, which is `baz`.  
 
 ## 9
 
 _How is shared behaviour achieved in JS (as opposed to class-based OOP)?_
 
-Behaviour is shared by means f the prototype chain.
+Behaviour is shared by means of the prototype chain. The prototype chain of an object is a sequence of objects starting with the object referenced by the object's internal `[[Prototype]]` property, followed by the reference of that object's `[[Prototype]]` property, and so on, until the referenced object is `Object.prototype`, which does not have a prototype itself.  
 
-The prototype chain of an object is a sequence of objects starting with the object referenced by the object's internal `[[Prototype]]` property, followed by the reference of that object's `[[Prototype]]` property, and so on, until the referenced object is `Object.prototype`, which is each object's prototype and does not have a prototype itself.  
-
-Behaviour is shared between objects by **delegation**: When trying to access a property of an object, JavaScript first checks the object itself, and if it does not find a property of that name, walks through the prototype chain until it finds it or runs out of prototypes.
-
-An object thus delegates each property that is does not specify itself to the first object on its prototype chain that does specify it.
+Behaviour is shared between objects by **delegation**: When trying to access a property of an object, JavaScript first checks the object itself, and if it does not find a property of that name, walks through the prototype chain until it finds it or runs out of prototypes. An object thus delegates each property that is does not specify itself to the first object on its prototype chain that does specify it.
 
 ## 10
 
@@ -256,7 +252,7 @@ function partial(fn) {
 }
 ```
 
-Partial function application is the process of applying a function providing some of its parameters, returning a function that expects the rest of the parameters. 
+Partial function application is the process of applying a function providing some of its parameters, returning a function that expects the rest of the parameters.
 
 ## 12
 
