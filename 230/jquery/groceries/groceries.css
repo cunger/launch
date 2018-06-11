@@ -1,0 +1,58 @@
+@import url('reset.css');
+
+@media print {
+  form {
+    display: none;
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  width: 400px;
+  padding: 20px;
+  background-color: #fefefe;
+  box-shadow: 4px 4px 4px 2px #e1e1e1;
+}
+
+form {
+  margin-top: 20px;
+}
+
+label,
+input {
+  display: block;
+  margin: 10px 0;
+}
+
+label {
+  font-style: italic;
+}
+
+input {
+  padding: 0.2em 0.4em;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+legend {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+ul {
+  margin: 10px 0;
+  list-style: none;
+}

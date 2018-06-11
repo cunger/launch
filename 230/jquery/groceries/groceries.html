@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Groceries</title>
+
+    <link rel="stylesheet" href="groceries.css" />
+
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="groceries.js"></script>
+  </head>
+
+  <body>
+    <main>
+      <h1>Groceries</h1>
+
+      <ul id="groceries-list">
+      </ul>
+
+      <form id="add-item" method="post" action="#">
+        <fieldset>
+          <legend>Add an item</legend>
+
+          <label for="quantity">Quantity</label>
+          <input type="text" name="quantity" id="quantity">
+
+          <label for="name">Name</label>
+          <input type="text" name="name" id="name">
+
+          <input type="submit" value="Add item">
+        </fieldset>
+      </form>
+    </main>
+  </body>
+</html>
