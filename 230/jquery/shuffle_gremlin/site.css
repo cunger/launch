@@ -1,0 +1,88 @@
+body {
+  font: normal 16px Georgia, serif;
+  background: #666666;
+}
+
+header, h1, section, article, footer, nav, figure, img, main, body > main + header, main h1 + section {
+  background: #f0c0c0;
+}
+
+body > header,
+body > header > h1,
+body > header > h1 + nav,
+body > header + main,
+main > section,
+header + main > section > article,
+header + main > section > article > header,
+header + main > section > article > header > h1,
+main > section > article > figure,
+main + footer,
+main > section > article > figure:first-of-type img[src$="stick.jpg"],
+main > section > article > figure + figure img[src$="mop.jpg"] {
+  background: #c0f0c0;
+}
+
+body > header {
+  width: 800px;
+  padding: 20px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+body > header h1 {
+  font: bold 2em Helvetica, Arial, sans-serif;
+}
+
+footer {
+  width: 800px;
+  padding: 15px;
+  margin: 0 auto;
+  font-size: .75em;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #183f9c;
+}
+
+nav {
+  padding: 10px 0 0 0;
+  font: normal 1.3em Helvetica, Arial, sans-serif;
+}
+
+nav ul {
+  margin: 0;
+  list-style: none;
+}
+
+nav li {
+  display: inline-block;
+  width: 11em;
+  text-align: center;
+}
+
+main {
+  width: 800px;
+  margin: 0 auto;
+}
+
+section {
+  padding: 20px;
+}
+
+section header h1 {
+  font-size: 1.8em;
+}
+
+section header h2 {
+  font-size: 1.3em;
+}
+
+figure {
+  text-align: center;
+}
+
+img {
+  padding: 10px;
+}
