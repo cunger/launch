@@ -1,0 +1,216 @@
+@import url('reset.css');
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+body {
+  font-family: 'Nunito', sans-serif;
+  text-align: center;
+  background-color: #fff;
+  color: #45494d;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+/* Header with logo and nav bar */
+
+header {
+  background: #2f2840 url("images/bg_body.gif") 50% 0 repeat;
+}
+
+h1 {
+  max-width: 298px;
+  padding-top: 6rem;
+  padding-bottom: 3rem;
+  margin: 0 auto;
+}
+
+nav li {
+  display: inline-block;
+  padding: 0 4% 3.5em 4%;
+}
+
+nav a {
+  color: #cacaca;
+  font-size: 1.6em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+nav a:hover,
+nav a.active {
+  color: #6db9ff;
+}
+nav a.active {
+  font-weight: bold;
+}
+
+@media (max-width: 562px) {
+  nav li {
+    display: block;
+    padding: 0.4em 0;
+  }
+  nav {
+    padding-bottom: 2.6em;
+  }
+}
+
+/* Main */
+
+main {
+  padding-top: 5rem;
+}
+
+section {
+  padding-bottom: 5em;
+  margin: 0 auto;
+  width: 75%;
+  max-width: 1000px;
+}
+
+section p {
+  text-align: justify;
+}
+
+h2,
+h3 {
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 2.25em;
+  padding-bottom: 1em;
+}
+h2::before,
+h2::after {
+  content: "·";
+  padding: 0 4%;
+}
+
+h3 {
+  color: #3e59b2;
+  font-size: 1.6em;
+  padding-bottom: 1.25em;
+}
+
+figure {
+  padding-bottom: 3rem;
+}
+
+ul.team {
+  padding-top: 3.75rem;
+}
+ul.team li {
+  display: inline-block;
+  margin: 2.5% 5%;
+  font-size: 1.3em;
+}
+ul.team img {
+  margin-bottom: 1.25rem;
+  width: 140px;
+}
+
+@media (min-width: 805px) and (max-width: 1285px) {
+  ul.team {
+    width: 60%;
+    margin: 0 auto;
+  }
+}
+
+a {
+  color: #3e59b2;
+  text-decoration: none;
+}
+
+/* Overlay and modals */
+
+.overlay,
+.modal {
+  display: none;
+}
+
+.overlay {
+  position: fixed;
+  z-index: 2;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  z-index: 3;
+  position: absolute;
+  width: 600px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: #fff;
+  padding: 40px 20px;
+}
+
+@media (max-width: 600px) {
+  .modal {
+    width: 100%;
+    left: 0;
+    transform: none;
+    box-sizing: border-box;
+  }
+}
+
+.modal img,
+.modal h3 {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+a.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: transparent url('images/icon_close.png') 0 0 no-repeat;
+}
+
+img.h-img {
+  display: inline-block;
+}
+
+/* Footer with Social Media links */
+
+footer {
+  background: #e7e7e7;
+  color: #b2b2b2;
+  padding: 5em 0;
+}
+
+footer p {
+  margin-bottom: 2.5em;
+}
+
+footer li {
+  display: inline-block;
+  padding: 0 5%;
+}
+
+footer a {
+  display: block;
+  width: 46px;
+  height: 46px;
+  background: transparent url("images/icons_social-media.png") 0 0 no-repeat;
+  /* Hide link text */
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+footer a.facebook {
+  background-position: 0 -46px;
+}
+footer a.email {
+  background-position: 0 -92px;
+}
+footer a.instagram {
+  background-position: 0 -138px;
+}
