@@ -1,60 +1,99 @@
-const _ = (function () {
-  const randomInt = function (max) {
-    return Math.floor(Math.random() * Math.floor(max));
+(function () {
+  const _ = this._ = function (object) {
+    return Object.create(_Proto).init(object);
   }
 
-  return {
-    first: function (array) {
-      return array[0];
-    },
+  _.isArray    = (object) => Array.isArray(object);
+  _.isObject   = (object) => typeof object === 'object' && !!object || typeof object === 'function',
+  _.isFunction = (object) => typeof object === 'function';
+  _.isString   = (object) => typeof object === 'string';
+  _.isNumber   = (object) => typeof object === 'number';
+  _.isBoolean  = (object) => typeof object === 'boolean';
+  _.isElement  = (object) => object instanceof HTMLElement;
 
-    last: function (array) {
-      return array[array.length - 1];
-    },
+  const _Proto = (function () {
+    var object;
 
-    without: function (array, value) {
-      return array.filter(element => element !== value);
-    },
+    return {
+      init: function (value) {
+        object = value;
+        return this;
+      },
 
-    range: function () {
-      var start = arguments[1] === undefined ? 0 : arguments[0];
-      var end = arguments[1] || arguments[0];
+      isArray:    () => _.isArray(object),
+      isObject:   () => _.isObject(object),
+      isFunction: () => _.isFunction(object),
+      isString:   () => _.isString(object),
+      isNumber:   () => _.isNumber(object),
+      isBoolean:  () => _.isBoolean(object),
+      isElement:  () => _.isElement(object),
 
-      if (end <= start) return [];
+      // -------------------
+      // Array functionality
+      // -------------------
 
-      var values = [];
-      var i;
-      for (i = start; i < end; i++) {
-        values.push(i);
-      }
+      first: function () {
+        return object[0];
+      },
 
-      return values;
-    },
+      last: function () {
+        return object[object.length - 1];
+      },
 
-    lastIndexOf: function (array, value) {
-      var i;
-      for (i = array.length; i >= 0; i--) {
-        if (array[i] == value) {
-          return i;
+      without: function (value) {
+        return object.filter(element => element !== value);
+      },
+
+      range: function () {
+        var start = arguments[1] === undefined ? 0 : arguments[0];
+        var end = arguments[1] || arguments[0];
+
+        if (end <= start) return [];
+
+        var values = [];
+        var i;
+        for (i = start; i < end; i++) {
+          values.push(i);
         }
-      }
-    },
 
-    sample: function (array, n) {
-      if (n === undefined) return array[randomInt(array.length)];
+        return values;
+      },
 
-      if (n <= 0 || array.length === 0) return [];
-      if (n >= array.length) return array.slice();
+      lastIndexOf: function (value) {
+        var i;
+        for (i = object.length; i >= 0; i--) {
+          if (object[i] == value) {
+            return i;
+          }
+        }
+      },
 
-      var samples = [];
-      var indices = this.range(array.length);
+      sample: function (n) {
+        const randomInt = function (max) {
+          return Math.floor(Math.random() * Math.floor(max));
+        };
 
-      while (samples.length < n) {
-        let i = indices.splice(randomInt(indices.length), 1);
-        samples.push(array[i]);
-      }
+        if (n === undefined) return object[randomInt(object.length)];
 
-      return samples;
-    }
-  };
+        if (n <= 0 || object.length === 0) return [];
+        if (n >= object.length) return object.slice();
+
+        var samples = [];
+        var indices = this.range(object.length);
+
+        while (samples.length < n) {
+          let i = indices.splice(randomInt(indices.length), 1);
+          samples.push(object[i]);
+        }
+
+        return samples;
+      },
+
+      // -------------------
+      // Object functionality
+      // -------------------
+
+      // TODO
+    };
+  })();
 })();
