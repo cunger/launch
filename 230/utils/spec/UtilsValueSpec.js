@@ -1,22 +1,22 @@
 describe('_', function () {
   describe('range(end)', function () {
     it('returns an array of values from 0 to end (excluding end)', function () {
-      expect(_().range(7)).toEqual([0, 1, 2, 3, 4, 5, 6]);
+      expect(_.range(7)).toEqual([0, 1, 2, 3, 4, 5, 6]);
     });
 
     it('returns an empty array when end <= 0', function () {
-      expect(_().range(0)).toEqual([]);
-      expect(_().range(-1)).toEqual([]);
+      expect(_.range(0)).toEqual([]);
+      expect(_.range(-1)).toEqual([]);
     });
   });
 
   describe('range(start, end)', function () {
     it('returns an array of values from start to end (excluding end)', function () {
-      expect(_().range(7, 11)).toEqual([7, 8, 9, 10]);
+      expect(_.range(7, 11)).toEqual([7, 8, 9, 10]);
     });
 
     it('returns an empty array when end <= start', function () {
-      expect(_().range(2, 1)).toEqual([]);
+      expect(_.range(2, 1)).toEqual([]);
     });
   });
 

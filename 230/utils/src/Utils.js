@@ -1,34 +1,61 @@
 (function () {
-  const type_check = {
-    isArray:    (x) => Array.isArray(x),
-    isObject:   (x) => typeof x === 'object' && !!x || typeof x === 'function',
-    isFunction: (x) => typeof x === 'function',
-    isString:   (x) => typeof x === 'string',
-    isNumber:   (x) => typeof x === 'number',
-    isBoolean:  (x) => typeof x === 'boolean',
-    isElement:  (x) => x instanceof HTMLElement,
+  // Type checking functionality for a given expression.
+  // Can be called in two ways:
+  //   type(expr).isArray();
+  //   type().isArray(expr);
+  const type = function (expr) {
+    return {
+      isArray:    (x) => Array.isArray(x || expr),
+      isObject:   (x) => typeof(x || expr) === 'object' && !!(x || expr)
+                      || typeof(x || expr) === 'function',
+      isFunction: (x) => typeof(x || expr) === 'function',
+      isString:   (x) => typeof(x || expr) === 'string',
+      isNumber:   (x) => typeof(x || expr) === 'number',
+      isBoolean:  (x) => typeof(x) === 'boolean' || typeof(expr) === 'boolean',
+      isElement:  (x) => (x || expr) instanceof HTMLElement,
+    };
+  }
+
+  // Utility object _.
+
+  // Constructor that takes an expression and returns an object that
+  // provides functionality for that expression, based on its type.
+  const _ = function (expression) {
+    var prototype = _ValuePrototype;
+    if (type(expression).isObject()) prototype = _ObjectPrototype;
+    if (type(expression).isArray())  prototype = _ArrayPrototype;
+
+    Object.assign(prototype, type(expression));
+
+    return Object.create(prototype).init(expression);
   };
 
-  const _ = function (object) {
-    var proto = _ValueProto;
+  // Extend _ with functionality that is directly available,
+  // independent of any expression.
+  Object.assign(_, type());
+  Object.assign(_, {
+    range: function () {
+      var start = arguments[1] === undefined ? 0 : arguments[0];
+      var end = arguments[1] || arguments[0];
 
-    if (type_check.isObject(object)) proto = _ObjectProto;
-    if (type_check.isArray(object))  proto = _ArrayProto;
+      if (end <= start) return [];
 
-    return Object.create(proto).init(object);
-  };
+      var values = [];
+      var i;
+      for (i = start; i < end; i++) {
+        values.push(i);
+      }
 
-  Object.assign(_, type_check);
+      return values;
+    }
+  });
 
-  // Expose _
-
+  // Expose _ to the top-level object.
   this._ = _;
 
-  // ---------------
-  // Value prototype
-  // ---------------
+  // Prototypes providing all type-specific functionality.
 
-  const _ValueProto = (function () {
+  const _ValuePrototype = (function () {
     var value;
 
     return {
@@ -36,38 +63,10 @@
         value = init_value;
         return this;
       },
-
-      isArray:    () => type_check.isArray(value),
-      isObject:   () => type_check.isObject(value),
-      isFunction: () => type_check.isFunction(value),
-      isString:   () => type_check.isString(value),
-      isNumber:   () => type_check.isNumber(value),
-      isBoolean:  () => type_check.isBoolean(value),
-      isElement:  () => type_check.isElement(value),
-
-      range: function () {
-        var start = arguments[1] === undefined ? 0 : arguments[0];
-        var end = arguments[1] || arguments[0];
-
-        if (end <= start) return [];
-
-        var values = [];
-        var i;
-        for (i = start; i < end; i++) {
-          values.push(i);
-        }
-
-        return values;
-      },
-
     };
   })();
 
-  // ---------------
-  // Array prototype
-  // ---------------
-
-  const _ArrayProto = (function () {
+  const _ArrayPrototype = (function () {
     var array;
 
     return {
@@ -75,14 +74,6 @@
         array = init_array;
         return this;
       },
-
-      isArray:    () => type_check.isArray(array),
-      isObject:   () => type_check.isObject(array),
-      isFunction: () => type_check.isFunction(array),
-      isString:   () => type_check.isString(array),
-      isNumber:   () => type_check.isNumber(array),
-      isBoolean:  () => type_check.isBoolean(array),
-      isElement:  () => type_check.isElement(array),
 
       first: function () {
         return array[0];
@@ -115,7 +106,7 @@
         if (n >= array.length) return array.slice();
 
         var samples = [];
-        var indices = _().range(array.length);
+        var indices = _.range(array.length);
 
         while (samples.length < n) {
           let i = indices.splice(randomInt(indices.length), 1);
@@ -164,11 +155,7 @@
     };
   })();
 
-  // ----------------
-  // Object prototype
-  // ----------------
-
-  const _ObjectProto = (function () {
+  const _ObjectPrototype = (function () {
     var object;
 
     return {
@@ -176,14 +163,6 @@
         object = init_object;
         return this;
       },
-
-      isArray:    () => type_check.isArray(object),
-      isObject:   () => type_check.isObject(object),
-      isFunction: () => type_check.isFunction(object),
-      isString:   () => type_check.isString(object),
-      isNumber:   () => type_check.isNumber(object),
-      isBoolean:  () => type_check.isBoolean(object),
-      isElement:  () => type_check.isElement(object),
 
       keys: function () {
         return Object.getOwnPropertyNames(object);
