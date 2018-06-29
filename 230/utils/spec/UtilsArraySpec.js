@@ -7,6 +7,7 @@ describe('_', function () {
     expect(typeof _([]).sample).toBe('function');
     expect(typeof _([]).findWhere).toBe('function');
     expect(typeof _([]).where).toBe('function');
+    expect(typeof _([]).pluck).toBe('function');
   });
 
   describe('first()', function () {
@@ -118,6 +119,12 @@ describe('_', function () {
 
       expect(_(objects).findWhere(input)).toBeUndefined();
     });
+
+    it('ignores non-object elements in the array', function () {
+      var objects = [distractor1, 0, match1, undefined];
+
+      expect(_(objects).findWhere(input)).toEqual(match1);
+    });
   });
 
   describe('where(obj)', function() {
@@ -137,6 +144,25 @@ describe('_', function () {
       var objects = [distractor1, distractor2];
 
       expect(_(objects).where(input)).toEqual([]);
+    });
+
+    it('ignores non-object elements in the array', function () {
+      var objects = [distractor1, 0, match1, undefined];
+
+      expect(_(objects).where(input)).toEqual([match1]);
+    });
+  });
+
+  describe('pluck(property)', function () {
+    var input = [{quantity: 5, blah: 4}, {blubb: 2}, {quantity: 3}];
+
+    it('returns an array of all values for that property', function () {
+      expect(_(input).pluck('quantity')).toEqual([5, 3]);
+      expect(_(input).pluck('fnord')).toEqual([]);
+    });
+
+    it('ignores non-object elements', function () {
+      expect(_([0, {quantity: 5}]).pluck('quantity')).toEqual([5]);
     });
   });
 });

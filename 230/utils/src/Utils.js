@@ -1,8 +1,5 @@
 (function () {
   // Type checking functionality for a given expression.
-  // Can be called in two ways:
-  //   type(expr).isArray();
-  //   type().isArray(expr);
   const type = function (expr) {
     return {
       isArray:    (x) => Array.isArray(x || expr),
@@ -19,15 +16,19 @@
   // Utility object _.
 
   // Constructor that takes an expression and returns an object that
-  // provides functionality for that expression, based on its type.
+  // provides functionality for that expression based on its type.
   const _ = function (expression) {
-    var prototype = _ValuePrototype;
-    if (type(expression).isObject()) prototype = _ObjectPrototype;
-    if (type(expression).isArray())  prototype = _ArrayPrototype;
+    var prototype = type(expression);
 
-    Object.assign(prototype, type(expression));
+    if (type(expression).isObject()) {
+      Object.assign(prototype, _ObjectPrototype(expression));
+    }
 
-    return Object.create(prototype).init(expression);
+    if (type(expression).isArray()) {
+      Object.assign(prototype, _ArrayPrototype(expression));
+    }
+
+    return Object.create(prototype);
   };
 
   // Extend _ with functionality that is directly available,
@@ -47,34 +48,87 @@
       }
 
       return values;
+    },
+
+    extend: function () {
+      var objects = Array.prototype.slice.call(arguments);
+
+      return objects.reduceRight((next, current) => _(current).extend(next));
     }
   });
 
   // Expose _ to the top-level object.
   this._ = _;
 
-  // Prototypes providing all type-specific functionality.
-
-  const _ValuePrototype = (function () {
-    var value;
-
+  // Object prototype providing object-specific functionality.
+  const _ObjectPrototype = function (object) {
     return {
-      init: function (init_value) {
-        value = init_value;
-        return this;
+      keys: function () {
+        return Object.getOwnPropertyNames(object);
+      },
+
+      values: function () {
+        var values = [];
+        var keys = this.keys();
+
+        for (let i = 0; i < keys.length; i++) {
+          values.push(object[keys[i]]);
+        }
+
+        return values;
+      },
+
+      has: function (property) {
+        return object.hasOwnProperty(property);
+      },
+
+      matches: function (other) {
+        if (!_.isObject(other)) return false;
+
+        return Object.getOwnPropertyNames(other).every(property =>
+          object.hasOwnProperty(property) && object[property] === other[property]
+        );
+      },
+
+      pick: function () {
+        var properties = Array.prototype.slice.call(arguments);
+        var new_object = {};
+
+        properties.forEach(function (property) {
+          if (object.hasOwnProperty(property)) {
+            new_object[property] = object[property];
+          }
+        });
+
+        return new_object;
+      },
+
+      omit: function () {
+        var properties = Array.prototype.slice.call(arguments);
+        var new_object = {};
+
+        Object.getOwnPropertyNames(object).forEach(function (property) {
+          if (!properties.includes(property)) {
+            new_object[property] = object[property];
+          }
+        });
+
+        return new_object;
+      },
+
+      extend: function (other) {
+        Object.getOwnPropertyNames(other).forEach(function (property) {
+          object[property] = other[property];
+        });
+
+        return object;
       },
     };
-  })();
+  };
 
-  const _ArrayPrototype = (function () {
-    var array;
-
+  // Array prototype providing array-specific functionality.
+  const _ArrayPrototype = function (array) {
     return {
-      init: function (init_array) {
-        array = init_array;
-        return this;
-      },
-
       first: function () {
         return array[0];
       },
@@ -117,71 +171,17 @@
       },
 
       findWhere: function (other) {
-        var properties = Object.getOwnPropertyNames(other);
-
-        for (let i = 0; i < array.length; i++) {
-          let matches = true;
-
-          for (let j = 0; j < properties.length; j++) {
-            if (!_(array[i]).has(properties[j]) || array[i][properties[j]] != other[properties[j]]) {
-              matches = false;
-              break;
-            }
-          }
-
-          if (matches) return array[i];
-        }
+        return array.find(element => _.isObject(element) && _(element).matches(other));
       },
 
       where: function (other) {
-        var matching_objects = [];
-        var properties = Object.getOwnPropertyNames(other);
-
-        for (let i = 0; i < array.length; i++) {
-          let matches = true;
-
-          for (let j = 0; j < properties.length; j++) {
-            if (!_(array[i]).has(properties[j]) || array[i][properties[j]] != other[properties[j]]) {
-              matches = false;
-              break;
-            }
-          }
-
-          if (matches) matching_objects.push(array[i]);
-        }
-
-        return matching_objects;
+        return array.filter(element => _.isObject(element) && _(element).matches(other));
       },
+
+      pluck: function (property) {
+        return array.filter(element => _.isObject(element) && _(element).has(property))
+                    .map(element => element[property]);
+      }
     };
-  })();
-
-  const _ObjectPrototype = (function () {
-    var object;
-
-    return {
-      init: function (init_object) {
-        object = init_object;
-        return this;
-      },
-
-      keys: function () {
-        return Object.getOwnPropertyNames(object);
-      },
-
-      values: function () {
-        var values = [];
-        var keys = this.keys();
-
-        for (let i = 0; i < keys.length; i++) {
-          values.push(object[keys[i]]);
-        }
-
-        return values;
-      },
-
-      has: function (property) {
-        return object.hasOwnProperty(property);
-      },
-    };
-  })();
+  };
 })();

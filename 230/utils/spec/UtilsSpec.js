@@ -33,6 +33,7 @@ describe('_', function () {
       expect(_.isObject('Fnord!')).toBe(false);
       expect(_.isObject(3.14)).toBe(false);
       expect(_.isObject(true)).toBe(false);
+      expect(_.isObject(0)).toBe(false);
       expect(_.isObject(undefined)).toBe(false);
       expect(_.isObject(null)).toBe(false);
     });
