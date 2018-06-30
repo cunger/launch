@@ -1,38 +1,38 @@
 (function () {
-  // Type checking functionality for a given expression.
-  const type = function (expr) {
+  // Type checking functionality for a given value.
+  const type = function (value) {
     return {
-      isArray:    (x) => Array.isArray(x || expr),
-      isObject:   (x) => typeof(x || expr) === 'object' && !!(x || expr)
-                      || typeof(x || expr) === 'function',
-      isFunction: (x) => typeof(x || expr) === 'function',
-      isString:   (x) => typeof(x || expr) === 'string',
-      isNumber:   (x) => typeof(x || expr) === 'number',
-      isBoolean:  (x) => typeof(x) === 'boolean' || typeof(expr) === 'boolean',
-      isElement:  (x) => (x || expr) instanceof HTMLElement,
+      isArray:    (x) => Array.isArray(x || value),
+      isObject:   (x) => typeof(x || value) === 'object' && !!(x || value)
+                      || typeof(x || value) === 'function',
+      isFunction: (x) => typeof(x || value) === 'function',
+      isString:   (x) => typeof(x || value) === 'string',
+      isNumber:   (x) => typeof(x || value) === 'number',
+      isBoolean:  (x) => typeof(x) === 'boolean' || typeof(value) === 'boolean',
+      isElement:  (x) => (x || value) instanceof HTMLElement,
     };
   }
 
   // Utility object _.
 
-  // Constructor that takes an expression and returns an object that
-  // provides functionality for that expression based on its type.
-  const _ = function (expression) {
-    var prototype = type(expression);
+  // Constructor that takes a value and returns an object that
+  // provides functionality for that value based on its type.
+  const _ = function (value) {
+    var prototype = type(value);
 
-    if (type(expression).isObject()) {
-      Object.assign(prototype, _ObjectPrototype(expression));
+    if (type(value).isObject()) {
+      Object.assign(prototype, _ObjectPrototype(value));
     }
 
-    if (type(expression).isArray()) {
-      Object.assign(prototype, _ArrayPrototype(expression));
+    if (type(value).isArray()) {
+      Object.assign(prototype, _ArrayPrototype(value));
     }
 
     return Object.create(prototype);
   };
 
   // Extend _ with functionality that is directly available,
-  // independent of any expression.
+  // independent of any value.
   Object.assign(_, type());
   Object.assign(_, {
     range: function () {
