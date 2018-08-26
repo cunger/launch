@@ -1,6 +1,21 @@
 
 ## Basic commands
 
+Lists all databases and exit:
+```
+$ psql -l
+```
+
+Connect to database:
+```
+$ psql hero-database username
+```
+
+List all tables the database:
+```
+hero-database=# \dt
+```
+
 ### Command line
 
 | Command | Description |
