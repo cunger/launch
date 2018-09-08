@@ -17,34 +17,16 @@ For creating an API without views:
 $ rails new beach-api --api`
 ```
 
-## Setup and configure
-
-Set up with [HAML](https://github.com/sdrdis/haml/blob/master/REFERENCE.md), RSpec and Capybara:
-
-```ruby
-gem 'haml-rails'
-
-group :development, :test do
-  gem 'rspec-rails'
-end
-
-group :test do
-  gem 'capybara'
-end
-```
-
+Finally, and every time the `Gemfile` is changed::
 ```
 $ bundle install
-$ rails generate rspec:install
 ```
 
-In order to add [service workers](https://github.com/rossta/serviceworker-rails), add `gem 'serviceworker-rails'` to the Gemfile, run `bundle`, and then:
+## Setup and configure
 
-```
-$ rails generate serviceworker:install
-```
+Set up with [HAML](https://github.com/sdrdis/haml/blob/master/REFERENCE.md), add the `haml-rails` gem to the `Gemfile`.
 
-And [read more about it](https://rossta.net/blog/service-worker-on-rails.html).
+For setting up everything needed for testing, see [testing.md](testing.md).
 
 ### Routes
 
