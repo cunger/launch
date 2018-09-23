@@ -36,7 +36,7 @@ navigator.geolocation.getCurrentPosition(
 
 With promises:
 
-```ja
+```js
 function promiseToGetCoordinates() { 
   return new Promise(function (fulfill, reject) {
     navigator.geolocation.getCurrentPosition(
@@ -75,25 +75,28 @@ new Promise(function someCalculation(fulfill, reject) {
 });
 ```
 
-## Chaining and branching promises
+## Chaining promises
 
-Example for chaining:
-
-```js
-promising
-.then(onFulfilled, onRejected)
-.then(onFulfilled, onRejected)
-.catch(onRejected);
-```
-
-Example for branching:
+Example:
 
 ```js
-promising.then(onFulfilled, onRejected);
-promising.then(onFulfilled, onRejected);
-promising.catch(onRejected);
-```
+var data = new FormData();
+data.append('key', 'value');
 
+fetch('https://url/update', {
+  method: 'POST',
+  body: data
+}) 
+.then(function (response) {
+  if (response.ok) return response;
+  throw new Error('Fetch failed.');
+})
+.then(response => response.json)
+.then(jsonNode => parse(jsonNode))
+.then(json     => process(json)) 
+.then(result   => console.log(result) || result) // logs and returns result 
+.catch(error   => console.error(error));
+```
 
 ## Lists of promises
 

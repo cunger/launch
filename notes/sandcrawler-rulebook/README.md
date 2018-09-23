@@ -17,4 +17,5 @@
 * [Prototypal inheritance](prototypal-inheritance.md)
 * [Object creation patterns](object-creation.md)
 * [Common patterns](patterns.md)
+* [Promises](promises.md)
 * [References](references.md)
